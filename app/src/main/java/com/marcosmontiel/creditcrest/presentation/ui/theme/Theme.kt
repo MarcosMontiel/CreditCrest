@@ -1,4 +1,4 @@
-package com.marcosmontiel.creditcrest.ui.theme
+package com.marcosmontiel.creditcrest.presentation.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme

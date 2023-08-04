@@ -1,4 +1,4 @@
-package com.marcosmontiel.creditcrest.ui.theme
+package com.marcosmontiel.creditcrest.presentation.ui.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Shapes

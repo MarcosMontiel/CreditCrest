@@ -1,4 +1,4 @@
-package com.marcosmontiel.creditcrest.ui.theme
+package com.marcosmontiel.creditcrest.presentation.ui.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle
