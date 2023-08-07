@@ -1,13 +1,14 @@
 package com.marcosmontiel.creditcrest.presentation.screen.login.component
 
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.*
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
+import com.marcosmontiel.creditcrest.presentation.component.DefaultCard
 import com.marcosmontiel.creditcrest.presentation.component.DefaultSolidBackground
 import com.marcosmontiel.creditcrest.presentation.screen.login.LoginViewModel
 import com.marcosmontiel.creditcrest.presentation.ui.theme.Blue800
@@ -20,7 +21,7 @@ fun LoginContent(
     paddingValues: PaddingValues,
 ) {
 
-    Box(modifier = modifier) {
+    Box(modifier = modifier.padding(paddingValues)) {
 
         DefaultSolidBackground(
             modifier = Modifier
@@ -28,6 +29,20 @@ fun LoginContent(
                 .fillMaxHeight(fraction = 0.45f),
             color = Blue800,
         )
+
+        DefaultCard(modifier = Modifier.align(Alignment.Center)) {
+
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp)
+            ) {
+
+                Text(text = "Test")
+
+            }
+
+        }
 
     }
 
