@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "222930431254",
+    "project_id": "credit-crest",
+    "storage_bucket": "credit-crest.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:222930431254:android:92fd5d5c0cd7af38d03437",
+        "android_client_info": {
+          "package_name": "com.marcosmontiel.creditcrest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "222930431254-03tivgjamlcopkb6b4osk67o1ac4pegv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCC01pX5pzuB3-74fJh2zy5eDkcuH8Cwg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "222930431254-03tivgjamlcopkb6b4osk67o1ac4pegv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
