@@ -14,7 +14,7 @@ fun NavGraphBuilder.authNavGraph(navController: NavHostController) {
     navigation(startDestination = Login.route, route = Graph.AUTHENTICATION) {
 
         composable(route = Login.route) {
-            LoginScreen()
+            LoginScreen(navController = navController)
         }
 
         composable(route = Register.route) {
