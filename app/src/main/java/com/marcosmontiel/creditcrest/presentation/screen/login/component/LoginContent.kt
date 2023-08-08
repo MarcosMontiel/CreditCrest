@@ -55,11 +55,15 @@ fun LoginContent(
 
                 Spacer(modifier = Modifier.size(48.dp))
 
-                DefaultTextField(modifier = Modifier.fillMaxWidth(), text = "")
+                DefaultTextField(modifier = Modifier.fillMaxWidth(), text = "") {
+
+                }
 
                 Spacer(modifier = Modifier.size(24.dp))
 
-                DefaultTextField(modifier = Modifier.fillMaxWidth(), text = "")
+                DefaultTextField(modifier = Modifier.fillMaxWidth(), text = "") {
+
+                }
 
             }
 
