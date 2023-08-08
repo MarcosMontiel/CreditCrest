@@ -13,6 +13,8 @@ fun DefaultTextField(
     text: String,
     label: @Composable (() -> Unit)? = null,
     placeholder: @Composable (() -> Unit)? = null,
+    leadingIcon: @Composable (() -> Unit)? = null,
+    trailingIcon: @Composable (() -> Unit)? = null,
     valueChanged: (String) -> Unit,
 ) {
 
@@ -23,6 +25,8 @@ fun DefaultTextField(
         enabled = isEnabled,
         label = label,
         placeholder = placeholder,
+        leadingIcon = leadingIcon,
+        trailingIcon = trailingIcon,
         singleLine = true,
         maxLines = 1,
         colors = TextFieldDefaults.textFieldColors(

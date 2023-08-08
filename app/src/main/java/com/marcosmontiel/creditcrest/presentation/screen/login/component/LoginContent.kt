@@ -1,8 +1,12 @@
 package com.marcosmontiel.creditcrest.presentation.screen.login.component
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Lock
+import androidx.compose.material.icons.rounded.Person
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -62,6 +66,12 @@ fun LoginContent(
                     placeholder = {
                         Text(text = stringResource(R.string.login_user_title))
                     },
+                    leadingIcon = {
+                        Icon(
+                            imageVector = Icons.Rounded.Person,
+                            contentDescription = stringResource(R.string.login_user_icon_desc),
+                        )
+                    },
                     valueChanged = {}
                 )
 
@@ -72,6 +82,12 @@ fun LoginContent(
                     text = "",
                     placeholder = {
                         Text(text = stringResource(R.string.login_pass_title))
+                    },
+                    leadingIcon = {
+                        Icon(
+                            imageVector = Icons.Rounded.Lock,
+                            contentDescription = stringResource(R.string.login_pass_icon_desc),
+                        )
                     },
                     valueChanged = {}
                 )

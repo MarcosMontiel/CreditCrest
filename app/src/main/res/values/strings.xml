@@ -3,4 +3,6 @@
     <string name="login_title">INICIAR SESIÓN</string>
     <string name="login_user_title">Usuario</string>
     <string name="login_pass_title">Contraseña</string>
+    <string name="login_user_icon_desc">login user icon</string>
+    <string name="login_pass_icon_desc">login password icon</string>
 </resources>
