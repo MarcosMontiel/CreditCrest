@@ -14,6 +14,7 @@ import com.marcosmontiel.creditcrest.R
 import com.marcosmontiel.creditcrest.presentation.component.DefaultCard
 import com.marcosmontiel.creditcrest.presentation.component.DefaultSolidBackground
 import com.marcosmontiel.creditcrest.presentation.component.DefaultText
+import com.marcosmontiel.creditcrest.presentation.component.DefaultTextField
 import com.marcosmontiel.creditcrest.presentation.screen.login.LoginViewModel
 import com.marcosmontiel.creditcrest.presentation.ui.theme.Blue800
 
@@ -39,7 +40,7 @@ fun LoginContent(
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 16.dp, vertical = 32.dp),
+                    .padding(horizontal = 24.dp, vertical = 40.dp),
                 verticalArrangement = Arrangement.Center,
             ) {
 
@@ -51,6 +52,14 @@ fun LoginContent(
                     title = stringResource(R.string.login_title),
                     style = MaterialTheme.typography.h6,
                 )
+
+                Spacer(modifier = Modifier.size(48.dp))
+
+                DefaultTextField(modifier = Modifier.fillMaxWidth(), text = "")
+
+                Spacer(modifier = Modifier.size(24.dp))
+
+                DefaultTextField(modifier = Modifier.fillMaxWidth(), text = "")
 
             }
 
