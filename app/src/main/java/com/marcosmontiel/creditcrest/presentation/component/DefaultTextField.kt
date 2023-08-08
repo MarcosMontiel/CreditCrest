@@ -11,6 +11,8 @@ fun DefaultTextField(
     modifier: Modifier = Modifier,
     isEnabled: Boolean = true,
     text: String,
+    label: @Composable (() -> Unit)? = null,
+    placeholder: @Composable (() -> Unit)? = null,
     valueChanged: (String) -> Unit,
 ) {
 
@@ -19,6 +21,10 @@ fun DefaultTextField(
         onValueChange = { valueChanged(it) },
         modifier = modifier,
         enabled = isEnabled,
+        label = label,
+        placeholder = placeholder,
+        singleLine = true,
+        maxLines = 1,
         colors = TextFieldDefaults.textFieldColors(
             focusedIndicatorColor = Color.Transparent,
             unfocusedIndicatorColor = Color.Transparent,

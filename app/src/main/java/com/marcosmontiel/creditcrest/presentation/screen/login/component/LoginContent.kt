@@ -2,6 +2,7 @@ package com.marcosmontiel.creditcrest.presentation.screen.login.component
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -55,15 +56,25 @@ fun LoginContent(
 
                 Spacer(modifier = Modifier.size(48.dp))
 
-                DefaultTextField(modifier = Modifier.fillMaxWidth(), text = "") {
-
-                }
+                DefaultTextField(
+                    modifier = Modifier.fillMaxWidth(),
+                    text = "",
+                    placeholder = {
+                        Text(text = stringResource(R.string.login_user_title))
+                    },
+                    valueChanged = {}
+                )
 
                 Spacer(modifier = Modifier.size(24.dp))
 
-                DefaultTextField(modifier = Modifier.fillMaxWidth(), text = "") {
-
-                }
+                DefaultTextField(
+                    modifier = Modifier.fillMaxWidth(),
+                    text = "",
+                    placeholder = {
+                        Text(text = stringResource(R.string.login_pass_title))
+                    },
+                    valueChanged = {}
+                )
 
             }
 

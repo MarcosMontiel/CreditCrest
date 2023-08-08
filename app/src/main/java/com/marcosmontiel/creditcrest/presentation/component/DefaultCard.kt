@@ -15,9 +15,8 @@ fun DefaultCard(modifier: Modifier = Modifier, content: @Composable () -> Unit) 
         modifier = modifier
             .fillMaxWidth()
             .padding(16.dp),
-        shape = RoundedCornerShape(percent = 10)
-    ) {
-        content()
-    }
+        shape = RoundedCornerShape(percent = 10),
+        content = content
+    )
 
 }
