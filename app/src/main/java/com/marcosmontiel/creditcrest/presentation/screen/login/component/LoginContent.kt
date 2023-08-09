@@ -2,6 +2,7 @@ package com.marcosmontiel.creditcrest.presentation.screen.login.component
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
@@ -107,6 +108,15 @@ fun LoginContentCard(modifier: Modifier, viewModel: LoginViewModel, loginState: 
                     contentDescription = stringResource(R.string.login_pass_icon_desc),
                 )
             },
+            trailingIcon = {
+                IconButton(onClick = { viewModel.visualPasswordChanged() }) {
+                    Icon(
+                        imageVector = loginState.passwordIcon,
+                        contentDescription = stringResource(R.string.login_pass_transformation_icon),
+                    )
+                }
+            },
+            transformation = loginState.passwordTransformation,
             keyboardType = KeyboardType.Password,
             valueChanged = { viewModel.valueChanged(loginState.email, it) }
         )

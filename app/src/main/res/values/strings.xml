@@ -5,4 +5,5 @@
     <string name="login_pass_title">Contraseña</string>
     <string name="login_email_icon_desc">login email icon</string>
     <string name="login_pass_icon_desc">login password icon</string>
+    <string name="login_pass_transformation_icon">password visual transformation icon</string>
 </resources>
