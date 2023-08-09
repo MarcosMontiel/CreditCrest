@@ -1,6 +1,7 @@
 package com.marcosmontiel.creditcrest.presentation.screen.login.component
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
@@ -18,10 +19,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.marcosmontiel.creditcrest.R
-import com.marcosmontiel.creditcrest.presentation.component.DefaultCard
-import com.marcosmontiel.creditcrest.presentation.component.DefaultSolidBackground
-import com.marcosmontiel.creditcrest.presentation.component.DefaultText
-import com.marcosmontiel.creditcrest.presentation.component.DefaultTextField
+import com.marcosmontiel.creditcrest.presentation.component.*
 import com.marcosmontiel.creditcrest.presentation.screen.login.LoginState
 import com.marcosmontiel.creditcrest.presentation.screen.login.LoginViewModel
 import com.marcosmontiel.creditcrest.presentation.ui.theme.Blue800
@@ -119,6 +117,15 @@ fun LoginContentCard(modifier: Modifier, viewModel: LoginViewModel, loginState: 
             transformation = loginState.passwordTransformation,
             keyboardType = KeyboardType.Password,
             valueChanged = { viewModel.valueChanged(loginState.email, it) }
+        )
+
+        Spacer(modifier = Modifier.size(40.dp))
+
+        DefaultButton(
+            modifier = Modifier.fillMaxWidth(),
+            shape = RoundedCornerShape(percent = 50),
+            content = { Text(text = stringResource(R.string.login_title_button)) },
+            click = {},
         )
 
     }
