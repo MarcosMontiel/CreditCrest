@@ -13,6 +13,7 @@ import androidx.compose.material.icons.rounded.Lock
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.focusTarget
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
@@ -136,7 +137,9 @@ fun LoginContentCard(modifier: Modifier, viewModel: LoginViewModel, loginState: 
             modifier = Modifier
                 .align(Alignment.End)
                 .padding(8.dp)
-                .clickable { },
+                .clickable { }
+                .focusTarget()
+                .then(Modifier.padding(4.dp)),
             fontSize = 12.sp,
             title = stringResource(R.string.login_forgot_pass_title),
         )
