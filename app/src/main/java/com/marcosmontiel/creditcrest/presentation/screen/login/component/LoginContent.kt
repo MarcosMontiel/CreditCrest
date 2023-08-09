@@ -21,6 +21,7 @@ import com.marcosmontiel.creditcrest.presentation.component.DefaultCard
 import com.marcosmontiel.creditcrest.presentation.component.DefaultSolidBackground
 import com.marcosmontiel.creditcrest.presentation.component.DefaultText
 import com.marcosmontiel.creditcrest.presentation.component.DefaultTextField
+import com.marcosmontiel.creditcrest.presentation.screen.login.LoginState
 import com.marcosmontiel.creditcrest.presentation.screen.login.LoginViewModel
 import com.marcosmontiel.creditcrest.presentation.ui.theme.Blue800
 
@@ -31,6 +32,8 @@ fun LoginContent(
     navController: NavHostController,
     paddingValues: PaddingValues,
 ) {
+
+    val loginState = viewModel.loginState
 
     Box(modifier = modifier.padding(paddingValues)) {
 
@@ -43,61 +46,70 @@ fun LoginContent(
 
         DefaultCard(modifier = Modifier.align(Alignment.Center)) {
 
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 24.dp, vertical = 40.dp),
-                verticalArrangement = Arrangement.Center,
-            ) {
-
-                DefaultText(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .wrapContentWidth(Alignment.CenterHorizontally),
-                    fontWeight = FontWeight.Bold,
-                    title = stringResource(R.string.login_title),
-                    style = MaterialTheme.typography.h6,
-                )
-
-                Spacer(modifier = Modifier.size(48.dp))
-
-                DefaultTextField(
-                    modifier = Modifier.fillMaxWidth(),
-                    text = "",
-                    placeholder = {
-                        Text(text = stringResource(R.string.login_email_title))
-                    },
-                    leadingIcon = {
-                        Icon(
-                            imageVector = Icons.Rounded.Email,
-                            contentDescription = stringResource(R.string.login_email_icon_desc),
-                        )
-                    },
-                    keyboardType = KeyboardType.Email,
-                    valueChanged = {}
-                )
-
-                Spacer(modifier = Modifier.size(24.dp))
-
-                DefaultTextField(
-                    modifier = Modifier.fillMaxWidth(),
-                    text = "",
-                    placeholder = {
-                        Text(text = stringResource(R.string.login_pass_title))
-                    },
-                    leadingIcon = {
-                        Icon(
-                            imageVector = Icons.Rounded.Lock,
-                            contentDescription = stringResource(R.string.login_pass_icon_desc),
-                        )
-                    },
-                    keyboardType = KeyboardType.Password,
-                    valueChanged = {}
-                )
-
-            }
+            LoginContentCard(
+                modifier = Modifier.fillMaxWidth(),
+                viewModel = viewModel,
+                loginState = loginState,
+            )
 
         }
+
+    }
+
+}
+
+@Composable
+fun LoginContentCard(modifier: Modifier, viewModel: LoginViewModel, loginState: LoginState) {
+
+    Column(
+        modifier = modifier.padding(horizontal = 24.dp, vertical = 40.dp),
+        verticalArrangement = Arrangement.Center,
+    ) {
+
+        DefaultText(
+            modifier = Modifier
+                .fillMaxWidth()
+                .wrapContentWidth(Alignment.CenterHorizontally),
+            fontWeight = FontWeight.Bold,
+            title = stringResource(R.string.login_title),
+            style = MaterialTheme.typography.h6,
+        )
+
+        Spacer(modifier = Modifier.size(48.dp))
+
+        DefaultTextField(
+            modifier = Modifier.fillMaxWidth(),
+            text = loginState.email,
+            placeholder = {
+                Text(text = stringResource(R.string.login_email_title))
+            },
+            leadingIcon = {
+                Icon(
+                    imageVector = Icons.Rounded.Email,
+                    contentDescription = stringResource(R.string.login_email_icon_desc),
+                )
+            },
+            keyboardType = KeyboardType.Email,
+            valueChanged = { viewModel.valueChanged(it, loginState.password) }
+        )
+
+        Spacer(modifier = Modifier.size(24.dp))
+
+        DefaultTextField(
+            modifier = Modifier.fillMaxWidth(),
+            text = loginState.password,
+            placeholder = {
+                Text(text = stringResource(R.string.login_pass_title))
+            },
+            leadingIcon = {
+                Icon(
+                    imageVector = Icons.Rounded.Lock,
+                    contentDescription = stringResource(R.string.login_pass_icon_desc),
+                )
+            },
+            keyboardType = KeyboardType.Password,
+            valueChanged = { viewModel.valueChanged(loginState.email, it) }
+        )
 
     }
 
