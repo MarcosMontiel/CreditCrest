@@ -7,4 +7,5 @@
     <string name="login_pass_icon_desc">login password icon</string>
     <string name="login_pass_transformation_icon">password visual transformation icon</string>
     <string name="login_title_button">ACCEDER</string>
+    <string name="login_forgot_pass_title">¿Olvidaste tu contraseña?</string>
 </resources>

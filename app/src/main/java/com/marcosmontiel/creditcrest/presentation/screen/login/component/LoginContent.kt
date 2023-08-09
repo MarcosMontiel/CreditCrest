@@ -1,5 +1,6 @@
 package com.marcosmontiel.creditcrest.presentation.screen.login.component
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
@@ -16,6 +17,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.marcosmontiel.creditcrest.R
@@ -126,6 +128,17 @@ fun LoginContentCard(modifier: Modifier, viewModel: LoginViewModel, loginState: 
             shape = RoundedCornerShape(percent = 50),
             content = { DefaultText(title = stringResource(R.string.login_title_button)) },
             click = {},
+        )
+
+        Spacer(modifier = Modifier.size(8.dp))
+
+        DefaultText(
+            modifier = Modifier
+                .align(Alignment.End)
+                .padding(8.dp)
+                .clickable { },
+            fontSize = 12.sp,
+            title = stringResource(R.string.login_forgot_pass_title),
         )
 
     }
