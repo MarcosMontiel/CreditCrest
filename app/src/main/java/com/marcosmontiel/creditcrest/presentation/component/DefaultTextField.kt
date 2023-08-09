@@ -1,10 +1,13 @@
 package com.marcosmontiel.creditcrest.presentation.component
 
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.TextField
 import androidx.compose.material.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.VisualTransformation
 
 @Composable
 fun DefaultTextField(
@@ -15,6 +18,8 @@ fun DefaultTextField(
     placeholder: @Composable (() -> Unit)? = null,
     leadingIcon: @Composable (() -> Unit)? = null,
     trailingIcon: @Composable (() -> Unit)? = null,
+    transformation: VisualTransformation = VisualTransformation.None,
+    keyboardType: KeyboardType = KeyboardType.Text,
     valueChanged: (String) -> Unit,
 ) {
 
@@ -29,6 +34,10 @@ fun DefaultTextField(
         trailingIcon = trailingIcon,
         singleLine = true,
         maxLines = 1,
+        visualTransformation = transformation,
+        keyboardOptions = KeyboardOptions(
+            keyboardType = keyboardType,
+        ),
         colors = TextFieldDefaults.textFieldColors(
             focusedIndicatorColor = Color.Transparent,
             unfocusedIndicatorColor = Color.Transparent,

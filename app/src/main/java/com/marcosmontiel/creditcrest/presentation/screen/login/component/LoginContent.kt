@@ -5,13 +5,14 @@ import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Email
 import androidx.compose.material.icons.rounded.Lock
-import androidx.compose.material.icons.rounded.Person
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
@@ -64,14 +65,15 @@ fun LoginContent(
                     modifier = Modifier.fillMaxWidth(),
                     text = "",
                     placeholder = {
-                        Text(text = stringResource(R.string.login_user_title))
+                        Text(text = stringResource(R.string.login_email_title))
                     },
                     leadingIcon = {
                         Icon(
-                            imageVector = Icons.Rounded.Person,
-                            contentDescription = stringResource(R.string.login_user_icon_desc),
+                            imageVector = Icons.Rounded.Email,
+                            contentDescription = stringResource(R.string.login_email_icon_desc),
                         )
                     },
+                    keyboardType = KeyboardType.Email,
                     valueChanged = {}
                 )
 
@@ -89,6 +91,7 @@ fun LoginContent(
                             contentDescription = stringResource(R.string.login_pass_icon_desc),
                         )
                     },
+                    keyboardType = KeyboardType.Password,
                     valueChanged = {}
                 )
 
