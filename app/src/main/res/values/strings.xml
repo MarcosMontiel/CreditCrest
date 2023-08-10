@@ -1,13 +1,13 @@
 <resources>
     <string name="app_name">Credit Crest</string>
-    <string name="login_title">INICIAR SESIÓN</string>
     <string name="login_email_title">Correo electrónico</string>
     <string name="login_pass_title">Contraseña</string>
     <string name="login_email_icon_desc">login email icon</string>
     <string name="login_pass_icon_desc">login password icon</string>
     <string name="login_pass_transformation_icon">password visual transformation icon</string>
-    <string name="login_title_button">ACCEDER</string>
+    <string name="login_title_button">INICIAR SESIÓN</string>
     <string name="login_forgot_pass_title">¿Olvidaste tu contraseña?</string>
     <string name="login_signup_action_title">¿No tienes una cuenta?</string>
     <string name="login_signup_title_button">REGÍSTRATE</string>
+    <string name="login_title">CREDIT CREST</string>
 </resources>
