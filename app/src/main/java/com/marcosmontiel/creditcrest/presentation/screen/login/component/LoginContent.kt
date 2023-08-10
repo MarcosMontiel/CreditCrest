@@ -123,7 +123,12 @@ fun LoginContentCard(modifier: Modifier, viewModel: LoginViewModel, loginState: 
         DefaultButton(
             modifier = Modifier.fillMaxWidth(),
             shape = RoundedCornerShape(percent = 50),
-            content = { DefaultText(title = stringResource(R.string.login_title_button)) },
+            content = {
+                DefaultText(
+                    fontWeight = FontWeight.Bold,
+                    title = stringResource(R.string.login_title_button),
+                )
+            },
             click = {},
         )
 
