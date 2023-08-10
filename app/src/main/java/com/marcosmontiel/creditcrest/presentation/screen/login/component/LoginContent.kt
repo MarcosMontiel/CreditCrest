@@ -10,6 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
@@ -76,6 +77,7 @@ fun LoginContentCard(
                 .fillMaxWidth()
                 .wrapContentWidth(Alignment.CenterHorizontally),
             fontWeight = FontWeight.Bold,
+            fontFamily = FontFamily.Monospace,
             title = stringResource(R.string.login_title),
             style = MaterialTheme.typography.h6,
         )
