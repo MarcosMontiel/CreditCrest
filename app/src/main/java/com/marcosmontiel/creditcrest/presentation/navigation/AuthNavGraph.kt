@@ -18,7 +18,7 @@ fun NavGraphBuilder.authNavGraph(navController: NavHostController) {
         }
 
         composable(route = Register.route) {
-            RegisterScreen()
+            RegisterScreen(navController = navController)
         }
 
     }

@@ -18,6 +18,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.marcosmontiel.creditcrest.R
 import com.marcosmontiel.creditcrest.presentation.component.*
+import com.marcosmontiel.creditcrest.presentation.navigation.AuthRoutes.Register
 import com.marcosmontiel.creditcrest.presentation.screen.login.LoginState
 import com.marcosmontiel.creditcrest.presentation.screen.login.LoginViewModel
 import com.marcosmontiel.creditcrest.presentation.ui.theme.Blue800
@@ -47,6 +48,7 @@ fun LoginContent(
             LoginContentCard(
                 modifier = Modifier.fillMaxWidth(),
                 viewModel = viewModel,
+                navController = navController,
                 loginState = loginState,
             )
 
@@ -57,7 +59,12 @@ fun LoginContent(
 }
 
 @Composable
-fun LoginContentCard(modifier: Modifier, viewModel: LoginViewModel, loginState: LoginState) {
+fun LoginContentCard(
+    modifier: Modifier,
+    viewModel: LoginViewModel,
+    navController: NavHostController,
+    loginState: LoginState,
+) {
 
     Column(
         modifier = modifier.padding(horizontal = 24.dp, vertical = 40.dp),
@@ -150,14 +157,14 @@ fun LoginContentCard(modifier: Modifier, viewModel: LoginViewModel, loginState: 
 
         Spacer(modifier = Modifier.size(24.dp))
 
-        LoginSignUpContent(modifier = Modifier.fillMaxWidth())
+        LoginSignUpContent(modifier = Modifier.fillMaxWidth(), navController = navController)
 
     }
 
 }
 
 @Composable
-fun LoginSignUpContent(modifier: Modifier) {
+fun LoginSignUpContent(modifier: Modifier, navController: NavHostController) {
 
     Row(
         modifier = modifier,
@@ -181,7 +188,9 @@ fun LoginSignUpContent(modifier: Modifier) {
                     title = stringResource(R.string.login_signup_title_button),
                 )
             },
-            click = {},
+            click = {
+                navController.navigate(Register.route)
+            },
         )
     }
 
