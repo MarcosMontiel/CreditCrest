@@ -154,4 +154,30 @@ fun LoginContentCard(modifier: Modifier, viewModel: LoginViewModel, loginState: 
 @Composable
 fun LoginSignUpContent(modifier: Modifier) {
 
+    Row(
+        modifier = modifier,
+        horizontalArrangement = Arrangement.Center,
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+
+        DefaultText(
+            style = MaterialTheme.typography.body2,
+            color = Gray500,
+            title = stringResource(R.string.login_signup_action_title),
+        )
+
+        Spacer(modifier = Modifier.size(8.dp))
+
+        DefaultTextButton(
+            content = {
+                DefaultText(
+                    fontWeight = FontWeight.Bold,
+                    style = MaterialTheme.typography.body2,
+                    title = stringResource(R.string.login_signup_title_button),
+                )
+            },
+            click = {},
+        )
+    }
+
 }

@@ -8,4 +8,6 @@
     <string name="login_pass_transformation_icon">password visual transformation icon</string>
     <string name="login_title_button">ACCEDER</string>
     <string name="login_forgot_pass_title">¿Olvidaste tu contraseña?</string>
+    <string name="login_signup_action_title">¿No tienes una cuenta?</string>
+    <string name="login_signup_title_button">REGÍSTRATE</string>
 </resources>
