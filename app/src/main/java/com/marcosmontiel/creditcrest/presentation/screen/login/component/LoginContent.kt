@@ -2,10 +2,7 @@ package com.marcosmontiel.creditcrest.presentation.screen.login.component
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Email
 import androidx.compose.material.icons.rounded.Lock
@@ -24,6 +21,7 @@ import com.marcosmontiel.creditcrest.presentation.component.*
 import com.marcosmontiel.creditcrest.presentation.screen.login.LoginState
 import com.marcosmontiel.creditcrest.presentation.screen.login.LoginViewModel
 import com.marcosmontiel.creditcrest.presentation.ui.theme.Blue800
+import com.marcosmontiel.creditcrest.presentation.ui.theme.Gray500
 
 @Composable
 fun LoginContent(
@@ -133,6 +131,9 @@ fun LoginContentCard(modifier: Modifier, viewModel: LoginViewModel, loginState: 
 
         DefaultTextButton(
             modifier = Modifier.align(Alignment.End),
+            colors = ButtonDefaults.textButtonColors(
+                contentColor = Gray500,
+            ),
             content = {
                 DefaultText(
                     fontSize = 12.sp,
