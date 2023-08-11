@@ -7,6 +7,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.marcosmontiel.creditcrest.presentation.ui.theme.Blue800
+import com.marcosmontiel.creditcrest.presentation.ui.theme.Gray200
 
 @Composable
 fun DefaultTopBar(
@@ -18,7 +19,7 @@ fun DefaultTopBar(
 ) {
 
     TopAppBar(
-        title = { DefaultText(title = title) },
+        title = { DefaultText(color = Gray200, title = title) },
         modifier = modifier,
         navigationIcon = icon,
         actions = actions,

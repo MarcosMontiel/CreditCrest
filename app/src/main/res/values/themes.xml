@@ -3,7 +3,7 @@
 
     <style name="Theme.CreditCrest" parent="android:Theme.Material.Light.NoActionBar">
         <item name="android:statusBarColor">@color/blue_800</item>
-        <item name="android:navigationBarColor">@color/gray_900</item>
+        <item name="android:navigationBarColor">@color/black</item>
     </style>
 
 </resources>
