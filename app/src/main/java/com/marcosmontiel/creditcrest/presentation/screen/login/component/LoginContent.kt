@@ -22,7 +22,6 @@ import com.marcosmontiel.creditcrest.presentation.component.*
 import com.marcosmontiel.creditcrest.presentation.navigation.AuthRoutes.Register
 import com.marcosmontiel.creditcrest.presentation.screen.login.LoginState
 import com.marcosmontiel.creditcrest.presentation.screen.login.LoginViewModel
-import com.marcosmontiel.creditcrest.presentation.ui.theme.Blue800
 import com.marcosmontiel.creditcrest.presentation.ui.theme.Gray500
 
 @Composable
@@ -87,7 +86,7 @@ fun LoginContentCard(
             modifier = Modifier.fillMaxWidth(),
             text = loginState.email,
             placeholder = {
-                Text(text = stringResource(R.string.login_email_title))
+                Text(text = stringResource(R.string.generic_email_title))
             },
             leadingIcon = {
                 Icon(
@@ -105,7 +104,7 @@ fun LoginContentCard(
             modifier = Modifier.fillMaxWidth(),
             text = loginState.password,
             placeholder = {
-                Text(text = stringResource(R.string.login_pass_title))
+                Text(text = stringResource(R.string.generic_pass_title))
             },
             leadingIcon = {
                 Icon(

@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Credit Crest</string>
-    <string name="login_email_title">Correo electrónico</string>
-    <string name="login_pass_title">Contraseña</string>
+    <string name="generic_email_title">Correo electrónico</string>
+    <string name="generic_pass_title">Contraseña</string>
     <string name="login_email_icon_desc">login email icon</string>
     <string name="login_pass_icon_desc">login password icon</string>
     <string name="login_pass_transformation_icon">password visual transformation icon</string>
@@ -11,4 +11,7 @@
     <string name="login_signup_title_button">REGÍSTRATE</string>
     <string name="login_title">CREDIT CREST</string>
     <string name="signup_title_top_bar">Registro</string>
+    <string name="signup_subtitle">Ingresa los siguientes datos</string>
+    <string name="generic_username_title">Usuario</string>
+    <string name="signup_username_icon_desc">signup username icon</string>
 </resources>
