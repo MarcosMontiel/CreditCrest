@@ -10,4 +10,5 @@
     <string name="login_signup_action_title">¿No tienes una cuenta?</string>
     <string name="login_signup_title_button">REGÍSTRATE</string>
     <string name="login_title">CREDIT CREST</string>
+    <string name="signup_title_top_bar">Registro</string>
 </resources>
