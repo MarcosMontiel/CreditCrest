@@ -11,7 +11,6 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.marcosmontiel.creditcrest.presentation.component.DefaultSolidBackground
 import com.marcosmontiel.creditcrest.presentation.screen.register.RegisterViewModel
-import com.marcosmontiel.creditcrest.presentation.ui.theme.Blue800
 
 @Composable
 fun RegisterContent(
@@ -27,7 +26,6 @@ fun RegisterContent(
             modifier = Modifier
                 .align(Alignment.TopCenter)
                 .fillMaxHeight(fraction = 0.45f),
-            color = Blue800,
         )
 
     }

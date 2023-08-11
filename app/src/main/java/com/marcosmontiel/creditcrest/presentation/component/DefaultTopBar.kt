@@ -6,14 +6,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.marcosmontiel.creditcrest.presentation.ui.theme.Blue900
+import com.marcosmontiel.creditcrest.presentation.ui.theme.Blue800
 
 @Composable
 fun DefaultTopBar(
     modifier: Modifier = Modifier,
     icon: @Composable (() -> Unit)? = null,
     actions: @Composable RowScope.() -> Unit = {},
-    background: Color = Blue900,
+    background: Color = Blue800,
     title: String,
 ) {
 

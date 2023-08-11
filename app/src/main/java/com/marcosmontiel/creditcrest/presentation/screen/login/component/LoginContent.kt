@@ -41,7 +41,6 @@ fun LoginContent(
             modifier = Modifier
                 .align(Alignment.TopCenter)
                 .fillMaxHeight(fraction = 0.45f),
-            color = Blue800,
         )
 
         DefaultCard(modifier = Modifier.align(Alignment.Center)) {

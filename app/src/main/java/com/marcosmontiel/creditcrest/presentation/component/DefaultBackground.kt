@@ -6,11 +6,12 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import com.marcosmontiel.creditcrest.presentation.ui.theme.Blue700
 
 @Composable
 fun DefaultSolidBackground(
     modifier: Modifier = Modifier,
-    color: Color,
+    color: Color = Blue700,
 ) {
 
     Box(
