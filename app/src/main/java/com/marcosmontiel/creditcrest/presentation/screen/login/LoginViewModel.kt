@@ -29,17 +29,18 @@ class LoginViewModel @Inject constructor() : ViewModel() {
 
     // Events
     fun valueChanged(email: String, password: String) {
-        val emailValue: String = email.let {
+        val emailVal: String = email.let {
             if (it.length > 50) it.slice(0 until 50) else it
         }
 
-        val passValue: String = password.let {
+        val passVal: String = password.let {
             if (it.length > 18) it.slice(0 until 18) else it
         }
 
         loginState = loginState.copy(
-            email = emailValue,
-            password = passValue,
+            email = emailVal,
+            emailEraser = emailVal.isNotEmpty() && emailVal.isNotBlank(),
+            password = passVal,
         )
     }
 

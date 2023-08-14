@@ -3,6 +3,8 @@ package com.marcosmontiel.creditcrest.presentation.screen.login.component
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Close
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -84,6 +86,16 @@ fun LoginContentCard(
             text = loginState.email,
             label = {
                 Text(text = stringResource(R.string.generic_email_title))
+            },
+            trailingIcon = {
+                if (loginState.emailEraser) {
+                    IconButton(onClick = {}) {
+                        Icon(
+                            imageVector = Icons.Rounded.Close,
+                            contentDescription = stringResource(R.string.login_email_eraser_icon),
+                        )
+                    }
+                }
             },
             keyboardType = KeyboardType.Email,
             valueChanged = { viewModel.valueChanged(it, loginState.password) },
