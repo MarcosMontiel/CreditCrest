@@ -89,7 +89,7 @@ fun LoginContentCard(
             },
             trailingIcon = {
                 if (loginState.emailEraser) {
-                    IconButton(onClick = {}) {
+                    IconButton(onClick = { viewModel.emailEraser() }) {
                         Icon(
                             imageVector = Icons.Rounded.Close,
                             contentDescription = stringResource(R.string.login_email_eraser_icon),

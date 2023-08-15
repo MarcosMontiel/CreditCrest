@@ -44,6 +44,13 @@ class LoginViewModel @Inject constructor() : ViewModel() {
         )
     }
 
+    fun emailEraser() {
+        loginState = loginState.copy(
+            email = "",
+            emailEraser = false,
+        )
+    }
+
     fun visualPasswordChanged() {
         _showPassword = !_showPassword
 
