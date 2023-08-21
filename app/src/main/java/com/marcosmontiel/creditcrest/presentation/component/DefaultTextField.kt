@@ -1,5 +1,6 @@
 package com.marcosmontiel.creditcrest.presentation.component
 
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.TextField
@@ -10,6 +11,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
+import com.marcosmontiel.creditcrest.presentation.ui.theme.Blue300
+import com.marcosmontiel.creditcrest.presentation.ui.theme.Blue700
 
 @Composable
 fun DefaultTextField(
@@ -44,6 +47,7 @@ fun DefaultTextField(
         colors = TextFieldDefaults.textFieldColors(
             focusedIndicatorColor = Color.Transparent,
             unfocusedIndicatorColor = Color.Transparent,
+            focusedLabelColor = if (isSystemInDarkTheme()) Blue300 else Blue700,
         )
     )
 
