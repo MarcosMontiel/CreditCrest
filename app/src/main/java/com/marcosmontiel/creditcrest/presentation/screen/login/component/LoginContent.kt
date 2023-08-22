@@ -83,16 +83,17 @@ fun LoginContentCard(
 
         DefaultTextField(
             modifier = Modifier.fillMaxWidth(),
+            enabled = loginState.emailEnabled,
             text = loginState.email,
             label = {
-                Text(text = stringResource(R.string.generic_email_title))
+                DefaultText(title = stringResource(R.string.generic_email_title))
             },
             trailingIcon = {
                 if (loginState.emailEraser) {
                     IconButton(onClick = { viewModel.emailEraser() }) {
                         Icon(
                             imageVector = Icons.Rounded.Close,
-                            contentDescription = stringResource(R.string.login_email_eraser_icon),
+                            contentDescription = stringResource(R.string.generic_email_eraser_icon),
                         )
                     }
                 }
@@ -105,9 +106,10 @@ fun LoginContentCard(
 
         DefaultTextField(
             modifier = Modifier.fillMaxWidth(),
+            enabled = loginState.passwordEnabled,
             text = loginState.password,
             label = {
-                Text(text = stringResource(R.string.generic_pass_title))
+                DefaultText(title = stringResource(R.string.generic_pass_title))
             },
             trailingIcon = {
                 IconButton(onClick = { viewModel.visualPasswordChanged() }) {
@@ -126,6 +128,7 @@ fun LoginContentCard(
 
         DefaultButton(
             modifier = Modifier.fillMaxWidth(),
+            enabled = loginState.loginButtonEnabled,
             shape = RoundedCornerShape(percent = 50),
             content = {
                 DefaultText(
@@ -140,6 +143,7 @@ fun LoginContentCard(
 
         DefaultTextButton(
             modifier = Modifier.align(Alignment.End),
+            enabled = loginState.forgotPasswordButtonEnabled,
             colors = ButtonDefaults.textButtonColors(
                 contentColor = Gray500,
             ),
@@ -154,14 +158,22 @@ fun LoginContentCard(
 
         Spacer(modifier = Modifier.size(24.dp))
 
-        LoginSignUpContent(modifier = Modifier.fillMaxWidth(), navController = navController)
+        LoginSignUpContent(
+            modifier = Modifier.fillMaxWidth(),
+            navController = navController,
+            loginState = loginState,
+        )
 
     }
 
 }
 
 @Composable
-fun LoginSignUpContent(modifier: Modifier, navController: NavHostController) {
+fun LoginSignUpContent(
+    modifier: Modifier,
+    navController: NavHostController,
+    loginState: LoginState,
+) {
 
     Row(
         modifier = modifier,
@@ -178,6 +190,7 @@ fun LoginSignUpContent(modifier: Modifier, navController: NavHostController) {
         Spacer(modifier = Modifier.size(8.dp))
 
         DefaultTextButton(
+            enabled = loginState.signUpButtonEnabled,
             content = {
                 DefaultText(
                     fontWeight = FontWeight.Bold,

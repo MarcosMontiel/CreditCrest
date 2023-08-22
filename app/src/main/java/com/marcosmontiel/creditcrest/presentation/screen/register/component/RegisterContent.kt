@@ -2,16 +2,17 @@ package com.marcosmontiel.creditcrest.presentation.screen.register.component
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Person
+import androidx.compose.material.icons.rounded.Close
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
@@ -91,14 +92,18 @@ fun RegisterContentCard(
         DefaultTextField(
             modifier = Modifier.fillMaxWidth(),
             text = registerState.username,
-            placeholder = {
-                Text(text = stringResource(R.string.generic_username_title))
+            label = {
+                DefaultText(title = stringResource(R.string.generic_username_title))
             },
-            leadingIcon = {
-                Icon(
-                    imageVector = Icons.Rounded.Person,
-                    contentDescription = stringResource(R.string.signup_username_icon_desc),
-                )
+            trailingIcon = {
+                if (registerState.usernameEraser) {
+                    IconButton(onClick = { }) {
+                        Icon(
+                            imageVector = Icons.Rounded.Close,
+                            contentDescription = stringResource(R.string.signup_username_eraser_icon),
+                        )
+                    }
+                }
             },
             valueChanged = {
                 viewModel.valueChanged(
@@ -106,6 +111,91 @@ fun RegisterContentCard(
                     password = registerState.password,
                     passwordConfirmation = registerState.passwordConfirmation,
                     username = it,
+                )
+            },
+        )
+
+        Spacer(modifier = Modifier.size(24.dp))
+
+        DefaultTextField(
+            modifier = Modifier.fillMaxWidth(),
+            text = registerState.email,
+            label = {
+                DefaultText(title = stringResource(R.string.generic_email_title))
+            },
+            trailingIcon = {
+                if (registerState.emailEraser) {
+                    IconButton(onClick = { }) {
+                        Icon(
+                            imageVector = Icons.Rounded.Close,
+                            contentDescription = stringResource(R.string.generic_email_eraser_icon),
+                        )
+                    }
+                }
+            },
+            keyboardType = KeyboardType.Email,
+            valueChanged = {
+                viewModel.valueChanged(
+                    email = it,
+                    password = registerState.password,
+                    passwordConfirmation = registerState.passwordConfirmation,
+                    username = registerState.username,
+                )
+            }
+        )
+
+        Spacer(modifier = Modifier.size(24.dp))
+
+        DefaultTextField(
+            modifier = Modifier.fillMaxWidth(),
+            text = registerState.password,
+            label = {
+                DefaultText(title = stringResource(R.string.generic_pass_title))
+            },
+            trailingIcon = {
+                IconButton(onClick = { }) {
+                    Icon(
+                        imageVector = registerState.passwordIcon,
+                        contentDescription = stringResource(R.string.login_pass_transformation_icon),
+                    )
+                }
+            },
+            transformation = registerState.passwordTransformation,
+            keyboardType = KeyboardType.Password,
+            valueChanged = {
+                viewModel.valueChanged(
+                    email = registerState.email,
+                    password = it,
+                    passwordConfirmation = registerState.passwordConfirmation,
+                    username = registerState.username,
+                )
+            },
+        )
+
+        Spacer(modifier = Modifier.size(24.dp))
+
+        DefaultTextField(
+            modifier = Modifier.fillMaxWidth(),
+            text = registerState.passwordConfirmation,
+            label = {
+                DefaultText(title = stringResource(R.string.signup_pass_confirmation_title))
+            },
+            trailingIcon = {
+                IconButton(onClick = { }) {
+                    Icon(
+                        imageVector = registerState.passwordConfirmationIcon,
+                        contentDescription = stringResource(R.string.signup_pass_conf_transformation_icon),
+                    )
+                }
+            },
+            transformation = registerState.passwordConfirmationTransformation,
+            keyboardType = KeyboardType.Password,
+            valueChanged = {
+                viewModel.valueChanged(
+                    email = registerState.email,
+                    password = registerState.password,
+                    passwordConfirmation = it,
+                    username = registerState.username,
                 )
             },
         )

@@ -8,8 +8,13 @@ import androidx.compose.ui.text.input.VisualTransformation
 
 data class LoginState(
     val email: String = "",
+    val emailEnabled: Boolean = true,
     val emailEraser: Boolean = false,
+    val forgotPasswordButtonEnabled: Boolean = true,
+    val loginButtonEnabled: Boolean = true,
     val password: String = "",
+    val passwordEnabled: Boolean = true,
     val passwordIcon: ImageVector = Icons.Rounded.Visibility,
     val passwordTransformation: VisualTransformation = PasswordVisualTransformation(),
+    val signUpButtonEnabled: Boolean = true,
 )

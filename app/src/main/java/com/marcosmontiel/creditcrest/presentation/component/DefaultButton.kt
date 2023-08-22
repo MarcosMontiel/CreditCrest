@@ -12,7 +12,7 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun DefaultButton(
     modifier: Modifier = Modifier,
-    isEnabled: Boolean = true,
+    enabled: Boolean = true,
     shape: Shape = RoundedCornerShape(8.dp),
     padding: PaddingValues = PaddingValues(vertical = 16.dp),
     content: @Composable RowScope.() -> Unit,
@@ -22,7 +22,7 @@ fun DefaultButton(
     Button(
         onClick = { click() },
         modifier = modifier,
-        enabled = isEnabled,
+        enabled = enabled,
         shape = shape,
         contentPadding = padding,
         content = content,

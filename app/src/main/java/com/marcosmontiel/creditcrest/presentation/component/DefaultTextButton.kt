@@ -11,7 +11,7 @@ import androidx.compose.ui.Modifier
 @Composable
 fun DefaultTextButton(
     modifier: Modifier = Modifier,
-    isEnabled: Boolean = true,
+    enabled: Boolean = true,
     colors: ButtonColors = ButtonDefaults.textButtonColors(),
     padding: PaddingValues = ButtonDefaults.TextButtonContentPadding,
     content: @Composable RowScope.() -> Unit,
@@ -21,7 +21,7 @@ fun DefaultTextButton(
     TextButton(
         onClick = { click() },
         modifier = modifier,
-        enabled = isEnabled,
+        enabled = enabled,
         colors = colors,
         contentPadding = padding,
         content = content,

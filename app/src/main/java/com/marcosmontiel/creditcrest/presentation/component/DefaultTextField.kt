@@ -17,7 +17,7 @@ import com.marcosmontiel.creditcrest.presentation.ui.theme.Blue700
 @Composable
 fun DefaultTextField(
     modifier: Modifier = Modifier,
-    isEnabled: Boolean = true,
+    enabled: Boolean = true,
     text: String,
     label: @Composable (() -> Unit)? = null,
     placeholder: @Composable (() -> Unit)? = null,
@@ -32,7 +32,7 @@ fun DefaultTextField(
         value = text,
         onValueChange = { valueChanged(it) },
         modifier = modifier,
-        enabled = isEnabled,
+        enabled = enabled,
         label = label,
         placeholder = placeholder,
         leadingIcon = leadingIcon,
