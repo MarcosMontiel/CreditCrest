@@ -20,6 +20,6 @@ data class RegisterState(
     val passwordConfirmationTransformation: VisualTransformation = PasswordVisualTransformation(),
     val signUpButtonEnabled: Boolean = true,
     val username: String = "",
-    val usernameEnabled: Boolean = false,
+    val usernameEnabled: Boolean = true,
     val usernameEraser: Boolean = false,
 )

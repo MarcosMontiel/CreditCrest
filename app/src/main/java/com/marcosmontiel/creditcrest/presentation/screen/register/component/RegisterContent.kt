@@ -1,6 +1,7 @@
 package com.marcosmontiel.creditcrest.presentation.screen.register.component
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
@@ -17,10 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.marcosmontiel.creditcrest.R
-import com.marcosmontiel.creditcrest.presentation.component.DefaultCard
-import com.marcosmontiel.creditcrest.presentation.component.DefaultSolidBackground
-import com.marcosmontiel.creditcrest.presentation.component.DefaultText
-import com.marcosmontiel.creditcrest.presentation.component.DefaultTextField
+import com.marcosmontiel.creditcrest.presentation.component.*
 import com.marcosmontiel.creditcrest.presentation.screen.register.RegisterState
 import com.marcosmontiel.creditcrest.presentation.screen.register.RegisterViewModel
 import com.marcosmontiel.creditcrest.presentation.ui.theme.Gray500
@@ -91,6 +89,7 @@ fun RegisterContentCard(
 
         DefaultTextField(
             modifier = Modifier.fillMaxWidth(),
+            enabled = registerState.usernameEnabled,
             text = registerState.username,
             label = {
                 DefaultText(title = stringResource(R.string.generic_username_title))
@@ -119,6 +118,7 @@ fun RegisterContentCard(
 
         DefaultTextField(
             modifier = Modifier.fillMaxWidth(),
+            enabled = registerState.emailEnabled,
             text = registerState.email,
             label = {
                 DefaultText(title = stringResource(R.string.generic_email_title))
@@ -148,6 +148,7 @@ fun RegisterContentCard(
 
         DefaultTextField(
             modifier = Modifier.fillMaxWidth(),
+            enabled = registerState.passwordEnabled,
             text = registerState.password,
             label = {
                 DefaultText(title = stringResource(R.string.generic_pass_title))
@@ -176,6 +177,7 @@ fun RegisterContentCard(
 
         DefaultTextField(
             modifier = Modifier.fillMaxWidth(),
+            enabled = registerState.passwordConfirmationEnabled,
             text = registerState.passwordConfirmation,
             label = {
                 DefaultText(title = stringResource(R.string.signup_pass_confirmation_title))
@@ -200,7 +202,20 @@ fun RegisterContentCard(
             },
         )
 
-        Spacer(modifier = Modifier.size(24.dp))
+        Spacer(modifier = Modifier.size(40.dp))
+
+        DefaultButton(
+            modifier = Modifier.fillMaxWidth(),
+            enabled = registerState.signUpButtonEnabled,
+            shape = RoundedCornerShape(percent = 50),
+            content = {
+                DefaultText(
+                    fontWeight = FontWeight.Bold,
+                    title = stringResource(R.string.signup_title_button),
+                )
+            },
+            click = {},
+        )
 
     }
 

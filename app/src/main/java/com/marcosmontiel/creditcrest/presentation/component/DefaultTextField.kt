@@ -47,6 +47,8 @@ fun DefaultTextField(
         colors = TextFieldDefaults.textFieldColors(
             focusedIndicatorColor = Color.Transparent,
             unfocusedIndicatorColor = Color.Transparent,
+            disabledIndicatorColor = Color.Transparent,
+            errorIndicatorColor = Color.Transparent,
             focusedLabelColor = if (isSystemInDarkTheme()) Blue300 else Blue700,
         )
     )
