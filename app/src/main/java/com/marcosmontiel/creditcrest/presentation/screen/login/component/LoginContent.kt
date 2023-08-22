@@ -79,7 +79,7 @@ fun LoginContentCard(
             style = MaterialTheme.typography.h6,
         )
 
-        Spacer(modifier = Modifier.size(48.dp))
+        Spacer(modifier = Modifier.size(40.dp))
 
         DefaultTextField(
             modifier = Modifier.fillMaxWidth(),

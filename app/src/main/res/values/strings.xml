@@ -6,10 +6,11 @@
     <string name="login_title_button">INICIAR SESIÓN</string>
     <string name="login_forgot_pass_title">¿Olvidaste tu contraseña?</string>
     <string name="login_signup_action_title">¿No tienes una cuenta?</string>
+    <string name="signup_login_action_title">¿Ya tienes una cuenta?</string>
     <string name="login_signup_title_button">REGÍSTRATE</string>
+    <string name="signup_login_title_button">INICIA SESIÓN</string>
     <string name="login_title">CREDIT CREST</string>
-    <string name="signup_title_top_bar">Registro</string>
-    <string name="signup_subtitle">Ingresa los siguientes datos</string>
+    <string name="signup_subtitle">Ingresa los siguientes datos para crear tu usuario</string>
     <string name="generic_username_title">Usuario</string>
     <string name="generic_email_eraser_icon">email eraser icon</string>
     <string name="signup_username_eraser_icon">username eraser icon</string>

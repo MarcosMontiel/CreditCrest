@@ -22,22 +22,7 @@ fun RegisterScreen(navController: NavHostController) {
 
     Scaffold(
         scaffoldState = scaffoldState,
-        topBar = {
-
-            DefaultTopBar(
-                icon = {
-
-                    DefaultIconButton(
-                        icon = Icons.Rounded.ArrowBack,
-                        description = "pop back stack",
-                        click = { navController.popBackStack() },
-                    )
-
-                },
-                title = stringResource(R.string.signup_title_top_bar),
-            )
-
-        },
+        topBar = {},
         bottomBar = {},
         content = { paddingValues ->
 

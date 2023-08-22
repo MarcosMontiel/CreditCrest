@@ -19,6 +19,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.marcosmontiel.creditcrest.R
 import com.marcosmontiel.creditcrest.presentation.component.*
+import com.marcosmontiel.creditcrest.presentation.navigation.AuthRoutes
 import com.marcosmontiel.creditcrest.presentation.screen.register.RegisterState
 import com.marcosmontiel.creditcrest.presentation.screen.register.RegisterViewModel
 import com.marcosmontiel.creditcrest.presentation.ui.theme.Gray500
@@ -46,6 +47,7 @@ fun RegisterContent(
             RegisterContentCard(
                 modifier = Modifier.fillMaxWidth(),
                 viewModel = viewModel,
+                navController = navController,
                 registerState = registerState,
             )
 
@@ -59,6 +61,7 @@ fun RegisterContent(
 fun RegisterContentCard(
     modifier: Modifier,
     viewModel: RegisterViewModel,
+    navController: NavHostController,
     registerState: RegisterState,
 ) {
 
@@ -77,7 +80,7 @@ fun RegisterContentCard(
             style = MaterialTheme.typography.h6,
         )
 
-        Spacer(modifier = Modifier.size(48.dp))
+        Spacer(modifier = Modifier.size(40.dp))
 
         DefaultText(
             style = MaterialTheme.typography.body2,
@@ -217,6 +220,52 @@ fun RegisterContentCard(
             click = {},
         )
 
+        Spacer(modifier = Modifier.size(24.dp))
+
+        SignUpLoginContent(
+            modifier = Modifier.fillMaxWidth(),
+            navController = navController,
+            registerState = registerState,
+        )
+
+    }
+
+}
+
+@Composable
+fun SignUpLoginContent(
+    modifier: Modifier,
+    navController: NavHostController,
+    registerState: RegisterState,
+) {
+
+    Row(
+        modifier = modifier,
+        horizontalArrangement = Arrangement.Center,
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+
+        DefaultText(
+            style = MaterialTheme.typography.body2,
+            color = Gray500,
+            title = stringResource(R.string.signup_login_action_title),
+        )
+
+        Spacer(modifier = Modifier.size(8.dp))
+
+        DefaultTextButton(
+            enabled = registerState.loginButtonEnabled,
+            content = {
+                DefaultText(
+                    fontWeight = FontWeight.Bold,
+                    style = MaterialTheme.typography.body2,
+                    title = stringResource(R.string.signup_login_title_button),
+                )
+            },
+            click = {
+                navController.navigate(AuthRoutes.Login.route)
+            },
+        )
     }
 
 }
