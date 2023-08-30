@@ -112,7 +112,7 @@ fun LoginContentCard(
                 DefaultText(title = stringResource(R.string.generic_pass_title))
             },
             trailingIcon = {
-                IconButton(onClick = { viewModel.visualPasswordChanged() }) {
+                IconButton(onClick = { viewModel.passwordTransformation() }) {
                     Icon(
                         imageVector = loginState.passwordIcon,
                         contentDescription = stringResource(R.string.login_pass_transformation_icon),

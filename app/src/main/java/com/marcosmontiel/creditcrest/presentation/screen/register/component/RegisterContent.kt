@@ -99,7 +99,7 @@ fun RegisterContentCard(
             },
             trailingIcon = {
                 if (registerState.usernameEraser) {
-                    IconButton(onClick = { }) {
+                    IconButton(onClick = { viewModel.emailEraser() }) {
                         Icon(
                             imageVector = Icons.Rounded.Close,
                             contentDescription = stringResource(R.string.signup_username_eraser_icon),
@@ -128,7 +128,7 @@ fun RegisterContentCard(
             },
             trailingIcon = {
                 if (registerState.emailEraser) {
-                    IconButton(onClick = { }) {
+                    IconButton(onClick = { viewModel.usernameEraser() }) {
                         Icon(
                             imageVector = Icons.Rounded.Close,
                             contentDescription = stringResource(R.string.generic_email_eraser_icon),
@@ -157,7 +157,7 @@ fun RegisterContentCard(
                 DefaultText(title = stringResource(R.string.generic_pass_title))
             },
             trailingIcon = {
-                IconButton(onClick = { }) {
+                IconButton(onClick = { viewModel.passwordTransformation() }) {
                     Icon(
                         imageVector = registerState.passwordIcon,
                         contentDescription = stringResource(R.string.login_pass_transformation_icon),
@@ -186,7 +186,7 @@ fun RegisterContentCard(
                 DefaultText(title = stringResource(R.string.signup_pass_confirmation_title))
             },
             trailingIcon = {
-                IconButton(onClick = { }) {
+                IconButton(onClick = { viewModel.passwordConfirmationTransformation() }) {
                     Icon(
                         imageVector = registerState.passwordConfirmationIcon,
                         contentDescription = stringResource(R.string.signup_pass_conf_transformation_icon),
