@@ -10,9 +10,11 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseUser
 import com.marcosmontiel.creditcrest.domain.model.Response
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -31,7 +33,7 @@ class RegisterViewModel @Inject constructor() : ViewModel() {
         private set
 
     // Response
-    var response by mutableStateOf<Response<FirebaseUser>?>(null)
+    var registerResponse by mutableStateOf<Response<FirebaseUser>?>(null)
 
     // Events
     fun valueChanged(
@@ -98,7 +100,13 @@ class RegisterViewModel @Inject constructor() : ViewModel() {
     }
 
     fun register() {
+        doRegister()
+    }
 
+    // Private functions
+
+    private fun doRegister() = viewModelScope.launch {
+        registerResponse = Response.Loading
     }
 
 }

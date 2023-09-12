@@ -217,7 +217,7 @@ fun RegisterContentCard(
                     title = stringResource(R.string.signup_title_button),
                 )
             },
-            click = {},
+            click = { viewModel.register() },
         )
 
         Spacer(modifier = Modifier.size(24.dp))
