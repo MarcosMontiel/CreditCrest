@@ -76,7 +76,7 @@ fun RegisterContentCard(
                 .wrapContentWidth(Alignment.CenterHorizontally),
             fontWeight = FontWeight.Bold,
             fontFamily = FontFamily.Monospace,
-            title = stringResource(R.string.login_title),
+            title = stringResource(R.string.auth_login_title),
             style = MaterialTheme.typography.h6,
         )
 
@@ -85,7 +85,7 @@ fun RegisterContentCard(
         DefaultText(
             style = MaterialTheme.typography.body2,
             color = Gray500,
-            title = stringResource(R.string.signup_subtitle),
+            title = stringResource(R.string.auth_signup_subtitle),
         )
 
         Spacer(modifier = Modifier.size(16.dp))
@@ -102,7 +102,7 @@ fun RegisterContentCard(
                     IconButton(onClick = { viewModel.usernameEraser() }) {
                         Icon(
                             imageVector = Icons.Rounded.Close,
-                            contentDescription = stringResource(R.string.signup_username_eraser_icon),
+                            contentDescription = stringResource(R.string.auth_signup_username_eraser_icon),
                         )
                     }
                 }
@@ -160,7 +160,7 @@ fun RegisterContentCard(
                 IconButton(onClick = { viewModel.passwordTransformation() }) {
                     Icon(
                         imageVector = registerState.passwordIcon,
-                        contentDescription = stringResource(R.string.login_pass_transformation_icon),
+                        contentDescription = stringResource(R.string.auth_login_pass_transformation_icon),
                     )
                 }
             },
@@ -183,13 +183,13 @@ fun RegisterContentCard(
             enabled = registerState.passwordConfirmationEnabled,
             text = registerState.passwordConfirmation,
             label = {
-                DefaultText(title = stringResource(R.string.signup_pass_confirmation_title))
+                DefaultText(title = stringResource(R.string.auth_signup_pass_confirm_title))
             },
             trailingIcon = {
                 IconButton(onClick = { viewModel.passwordConfirmationTransformation() }) {
                     Icon(
                         imageVector = registerState.passwordConfirmationIcon,
-                        contentDescription = stringResource(R.string.signup_pass_conf_transformation_icon),
+                        contentDescription = stringResource(R.string.auth_signup_pass_confirm_transformation_icon),
                     )
                 }
             },
@@ -214,7 +214,7 @@ fun RegisterContentCard(
             content = {
                 DefaultText(
                     fontWeight = FontWeight.Bold,
-                    title = stringResource(R.string.signup_title_button),
+                    title = stringResource(R.string.auth_signup_title_button),
                 )
             },
             click = { viewModel.register() },
@@ -248,7 +248,7 @@ fun SignUpLoginContent(
         DefaultText(
             style = MaterialTheme.typography.body2,
             color = Gray500,
-            title = stringResource(R.string.signup_login_action_title),
+            title = stringResource(R.string.auth_signup_action_title),
         )
 
         Spacer(modifier = Modifier.size(8.dp))
@@ -259,7 +259,7 @@ fun SignUpLoginContent(
                 DefaultText(
                     fontWeight = FontWeight.Bold,
                     style = MaterialTheme.typography.body2,
-                    title = stringResource(R.string.signup_login_title_button),
+                    title = stringResource(R.string.auth_signup_login_title_button),
                 )
             },
             click = {

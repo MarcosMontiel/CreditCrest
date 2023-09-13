@@ -1,5 +1,7 @@
 package com.marcosmontiel.creditcrest.presentation.screen.register
 
+import android.app.Application
+import android.widget.Toast
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Visibility
 import androidx.compose.material.icons.rounded.VisibilityOff
@@ -20,7 +22,10 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class RegisterViewModel @Inject constructor(private val authUseCases: AuthUseCases) : ViewModel() {
+class RegisterViewModel @Inject constructor(
+    private val application: Application,
+    private val authUseCases: AuthUseCases,
+) : ViewModel() {
 
     // Password instances
     private var _showPassword: Boolean = false
@@ -44,6 +49,10 @@ class RegisterViewModel @Inject constructor(private val authUseCases: AuthUseCas
         passwordConfirmation: String,
         username: String,
     ) {
+        val usernameValue: String = username.let {
+            if (it.length > 18) it.slice(0 until 18) else it
+        }
+
         val emailValue: String = email.let {
             if (it.length > 50) it.slice(0 until 36) else it
         }
@@ -55,13 +64,14 @@ class RegisterViewModel @Inject constructor(private val authUseCases: AuthUseCas
         val passwordConfirmationValue: String = passwordConfirmation.let {
             if (it.length > 18) it.slice(0 until 18) else it
         }
-        val usernameValue: String = username.let {
-            if (it.length > 18) it.slice(0 until 18) else it
-        }
 
         registerState = registerState.copy(
             email = emailValue,
             emailEraser = emailValue.isNotEmpty() && emailValue.isNotBlank(),
+            informationCorrect = usernameValue.isNotEmpty() && usernameValue.isNotBlank() &&
+                    emailValue.isNotEmpty() && emailValue.isNotBlank() &&
+                    passwordValue.isNotEmpty() && passwordValue.isNotBlank() &&
+                    passwordConfirmationValue.isNotEmpty() && passwordConfirmationValue.isNotBlank(),
             password = passwordValue,
             passwordConfirmation = passwordConfirmationValue,
             username = usernameValue,
@@ -102,7 +112,16 @@ class RegisterViewModel @Inject constructor(private val authUseCases: AuthUseCas
     }
 
     fun register() {
-        val user = User(email = registerState.email, password = registerState.password)
+        if (!registerState.informationCorrect) {
+            val message = "Ingresa la información requerida para continuar."
+            Toast.makeText(application.applicationContext, message, Toast.LENGTH_LONG).show()
+            return
+        }
+
+        val user = User(
+            email = registerState.email,
+            password = registerState.password,
+        )
         doRegister(user)
     }
 

@@ -1,20 +1,23 @@
 <resources>
     <string name="app_name">Credit Crest</string>
+
+    <string name="auth_login_forgot_pass_title">¿Olvidaste tu contraseña?</string>
+    <string name="auth_login_pass_transformation_icon">password visual transformation icon</string>
+    <string name="auth_login_signup_action_title">¿No tienes una cuenta?</string>
+    <string name="auth_login_signup_title_button">REGÍSTRATE</string>
+    <string name="auth_login_title">CREDIT CREST</string>
+    <string name="auth_login_title_button">INICIAR SESIÓN</string>
+
+    <string name="auth_signup_action_title">¿Ya tienes una cuenta?</string>
+    <string name="auth_signup_login_title_button">INICIA SESIÓN</string>
+    <string name="auth_signup_pass_confirm_title">Confirmar contraseña</string>
+    <string name="auth_signup_pass_confirm_transformation_icon">password confirm visual transformation icon</string>
+    <string name="auth_signup_subtitle">Ingresa los siguientes datos para crear tu usuario</string>
+    <string name="auth_signup_title_button">CONTINUAR</string>
+    <string name="auth_signup_username_eraser_icon">username eraser icon</string>
+
+    <string name="generic_email_eraser_icon">email eraser icon</string>
     <string name="generic_email_title">Correo electrónico</string>
     <string name="generic_pass_title">Contraseña</string>
-    <string name="login_pass_transformation_icon">password visual transformation icon</string>
-    <string name="login_title_button">INICIAR SESIÓN</string>
-    <string name="login_forgot_pass_title">¿Olvidaste tu contraseña?</string>
-    <string name="login_signup_action_title">¿No tienes una cuenta?</string>
-    <string name="signup_login_action_title">¿Ya tienes una cuenta?</string>
-    <string name="login_signup_title_button">REGÍSTRATE</string>
-    <string name="signup_login_title_button">INICIA SESIÓN</string>
-    <string name="login_title">CREDIT CREST</string>
-    <string name="signup_subtitle">Ingresa los siguientes datos para crear tu usuario</string>
     <string name="generic_username_title">Usuario</string>
-    <string name="generic_email_eraser_icon">email eraser icon</string>
-    <string name="signup_username_eraser_icon">username eraser icon</string>
-    <string name="signup_pass_confirmation_title">Confirmar contraseña</string>
-    <string name="signup_pass_conf_transformation_icon">password confirmation visual transformation icon</string>
-    <string name="signup_title_button">CONTINUAR</string>
 </resources>

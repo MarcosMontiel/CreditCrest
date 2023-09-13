@@ -10,6 +10,7 @@ data class RegisterState(
     val email: String = "",
     val emailEnabled: Boolean = true,
     val emailEraser: Boolean = false,
+    val informationCorrect: Boolean = false,
     val loginButtonEnabled: Boolean = true,
     val password: String = "",
     val passwordEnabled: Boolean = true,

@@ -2,7 +2,10 @@ package com.marcosmontiel.creditcrest.presentation.screen.login.component
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
+import androidx.compose.material.ButtonDefaults
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Close
 import androidx.compose.runtime.Composable
@@ -75,7 +78,7 @@ fun LoginContentCard(
                 .wrapContentWidth(Alignment.CenterHorizontally),
             fontWeight = FontWeight.Bold,
             fontFamily = FontFamily.Monospace,
-            title = stringResource(R.string.login_title),
+            title = stringResource(R.string.auth_login_title),
             style = MaterialTheme.typography.h6,
         )
 
@@ -115,7 +118,7 @@ fun LoginContentCard(
                 IconButton(onClick = { viewModel.passwordTransformation() }) {
                     Icon(
                         imageVector = loginState.passwordIcon,
-                        contentDescription = stringResource(R.string.login_pass_transformation_icon),
+                        contentDescription = stringResource(R.string.auth_login_pass_transformation_icon),
                     )
                 }
             },
@@ -133,7 +136,7 @@ fun LoginContentCard(
             content = {
                 DefaultText(
                     fontWeight = FontWeight.Bold,
-                    title = stringResource(R.string.login_title_button),
+                    title = stringResource(R.string.auth_login_title_button),
                 )
             },
             click = {},
@@ -150,7 +153,7 @@ fun LoginContentCard(
             content = {
                 DefaultText(
                     fontSize = 12.sp,
-                    title = stringResource(R.string.login_forgot_pass_title),
+                    title = stringResource(R.string.auth_login_forgot_pass_title),
                 )
             },
             click = {},
@@ -184,7 +187,7 @@ fun LoginSignUpContent(
         DefaultText(
             style = MaterialTheme.typography.body2,
             color = Gray500,
-            title = stringResource(R.string.login_signup_action_title),
+            title = stringResource(R.string.auth_login_signup_action_title),
         )
 
         Spacer(modifier = Modifier.size(8.dp))
@@ -195,7 +198,7 @@ fun LoginSignUpContent(
                 DefaultText(
                     fontWeight = FontWeight.Bold,
                     style = MaterialTheme.typography.body2,
-                    title = stringResource(R.string.login_signup_title_button),
+                    title = stringResource(R.string.auth_login_signup_title_button),
                 )
             },
             click = {
