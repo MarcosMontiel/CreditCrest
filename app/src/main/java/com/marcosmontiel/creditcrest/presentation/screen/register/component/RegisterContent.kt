@@ -15,6 +15,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.marcosmontiel.creditcrest.R
@@ -23,6 +24,7 @@ import com.marcosmontiel.creditcrest.presentation.navigation.AuthRoutes
 import com.marcosmontiel.creditcrest.presentation.screen.register.RegisterState
 import com.marcosmontiel.creditcrest.presentation.screen.register.RegisterViewModel
 import com.marcosmontiel.creditcrest.presentation.ui.theme.Gray500
+import com.marcosmontiel.creditcrest.presentation.ui.theme.Red400
 
 @Composable
 fun RegisterContent(
@@ -149,61 +151,82 @@ fun RegisterContentCard(
 
         Spacer(modifier = Modifier.size(24.dp))
 
-        DefaultTextField(
-            modifier = Modifier.fillMaxWidth(),
-            enabled = registerState.passwordEnabled,
-            text = registerState.password,
-            label = {
-                DefaultText(title = stringResource(R.string.generic_pass_title))
-            },
-            trailingIcon = {
-                IconButton(onClick = { viewModel.passwordTransformation() }) {
-                    Icon(
-                        imageVector = registerState.passwordIcon,
-                        contentDescription = stringResource(R.string.auth_login_pass_transformation_icon),
+        Column(modifier = Modifier.fillMaxWidth()) {
+
+            DefaultTextField(
+                modifier = Modifier.fillMaxWidth(),
+                enabled = registerState.passwordEnabled,
+                text = registerState.password,
+                label = {
+                    DefaultText(title = stringResource(R.string.generic_pass_title))
+                },
+                trailingIcon = {
+                    IconButton(onClick = { viewModel.passwordTransformation() }) {
+                        Icon(
+                            imageVector = registerState.passwordIcon,
+                            contentDescription = stringResource(R.string.auth_login_pass_transformation_icon),
+                        )
+                    }
+                },
+                transformation = registerState.passwordTransformation,
+                keyboardType = KeyboardType.Password,
+                valueChanged = {
+                    viewModel.valueChanged(
+                        email = registerState.email,
+                        password = it,
+                        passwordConfirmation = registerState.passwordConfirmation,
+                        username = registerState.username,
                     )
-                }
-            },
-            transformation = registerState.passwordTransformation,
-            keyboardType = KeyboardType.Password,
-            valueChanged = {
-                viewModel.valueChanged(
-                    email = registerState.email,
-                    password = it,
-                    passwordConfirmation = registerState.passwordConfirmation,
-                    username = registerState.username,
-                )
-            },
-        )
+                },
+            )
+
+        }
 
         Spacer(modifier = Modifier.size(24.dp))
 
-        DefaultTextField(
-            modifier = Modifier.fillMaxWidth(),
-            enabled = registerState.passwordConfirmationEnabled,
-            text = registerState.passwordConfirmation,
-            label = {
-                DefaultText(title = stringResource(R.string.auth_signup_pass_confirm_title))
-            },
-            trailingIcon = {
-                IconButton(onClick = { viewModel.passwordConfirmationTransformation() }) {
-                    Icon(
-                        imageVector = registerState.passwordConfirmationIcon,
-                        contentDescription = stringResource(R.string.auth_signup_pass_confirm_transformation_icon),
+        Column(modifier = Modifier.fillMaxWidth()) {
+
+            DefaultTextField(
+                modifier = Modifier.fillMaxWidth(),
+                enabled = registerState.passwordConfirmationEnabled,
+                text = registerState.passwordConfirmation,
+                label = {
+                    DefaultText(title = stringResource(R.string.auth_signup_pass_confirm_title))
+                },
+                trailingIcon = {
+                    IconButton(onClick = { viewModel.passwordConfirmationTransformation() }) {
+                        Icon(
+                            imageVector = registerState.passwordConfirmationIcon,
+                            contentDescription = stringResource(R.string.auth_signup_pass_confirm_transformation_icon),
+                        )
+                    }
+                },
+                transformation = registerState.passwordConfirmationTransformation,
+                keyboardType = KeyboardType.Password,
+                valueChanged = {
+                    viewModel.valueChanged(
+                        email = registerState.email,
+                        password = registerState.password,
+                        passwordConfirmation = it,
+                        username = registerState.username,
                     )
-                }
-            },
-            transformation = registerState.passwordConfirmationTransformation,
-            keyboardType = KeyboardType.Password,
-            valueChanged = {
-                viewModel.valueChanged(
-                    email = registerState.email,
-                    password = registerState.password,
-                    passwordConfirmation = it,
-                    username = registerState.username,
+                },
+            )
+
+            if (!registerState.passwordMatch && registerState.passwordConfirmation.isNotBlank()) {
+
+                Spacer(modifier = Modifier.height(8.dp))
+
+                DefaultText(
+                    modifier = Modifier.fillMaxWidth(),
+                    title = stringResource(R.string.auth_signup_warning_password_not_match),
+                    fontSize = 12.sp,
+                    color = Red400,
                 )
-            },
-        )
+
+            }
+
+        }
 
         Spacer(modifier = Modifier.size(40.dp))
 

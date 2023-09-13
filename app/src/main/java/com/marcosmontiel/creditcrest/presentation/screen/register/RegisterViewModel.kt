@@ -118,11 +118,6 @@ class RegisterViewModel @Inject constructor(
             Toast.makeText(application.applicationContext, message, Toast.LENGTH_LONG).show()
             return
         }
-        if (!registerState.passwordMatch) {
-            val message = "Las contraseñas que ingresaste no coinciden."
-            Toast.makeText(application.applicationContext, message, Toast.LENGTH_LONG).show()
-            return
-        }
 
         val user = User(
             email = registerState.email,

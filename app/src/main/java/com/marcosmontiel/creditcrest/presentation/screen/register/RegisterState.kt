@@ -15,7 +15,7 @@ data class RegisterState(
     val password: String = "",
     val passwordEnabled: Boolean = true,
     val passwordIcon: ImageVector = Icons.Rounded.Visibility,
-    val passwordMatch: Boolean = false,
+    val passwordMatch: Boolean = true,
     val passwordTransformation: VisualTransformation = PasswordVisualTransformation(),
     val passwordConfirmation: String = "",
     val passwordConfirmationEnabled: Boolean = true,
