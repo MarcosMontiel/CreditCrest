@@ -68,11 +68,12 @@ class RegisterViewModel @Inject constructor(
         registerState = registerState.copy(
             email = emailValue,
             emailEraser = emailValue.isNotEmpty() && emailValue.isNotBlank(),
-            informationCorrect = usernameValue.isNotEmpty() && usernameValue.isNotBlank() &&
+            informationFillCorrect = usernameValue.isNotEmpty() && usernameValue.isNotBlank() &&
                     emailValue.isNotEmpty() && emailValue.isNotBlank() &&
                     passwordValue.isNotEmpty() && passwordValue.isNotBlank() &&
                     passwordConfirmationValue.isNotEmpty() && passwordConfirmationValue.isNotBlank(),
             password = passwordValue,
+            passwordMatch = passwordValue == passwordConfirmationValue,
             passwordConfirmation = passwordConfirmationValue,
             username = usernameValue,
             usernameEraser = usernameValue.isNotEmpty() && usernameValue.isNotBlank(),
@@ -112,8 +113,13 @@ class RegisterViewModel @Inject constructor(
     }
 
     fun register() {
-        if (!registerState.informationCorrect) {
+        if (!registerState.informationFillCorrect) {
             val message = "Ingresa la información requerida para continuar."
+            Toast.makeText(application.applicationContext, message, Toast.LENGTH_LONG).show()
+            return
+        }
+        if (!registerState.passwordMatch) {
+            val message = "Las contraseñas que ingresaste no coinciden."
             Toast.makeText(application.applicationContext, message, Toast.LENGTH_LONG).show()
             return
         }
