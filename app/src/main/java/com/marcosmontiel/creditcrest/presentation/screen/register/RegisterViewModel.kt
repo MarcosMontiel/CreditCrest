@@ -13,12 +13,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseUser
 import com.marcosmontiel.creditcrest.domain.model.Response
+import com.marcosmontiel.creditcrest.domain.model.User
+import com.marcosmontiel.creditcrest.domain.usecase.auth.AuthUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class RegisterViewModel @Inject constructor() : ViewModel() {
+class RegisterViewModel @Inject constructor(private val authUseCases: AuthUseCases) : ViewModel() {
 
     // Password instances
     private var _showPassword: Boolean = false
@@ -100,13 +102,16 @@ class RegisterViewModel @Inject constructor() : ViewModel() {
     }
 
     fun register() {
-        doRegister()
+        val user = User(email = registerState.email, password = registerState.password)
+        doRegister(user)
     }
 
     // Private functions
 
-    private fun doRegister() = viewModelScope.launch {
+    private fun doRegister(user: User) = viewModelScope.launch {
         registerResponse = Response.Loading
+        val response = authUseCases.register(user)
+        registerResponse = response
     }
 
 }

@@ -99,7 +99,7 @@ fun RegisterContentCard(
             },
             trailingIcon = {
                 if (registerState.usernameEraser) {
-                    IconButton(onClick = { viewModel.emailEraser() }) {
+                    IconButton(onClick = { viewModel.usernameEraser() }) {
                         Icon(
                             imageVector = Icons.Rounded.Close,
                             contentDescription = stringResource(R.string.signup_username_eraser_icon),
@@ -128,7 +128,7 @@ fun RegisterContentCard(
             },
             trailingIcon = {
                 if (registerState.emailEraser) {
-                    IconButton(onClick = { viewModel.usernameEraser() }) {
+                    IconButton(onClick = { viewModel.emailEraser() }) {
                         Icon(
                             imageVector = Icons.Rounded.Close,
                             contentDescription = stringResource(R.string.generic_email_eraser_icon),
