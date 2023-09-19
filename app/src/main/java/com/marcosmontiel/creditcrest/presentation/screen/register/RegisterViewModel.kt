@@ -67,16 +67,16 @@ class RegisterViewModel @Inject constructor(
 
         registerState = registerState.copy(
             email = emailValue,
-            emailEraser = emailValue.isNotEmpty() && emailValue.isNotBlank(),
-            informationFillCorrect = usernameValue.isNotEmpty() && usernameValue.isNotBlank() &&
-                    emailValue.isNotEmpty() && emailValue.isNotBlank() &&
-                    passwordValue.isNotEmpty() && passwordValue.isNotBlank() &&
-                    passwordConfirmationValue.isNotEmpty() && passwordConfirmationValue.isNotBlank(),
+            emailEraser = emailValue.isNotBlank(),
+            informationFillCorrect = usernameValue.isNotBlank() &&
+                    emailValue.isNotBlank() &&
+                    passwordValue.isNotBlank() &&
+                    passwordConfirmationValue.isNotBlank(),
             password = passwordValue,
             passwordMatch = passwordValue == passwordConfirmationValue,
             passwordConfirmation = passwordConfirmationValue,
             username = usernameValue,
-            usernameEraser = usernameValue.isNotEmpty() && usernameValue.isNotBlank(),
+            usernameEraser = usernameValue.isNotBlank(),
         )
     }
 
