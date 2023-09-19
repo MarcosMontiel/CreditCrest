@@ -180,6 +180,21 @@ fun RegisterContentCard(
                 },
             )
 
+            if (registerState.password.isNotBlank()) {
+
+                Spacer(modifier = Modifier.height(8.dp))
+
+                Row(modifier = Modifier.fillMaxWidth()) {
+
+                    DefaultText(
+                        fontSize = 12.sp,
+                        title = stringResource(R.string.auth_signup_strong_password_level),
+                    )
+
+                }
+
+            }
+
         }
 
         Spacer(modifier = Modifier.size(24.dp))
@@ -222,9 +237,9 @@ fun RegisterContentCard(
 
                 DefaultText(
                     modifier = Modifier.fillMaxWidth(),
-                    title = stringResource(R.string.auth_signup_warning_password_not_match),
                     fontSize = 12.sp,
                     color = Red400,
+                    title = stringResource(R.string.auth_signup_warning_password_not_match),
                 )
 
             }
