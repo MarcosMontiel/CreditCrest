@@ -213,7 +213,10 @@ fun RegisterContentCard(
                 },
             )
 
-            if (!registerState.passwordMatch && registerState.passwordConfirmation.isNotBlank()) {
+            if (!registerState.passwordMatch &&
+                registerState.password.isNotBlank() &&
+                registerState.passwordConfirmation.isNotBlank()
+            ) {
 
                 Spacer(modifier = Modifier.height(8.dp))
 
