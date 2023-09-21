@@ -17,6 +17,8 @@ import com.google.firebase.auth.FirebaseUser
 import com.marcosmontiel.creditcrest.domain.model.Response
 import com.marcosmontiel.creditcrest.domain.model.User
 import com.marcosmontiel.creditcrest.domain.usecase.auth.AuthUseCases
+import com.marcosmontiel.creditcrest.presentation.enum.PasswordStrength
+import com.marcosmontiel.creditcrest.presentation.enum.PasswordStrength.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -74,6 +76,7 @@ class RegisterViewModel @Inject constructor(
                     passwordConfirmationValue.isNotBlank(),
             password = passwordValue,
             passwordMatch = passwordValue == passwordConfirmationValue,
+            passwordStrength = measurePasswordStrength(passwordValue),
             passwordConfirmation = passwordConfirmationValue,
             username = usernameValue,
             usernameEraser = usernameValue.isNotBlank(),
@@ -127,6 +130,35 @@ class RegisterViewModel @Inject constructor(
     }
 
     // Private functions
+
+    private fun measurePasswordStrength(password: String, minLength: Int = 8): PasswordStrength {
+        val containsUppercase = password.contains(Regex(buildString {
+            append("[A-Z]")
+        }))
+
+        val containsLowercase = password.contains(Regex(buildString {
+            append("[a-z]")
+        }))
+
+        val containsDigits = password.contains(Regex(buildString {
+            append("[0-9]")
+        }))
+
+        val containsSpecialChars = password.contains(Regex(buildString {
+            append("[!@#\$%^&*()-_+=<>?]")
+        }))
+
+        val meetsLengthRequirement = password.length >= minLength
+        val meetsRequirements =
+            containsUppercase && containsLowercase && containsDigits && containsSpecialChars
+
+        return when {
+            password.isBlank() -> EMPTY
+            meetsLengthRequirement && meetsRequirements -> STRONG
+            meetsLengthRequirement || meetsRequirements -> MEDIUM
+            else -> WEAK
+        }
+    }
 
     private fun doRegister(user: User) = viewModelScope.launch {
         registerResponse = Response.Loading

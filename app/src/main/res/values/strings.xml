@@ -10,10 +10,14 @@
 
     <string name="auth_signup_action_title">¿Ya tienes una cuenta?</string>
     <string name="auth_signup_login_title_button">INICIA SESIÓN</string>
+    <string name="auth_signup_medium_password">Medio</string>
     <string name="auth_signup_pass_confirm_title">Confirmar contraseña</string>
     <string name="auth_signup_pass_confirm_transformation_icon">password confirm visual transformation icon</string>
-    <string name="auth_signup_subtitle">Ingresa los siguientes datos para crear tu usuario</string>
     <string name="auth_signup_strong_password_level">Nivel de contraseña</string>
+    <string name="auth_signup_strong_password">Fuerte</string>
+    <string name="auth_signup_subtitle">Ingresa los siguientes datos para crear tu usuario</string>
+
+    <string name="auth_signup_weak_password">Débil</string>
     <string name="auth_signup_title_button">CONTINUAR</string>
     <string name="auth_signup_username_eraser_icon">username eraser icon</string>
     <string name="auth_signup_warning_password_not_match">Las contraseñas que ingresaste no coinciden</string>

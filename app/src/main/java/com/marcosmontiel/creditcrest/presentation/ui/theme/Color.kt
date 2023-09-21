@@ -17,5 +17,11 @@ val Gray700 = Color(0xFF616161)
 val Gray800 = Color(0xFF424242)
 val Gray900 = Color(0xFF212121)
 
+// Green scale
+val Green500 = Color(0xFF4CAF50)
+
 // Red scale
 val Red400 = Color(0xFFEF5350)
+
+// Yellow scale
+val Yellow800 = Color(0xFFF9A825)

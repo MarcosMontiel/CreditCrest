@@ -20,11 +20,14 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.marcosmontiel.creditcrest.R
 import com.marcosmontiel.creditcrest.presentation.component.*
+import com.marcosmontiel.creditcrest.presentation.enum.PasswordStrength.*
 import com.marcosmontiel.creditcrest.presentation.navigation.AuthRoutes
 import com.marcosmontiel.creditcrest.presentation.screen.register.RegisterState
 import com.marcosmontiel.creditcrest.presentation.screen.register.RegisterViewModel
 import com.marcosmontiel.creditcrest.presentation.ui.theme.Gray500
+import com.marcosmontiel.creditcrest.presentation.ui.theme.Green500
 import com.marcosmontiel.creditcrest.presentation.ui.theme.Red400
+import com.marcosmontiel.creditcrest.presentation.ui.theme.Yellow800
 
 @Composable
 fun RegisterContent(
@@ -190,6 +193,42 @@ fun RegisterContentCard(
                         fontSize = 12.sp,
                         title = stringResource(R.string.auth_signup_strong_password_level),
                     )
+
+                    Spacer(modifier = Modifier.size(8.dp))
+
+                    when (registerState.passwordStrength) {
+                        STRONG -> {
+
+                            DefaultText(
+                                fontWeight = FontWeight.Bold,
+                                fontSize = 12.sp,
+                                color = Green500,
+                                title = stringResource(R.string.auth_signup_strong_password),
+                            )
+
+                        }
+                        MEDIUM -> {
+
+                            DefaultText(
+                                fontWeight = FontWeight.Bold,
+                                fontSize = 12.sp,
+                                color = Yellow800,
+                                title = stringResource(R.string.auth_signup_medium_password),
+                            )
+
+                        }
+                        WEAK -> {
+
+                            DefaultText(
+                                fontWeight = FontWeight.Bold,
+                                fontSize = 12.sp,
+                                color = Red400,
+                                title = stringResource(R.string.auth_signup_weak_password),
+                            )
+
+                        }
+                        else -> {}
+                    }
 
                 }
 
