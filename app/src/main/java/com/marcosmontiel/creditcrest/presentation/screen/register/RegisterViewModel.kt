@@ -117,7 +117,17 @@ class RegisterViewModel @Inject constructor(
 
     fun register() {
         if (!registerState.informationFillCorrect) {
-            val message = "Ingresa la información requerida para continuar."
+            val message = "Ingresa la información requerida para continuar"
+            Toast.makeText(application.applicationContext, message, Toast.LENGTH_LONG).show()
+            return
+        }
+        if (registerState.password.length < 8) {
+            val message = "La contraseña debe tener al menos 8 caracteres"
+            Toast.makeText(application.applicationContext, message, Toast.LENGTH_LONG).show()
+            return
+        }
+        if (!registerState.passwordMatch) {
+            val message = "Las contraseñas que ingresaste no coinciden"
             Toast.makeText(application.applicationContext, message, Toast.LENGTH_LONG).show()
             return
         }

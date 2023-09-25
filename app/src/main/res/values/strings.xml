@@ -20,7 +20,6 @@
     <string name="auth_signup_weak_password">Débil</string>
     <string name="auth_signup_title_button">CONTINUAR</string>
     <string name="auth_signup_username_eraser_icon">username eraser icon</string>
-    <string name="auth_signup_warning_password_not_match">Las contraseñas que ingresaste no coinciden</string>
 
     <string name="generic_email_eraser_icon">email eraser icon</string>
     <string name="generic_email_title">Correo electrónico</string>

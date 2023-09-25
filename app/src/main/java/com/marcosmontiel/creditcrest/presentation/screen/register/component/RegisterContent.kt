@@ -238,52 +238,32 @@ fun RegisterContentCard(
 
         Spacer(modifier = Modifier.size(24.dp))
 
-        Column(modifier = Modifier.fillMaxWidth()) {
-
-            DefaultTextField(
-                modifier = Modifier.fillMaxWidth(),
-                enabled = registerState.passwordConfirmationEnabled,
-                text = registerState.passwordConfirmation,
-                label = {
-                    DefaultText(title = stringResource(R.string.auth_signup_pass_confirm_title))
-                },
-                trailingIcon = {
-                    IconButton(onClick = { viewModel.passwordConfirmationTransformation() }) {
-                        Icon(
-                            imageVector = registerState.passwordConfirmationIcon,
-                            contentDescription = stringResource(R.string.auth_signup_pass_confirm_transformation_icon),
-                        )
-                    }
-                },
-                transformation = registerState.passwordConfirmationTransformation,
-                keyboardType = KeyboardType.Password,
-                valueChanged = {
-                    viewModel.valueChanged(
-                        email = registerState.email,
-                        password = registerState.password,
-                        passwordConfirmation = it,
-                        username = registerState.username,
+        DefaultTextField(
+            modifier = Modifier.fillMaxWidth(),
+            enabled = registerState.passwordConfirmationEnabled,
+            text = registerState.passwordConfirmation,
+            label = {
+                DefaultText(title = stringResource(R.string.auth_signup_pass_confirm_title))
+            },
+            trailingIcon = {
+                IconButton(onClick = { viewModel.passwordConfirmationTransformation() }) {
+                    Icon(
+                        imageVector = registerState.passwordConfirmationIcon,
+                        contentDescription = stringResource(R.string.auth_signup_pass_confirm_transformation_icon),
                     )
-                },
-            )
-
-            if (!registerState.passwordMatch &&
-                registerState.password.isNotBlank() &&
-                registerState.passwordConfirmation.isNotBlank()
-            ) {
-
-                Spacer(modifier = Modifier.height(8.dp))
-
-                DefaultText(
-                    modifier = Modifier.fillMaxWidth(),
-                    fontSize = 12.sp,
-                    color = Red400,
-                    title = stringResource(R.string.auth_signup_warning_password_not_match),
+                }
+            },
+            transformation = registerState.passwordConfirmationTransformation,
+            keyboardType = KeyboardType.Password,
+            valueChanged = {
+                viewModel.valueChanged(
+                    email = registerState.email,
+                    password = registerState.password,
+                    passwordConfirmation = it,
+                    username = registerState.username,
                 )
-
-            }
-
-        }
+            },
+        )
 
         Spacer(modifier = Modifier.size(40.dp))
 
