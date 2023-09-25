@@ -5,8 +5,10 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
+import com.marcosmontiel.creditcrest.R
 import com.marcosmontiel.creditcrest.domain.model.Response
 import com.marcosmontiel.creditcrest.presentation.component.DefaultProgressIndicator
 import com.marcosmontiel.creditcrest.presentation.screen.register.RegisterViewModel
@@ -30,12 +32,18 @@ fun RegisterView(
 
                 is Response.Failure -> {
 
-                    val message: String = stateFlow.exception?.message ?: "unknown exception"
+                    val message: String = stateFlow.exception?.message
+                        ?: stringResource(R.string.generic_unknown_exception)
                     Toast.makeText(LocalContext.current, message, Toast.LENGTH_LONG).show()
 
                 }
 
-                is Response.Success -> {}
+                is Response.Success -> {
+
+                    val message = stringResource(R.string.auth_signup_successful_account)
+                    Toast.makeText(LocalContext.current, message, Toast.LENGTH_LONG).show()
+
+                }
 
                 else -> {}
             }
