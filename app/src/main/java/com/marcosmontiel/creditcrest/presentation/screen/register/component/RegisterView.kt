@@ -11,6 +11,7 @@ import androidx.navigation.NavHostController
 import com.marcosmontiel.creditcrest.R
 import com.marcosmontiel.creditcrest.domain.model.Response
 import com.marcosmontiel.creditcrest.presentation.component.DefaultProgressIndicator
+import com.marcosmontiel.creditcrest.presentation.navigation.Graph
 import com.marcosmontiel.creditcrest.presentation.screen.register.RegisterViewModel
 
 @Composable
@@ -42,6 +43,8 @@ fun RegisterView(
 
                     val message = stringResource(R.string.auth_signup_successful_account)
                     Toast.makeText(LocalContext.current, message, Toast.LENGTH_LONG).show()
+
+                    navController.navigate(route = Graph.HOME)
 
                 }
 
