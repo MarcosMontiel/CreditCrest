@@ -115,6 +115,17 @@ class RegisterViewModel @Inject constructor(
         )
     }
 
+    fun enableForm() {
+        registerState = registerState.copy(
+            emailEnabled = true,
+            loginButtonEnabled = true,
+            passwordEnabled = true,
+            passwordConfirmationEnabled = true,
+            signUpButtonEnabled = true,
+            usernameEnabled = true,
+        )
+    }
+
     fun register() {
         if (!registerState.informationFillCorrect) {
             val message = "Ingresa la información requerida para continuar"
@@ -171,9 +182,22 @@ class RegisterViewModel @Inject constructor(
     }
 
     private fun doRegister(user: User) = viewModelScope.launch {
+        disableForm()
+
         registerResponse = Response.Loading
         val response = authUseCases.register(user)
         registerResponse = response
+    }
+
+    private fun disableForm() {
+        registerState = registerState.copy(
+            emailEnabled = false,
+            loginButtonEnabled = false,
+            passwordEnabled = false,
+            passwordConfirmationEnabled = false,
+            signUpButtonEnabled = false,
+            usernameEnabled = false,
+        )
     }
 
 }

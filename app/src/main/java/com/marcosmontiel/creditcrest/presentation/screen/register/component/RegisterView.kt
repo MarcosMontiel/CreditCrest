@@ -33,6 +33,8 @@ fun RegisterView(
 
                 is Response.Failure -> {
 
+                    viewModel.enableForm()
+
                     val message: String = stateFlow.exception?.message
                         ?: stringResource(R.string.generic_unknown_exception)
                     Toast.makeText(LocalContext.current, message, Toast.LENGTH_LONG).show()
@@ -44,6 +46,7 @@ fun RegisterView(
                     val message = stringResource(R.string.auth_signup_successful_account)
                     Toast.makeText(LocalContext.current, message, Toast.LENGTH_LONG).show()
 
+                    viewModel.registerResponse = null
                     navController.navigate(route = Graph.HOME)
 
                 }
