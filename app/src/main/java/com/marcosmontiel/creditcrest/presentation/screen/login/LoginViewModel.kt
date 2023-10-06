@@ -1,5 +1,7 @@
 package com.marcosmontiel.creditcrest.presentation.screen.login
 
+import android.app.Application
+import android.widget.Toast
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Visibility
 import androidx.compose.material.icons.rounded.VisibilityOff
@@ -10,11 +12,19 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.google.firebase.auth.FirebaseUser
+import com.marcosmontiel.creditcrest.domain.model.Response
+import com.marcosmontiel.creditcrest.domain.usecase.auth.AuthUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class LoginViewModel @Inject constructor() : ViewModel() {
+class LoginViewModel @Inject constructor(
+    private val application: Application,
+    private val authUseCases: AuthUseCases,
+) : ViewModel() {
 
     // Password instances
     private var _showPassword: Boolean = false
@@ -26,6 +36,9 @@ class LoginViewModel @Inject constructor() : ViewModel() {
     // State
     var loginState by mutableStateOf(LoginState())
         private set
+
+    // Response
+    var loginResponse by mutableStateOf<Response<FirebaseUser>?>(null)
 
     // Events
     fun valueChanged(email: String, password: String) {
@@ -58,6 +71,23 @@ class LoginViewModel @Inject constructor() : ViewModel() {
             passwordIcon = if (_showPassword) _passHiddenIcon else _passVisibleIcon,
             passwordTransformation = if (_showPassword) _passVisibleMask else _passHiddenMask
         )
+    }
+
+    fun login() {
+        if (!loginState.informationFillCorrect) {
+            val message = "Ingresa la información requerida para continuar"
+            Toast.makeText(application.applicationContext, message, Toast.LENGTH_LONG).show()
+            return
+        }
+
+        doLogin()
+    }
+
+    // Private functions
+    private fun doLogin() = viewModelScope.launch {
+        loginResponse = Response.Loading
+        val response = authUseCases.login(email = loginState.email, password = loginState.password)
+        loginResponse = response
     }
 
 }

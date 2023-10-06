@@ -151,7 +151,6 @@ class RegisterViewModel @Inject constructor(
     }
 
     // Private functions
-
     private fun measurePasswordStrength(password: String, minLength: Int = 8): PasswordStrength {
         val containsUppercase = password.contains(Regex(buildString {
             append("[A-Z]")

@@ -139,7 +139,9 @@ fun LoginContentCard(
                     title = stringResource(R.string.auth_login_title_button),
                 )
             },
-            click = {},
+            click = {
+                viewModel.login()
+            },
         )
 
         Spacer(modifier = Modifier.size(8.dp))

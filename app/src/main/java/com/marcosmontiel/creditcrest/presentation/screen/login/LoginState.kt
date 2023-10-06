@@ -10,6 +10,7 @@ data class LoginState(
     val email: String = "",
     val emailEnabled: Boolean = true,
     val emailEraser: Boolean = false,
+    val informationFillCorrect: Boolean = false,
     val forgotPasswordButtonEnabled: Boolean = true,
     val loginButtonEnabled: Boolean = true,
     val password: String = "",
