@@ -47,7 +47,9 @@ fun LoginView(
                     viewModel.loginResponse = null
 
                     LaunchedEffect(Unit) {
-                        navController.navigate(route = Graph.HOME)
+                        navController.navigate(route = Graph.HOME) {
+                            popUpTo(route = Graph.AUTHENTICATION) { inclusive = true }
+                        }
                     }
 
                 }

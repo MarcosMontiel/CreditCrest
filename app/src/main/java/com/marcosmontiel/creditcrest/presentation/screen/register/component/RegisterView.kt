@@ -3,6 +3,7 @@ package com.marcosmontiel.creditcrest.presentation.screen.register.component
 import android.widget.Toast
 import androidx.compose.foundation.layout.Box
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
@@ -43,11 +44,16 @@ fun RegisterView(
 
                 is Response.Success -> {
 
+                    viewModel.registerResponse = null
+
                     val message = stringResource(R.string.auth_signup_successful_account)
                     Toast.makeText(LocalContext.current, message, Toast.LENGTH_LONG).show()
 
-                    viewModel.registerResponse = null
-                    navController.navigate(route = Graph.HOME)
+                    LaunchedEffect(Unit) {
+                        navController.navigate(route = Graph.HOME) {
+                            popUpTo(route = Graph.AUTHENTICATION) { inclusive = true }
+                        }
+                    }
 
                 }
 
