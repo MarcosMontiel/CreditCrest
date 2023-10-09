@@ -8,6 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import com.marcosmontiel.creditcrest.presentation.screen.login.component.LoginContent
+import com.marcosmontiel.creditcrest.presentation.screen.login.component.LoginView
 
 @Composable
 fun LoginScreen(navController: NavHostController) {
@@ -27,6 +28,11 @@ fun LoginScreen(navController: NavHostController) {
             )
 
         },
+    )
+
+    LoginView(
+        modifier = Modifier.fillMaxSize(),
+        navController = navController,
     )
 
 }

@@ -46,14 +46,15 @@ class LoginViewModel @Inject constructor(
             if (it.length > 50) it.slice(0 until 50) else it
         }
 
-        val passValue: String = password.let {
+        val passwordValue: String = password.let {
             if (it.length > 18) it.slice(0 until 18) else it
         }
 
         loginState = loginState.copy(
             email = emailValue,
             emailEraser = emailValue.isNotEmpty() && emailValue.isNotBlank(),
-            password = passValue,
+            informationFillCorrect = emailValue.isNotBlank() && passwordValue.isNotBlank(),
+            password = passwordValue,
         )
     }
 
@@ -73,6 +74,15 @@ class LoginViewModel @Inject constructor(
         )
     }
 
+    fun enableForm() {
+        loginState = loginState.copy(
+            emailEnabled = true,
+            loginButtonEnabled = true,
+            passwordEnabled = true,
+            signUpButtonEnabled = true,
+        )
+    }
+
     fun login() {
         if (!loginState.informationFillCorrect) {
             val message = "Ingresa la información requerida para continuar"
@@ -85,9 +95,20 @@ class LoginViewModel @Inject constructor(
 
     // Private functions
     private fun doLogin() = viewModelScope.launch {
+        disableForm()
+
         loginResponse = Response.Loading
         val response = authUseCases.login(email = loginState.email, password = loginState.password)
         loginResponse = response
+    }
+
+    private fun disableForm() {
+        loginState = loginState.copy(
+            emailEnabled = false,
+            loginButtonEnabled = false,
+            passwordEnabled = false,
+            signUpButtonEnabled = false,
+        )
     }
 
 }
