@@ -16,7 +16,11 @@ fun HomeScreen(navController: NavHostController = rememberNavController()) {
     Scaffold(
         scaffoldState = scaffoldState,
         topBar = {},
-        bottomBar = {},
+        bottomBar = {
+
+            HomeBottomBar(navController = navController)
+
+        },
         content = {
 
             HomeNavGraph(navController = navController)
