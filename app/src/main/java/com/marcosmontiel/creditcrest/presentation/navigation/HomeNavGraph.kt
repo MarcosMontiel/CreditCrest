@@ -37,13 +37,13 @@ sealed class HomeRoutes(val icon: ImageVector, val title: String, val route: Str
     object Finance : HomeRoutes(
         icon = Icons.Rounded.AttachMoney,
         title = "finanzas",
-        route = "my_finance"
+        route = "my_finance",
     )
 
     object Customer : HomeRoutes(
         icon = Icons.Rounded.Person,
         title = "clientes",
-        route = "my_clients"
+        route = "my_clients",
     )
 
 }

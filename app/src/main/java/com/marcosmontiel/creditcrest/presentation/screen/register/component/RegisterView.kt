@@ -44,15 +44,18 @@ fun RegisterView(
 
                 is Response.Success -> {
 
-                    viewModel.registerResponse = null
-
                     val message = stringResource(R.string.auth_signup_successful_account)
                     Toast.makeText(LocalContext.current, message, Toast.LENGTH_LONG).show()
 
                     LaunchedEffect(Unit) {
+
+                        viewModel.createProfile()
+                        viewModel.registerResponse = null
+
                         navController.navigate(route = Graph.HOME) {
                             popUpTo(route = Graph.AUTHENTICATION) { inclusive = true }
                         }
+
                     }
 
                 }

@@ -44,12 +44,14 @@ fun LoginView(
 
                 is Response.Success -> {
 
-                    viewModel.loginResponse = null
-
                     LaunchedEffect(Unit) {
+
+                        viewModel.loginResponse = null
+
                         navController.navigate(route = Graph.HOME) {
                             popUpTo(route = Graph.AUTHENTICATION) { inclusive = true }
                         }
+
                     }
 
                 }

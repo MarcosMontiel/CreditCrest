@@ -17,6 +17,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.marcosmontiel.creditcrest.domain.model.Response
 import com.marcosmontiel.creditcrest.domain.model.User
 import com.marcosmontiel.creditcrest.domain.usecase.auth.AuthUseCases
+import com.marcosmontiel.creditcrest.domain.usecase.profile.ProfileUseCases
 import com.marcosmontiel.creditcrest.presentation.enum.PasswordStrength
 import com.marcosmontiel.creditcrest.presentation.enum.PasswordStrength.*
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -27,6 +28,7 @@ import javax.inject.Inject
 class RegisterViewModel @Inject constructor(
     private val application: Application,
     private val authUseCases: AuthUseCases,
+    private val profileUseCases: ProfileUseCases,
 ) : ViewModel() {
 
     // Password instances
@@ -36,6 +38,9 @@ class RegisterViewModel @Inject constructor(
     private val _passHiddenMask: VisualTransformation = PasswordVisualTransformation()
     private val _passVisibleIcon: ImageVector = Icons.Rounded.Visibility
     private val _passVisibleMask: VisualTransformation = VisualTransformation.None
+
+    // Late init variables
+    private lateinit var _userInfo: User
 
     // State
     var registerState by mutableStateOf(RegisterState())
@@ -143,11 +148,19 @@ class RegisterViewModel @Inject constructor(
             return
         }
 
-        val user = User(
+        _userInfo = User(
             email = registerState.email,
             password = registerState.password,
+            username = registerState.username,
         )
-        doRegister(user)
+        doRegister()
+    }
+
+    fun createProfile() = viewModelScope.launch {
+        if (!::_userInfo.isInitialized) return@launch
+
+        _userInfo.id = authUseCases.currentUser()?.uid ?: return@launch
+        profileUseCases.create(user = _userInfo)
     }
 
     // Private functions
@@ -180,11 +193,13 @@ class RegisterViewModel @Inject constructor(
         }
     }
 
-    private fun doRegister(user: User) = viewModelScope.launch {
+    private fun doRegister() = viewModelScope.launch {
+        if (!::_userInfo.isInitialized) return@launch
+
         disableForm()
 
         registerResponse = Response.Loading
-        val response = authUseCases.register(user)
+        val response = authUseCases.register(_userInfo)
         registerResponse = response
     }
 

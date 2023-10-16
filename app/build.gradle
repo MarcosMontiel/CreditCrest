@@ -15,7 +15,7 @@ android {
         minSdk 21
         targetSdk 33
         versionCode 1
-        versionName "1.0.4"
+        versionName "1.0.5"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -68,6 +68,8 @@ dependencies {
 
     // Firebase
     implementation 'com.google.firebase:firebase-auth-ktx:21.1.0'
+    implementation platform('com.google.firebase:firebase-bom:31.0.2')
+    implementation 'com.google.firebase:firebase-firestore-ktx'
 
     // Lifecycle ViewModel
     implementation 'androidx.lifecycle:lifecycle-viewmodel:2.5.1'
