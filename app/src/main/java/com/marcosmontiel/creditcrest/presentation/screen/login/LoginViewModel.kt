@@ -33,12 +33,19 @@ class LoginViewModel @Inject constructor(
     private val _passVisibleIcon: ImageVector = Icons.Rounded.Visibility
     private val _passVisibleMask: VisualTransformation = VisualTransformation.None
 
+    // Current user data
+    private val _currentUser: FirebaseUser? = authUseCases.currentUser()
+
     // State
     var loginState by mutableStateOf(LoginState())
         private set
 
     // Response
     var loginResponse by mutableStateOf<Response<FirebaseUser>?>(null)
+
+    init {
+        if (_currentUser != null) loginResponse = Response.Success(data = _currentUser)
+    }
 
     // Events
     fun valueChanged(email: String, password: String) {
