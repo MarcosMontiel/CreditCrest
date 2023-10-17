@@ -48,6 +48,7 @@ fun RowScope.AddItemToBottomBar(
     currentDestination: NavDestination?,
     navController: NavHostController
 ) {
+
     BottomNavigationItem(
         selected = currentDestination?.hierarchy?.any {
             it.route == screen.route
@@ -75,4 +76,5 @@ fun RowScope.AddItemToBottomBar(
         },
         unselectedContentColor = LocalContentColor.current.copy(ContentAlpha.disabled),
     )
+
 }
