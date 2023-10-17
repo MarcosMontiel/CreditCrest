@@ -1,5 +1,6 @@
 package com.marcosmontiel.creditcrest.presentation.screen.home
 
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
@@ -17,6 +18,8 @@ import com.marcosmontiel.creditcrest.presentation.component.DefaultText
 import com.marcosmontiel.creditcrest.presentation.navigation.HomeRoutes
 import com.marcosmontiel.creditcrest.presentation.navigation.HomeRoutes.Customer
 import com.marcosmontiel.creditcrest.presentation.navigation.HomeRoutes.Finance
+import com.marcosmontiel.creditcrest.presentation.ui.theme.Gray300
+import com.marcosmontiel.creditcrest.presentation.ui.theme.Gray800
 
 @Composable
 fun HomeBottomBar(navController: NavHostController) {
@@ -27,7 +30,9 @@ fun HomeBottomBar(navController: NavHostController) {
     val bottomBarDestination = screens.any { it.route == currentDestination?.route }
 
     if (bottomBarDestination) {
-        BottomNavigation {
+        BottomNavigation(
+            backgroundColor = if (isSystemInDarkTheme()) Gray800 else Gray300
+        ) {
             screens.forEach { screen ->
 
                 AddItemToBottomBar(
