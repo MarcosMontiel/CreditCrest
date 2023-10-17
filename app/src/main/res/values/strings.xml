@@ -25,6 +25,7 @@
     <string name="generic_email_eraser_icon">email eraser icon</string>
     <string name="generic_email_title">Correo electrónico</string>
     <string name="generic_pass_title">Contraseña</string>
+    <string name="generic_settings_icon">settings icon</string>
     <string name="generic_unknown_exception">unknown exception</string>
     <string name="generic_username_title">Usuario</string>
 </resources>
