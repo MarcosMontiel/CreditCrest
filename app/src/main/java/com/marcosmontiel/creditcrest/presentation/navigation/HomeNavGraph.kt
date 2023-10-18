@@ -15,6 +15,7 @@ import com.marcosmontiel.creditcrest.presentation.screen.finance.FinanceScreen
 
 @Composable
 fun HomeNavGraph(navController: NavHostController) {
+
     NavHost(
         navController = navController,
         startDestination = Finance.route,
@@ -22,14 +23,17 @@ fun HomeNavGraph(navController: NavHostController) {
     ) {
 
         composable(route = Finance.route) {
-            FinanceScreen()
+            FinanceScreen(navController = navController)
         }
 
         composable(route = Customer.route) {
-            CustomerScreen()
+            CustomerScreen(navController = navController)
         }
 
+        detailsNavGraph(navController = navController)
+
     }
+
 }
 
 sealed class HomeRoutes(val icon: ImageVector, val title: String, val route: String) {
