@@ -28,4 +28,6 @@
     <string name="generic_settings_icon">settings icon</string>
     <string name="generic_unknown_exception">unknown exception</string>
     <string name="generic_username_title">Usuario</string>
+
+    <string name="settings_title">Configuración</string>
 </resources>

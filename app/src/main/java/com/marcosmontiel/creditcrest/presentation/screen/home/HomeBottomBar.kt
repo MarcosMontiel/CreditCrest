@@ -16,8 +16,8 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import com.marcosmontiel.creditcrest.presentation.component.DefaultIcon
 import com.marcosmontiel.creditcrest.presentation.component.DefaultText
 import com.marcosmontiel.creditcrest.presentation.navigation.HomeRoutes
-import com.marcosmontiel.creditcrest.presentation.ui.theme.Gray300
-import com.marcosmontiel.creditcrest.presentation.ui.theme.Gray800
+import com.marcosmontiel.creditcrest.presentation.ui.theme.BlueGray900
+import com.marcosmontiel.creditcrest.presentation.ui.theme.Gray200
 
 @Composable
 fun HomeBottomBar(navController: NavHostController, screens: List<HomeRoutes>) {
@@ -29,7 +29,7 @@ fun HomeBottomBar(navController: NavHostController, screens: List<HomeRoutes>) {
     if (bottomBarDestination) {
 
         BottomNavigation(
-            backgroundColor = if (isSystemInDarkTheme()) Gray800 else Gray300
+            backgroundColor = if (isSystemInDarkTheme()) BlueGray900 else Gray200
         ) {
 
             screens.forEach { screen ->

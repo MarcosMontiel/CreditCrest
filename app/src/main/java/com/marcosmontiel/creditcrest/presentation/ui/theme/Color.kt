@@ -8,6 +8,9 @@ val Blue500 = Color(0xFF2196F3)
 val Blue700 = Color(0xFF1976D2)
 val Blue800 = Color(0xFF1565C0)
 
+// Blue gray scale
+val BlueGray900 = Color(0xFF263238)
+
 // Grayscale
 val Gray100 = Color(0xFFF5F5F5)
 val Gray200 = Color(0xFFEEEEEE)
