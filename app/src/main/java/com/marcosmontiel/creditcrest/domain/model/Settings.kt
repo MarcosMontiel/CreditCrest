@@ -10,8 +10,8 @@ data class Settings(
 ) {
 
     companion object {
-        fun getSettings(): List<Settings> = listOf(
-            Settings(icon = Icons.Rounded.AccountCircle, title = "")
+        fun getShortcutsSettings(): List<Settings> = listOf(
+            Settings(icon = Icons.Rounded.AccountCircle, title = "Perfil")
         )
     }
 
