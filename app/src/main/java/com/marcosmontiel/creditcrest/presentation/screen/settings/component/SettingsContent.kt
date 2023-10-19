@@ -13,7 +13,9 @@ fun SettingsContent(
     navController: NavHostController,
     paddingValues: PaddingValues,
 ) {
+
     Box(modifier = modifier.padding(paddingValues = paddingValues)) {
 
     }
+
 }
