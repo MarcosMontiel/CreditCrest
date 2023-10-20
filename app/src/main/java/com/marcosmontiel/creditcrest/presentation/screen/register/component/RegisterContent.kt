@@ -5,6 +5,7 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Close
@@ -23,6 +24,7 @@ import androidx.navigation.NavHostController
 import com.marcosmontiel.creditcrest.R
 import com.marcosmontiel.creditcrest.presentation.component.*
 import com.marcosmontiel.creditcrest.presentation.enum.PasswordStrength.*
+import com.marcosmontiel.creditcrest.presentation.navigation.AuthRoutes.Login
 import com.marcosmontiel.creditcrest.presentation.screen.register.RegisterState
 import com.marcosmontiel.creditcrest.presentation.screen.register.RegisterViewModel
 import com.marcosmontiel.creditcrest.presentation.ui.theme.Gray500
@@ -50,6 +52,12 @@ fun RegisterContent(
         RegisterBody(
             modifier = Modifier.align(Alignment.Center),
             viewModel = viewModel,
+            registerState = registerState,
+        )
+
+        RegisterFooter(
+            modifier = Modifier.align(Alignment.BottomCenter),
+            navController = navController,
             registerState = registerState,
         )
 
@@ -296,6 +304,67 @@ fun RegisterBody(
         ) {
             viewModel.register()
         }
+    }
+
+}
+
+@Composable
+fun RegisterFooter(
+    modifier: Modifier,
+    navController: NavHostController,
+    registerState: RegisterState,
+) {
+
+    Column(modifier = modifier.fillMaxWidth()) {
+
+        Divider()
+
+        SignUpLoginContent(
+            modifier = Modifier.fillMaxWidth(),
+            navController = navController,
+            registerState = registerState,
+        )
+
+    }
+
+}
+
+@Composable
+fun SignUpLoginContent(
+    modifier: Modifier,
+    navController: NavHostController,
+    registerState: RegisterState,
+) {
+
+    Row(
+        modifier = modifier.padding(top = 24.dp, bottom = 8.dp),
+        horizontalArrangement = Arrangement.Center,
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+
+        DefaultText(
+            style = MaterialTheme.typography.body2,
+            color = Gray500,
+            title = stringResource(R.string.auth_signup_action_title),
+        )
+
+        Spacer(modifier = Modifier.size(8.dp))
+
+        DefaultTextButton(
+            enabled = registerState.loginButtonEnabled,
+            content = {
+
+                DefaultText(
+                    fontWeight = FontWeight.Bold,
+                    style = MaterialTheme.typography.body2,
+                    title = stringResource(R.string.auth_signup_login_title_button),
+                )
+
+            }
+        ) {
+            navController.navigate(Login.route)
+        }
+
     }
 
 }
