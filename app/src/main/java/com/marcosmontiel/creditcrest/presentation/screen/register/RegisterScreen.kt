@@ -19,12 +19,11 @@ fun RegisterScreen(navController: NavHostController) {
         scaffoldState = scaffoldState,
         topBar = {},
         bottomBar = {},
-        content = { paddingValues ->
+        content = {
 
             RegisterContent(
                 modifier = Modifier.fillMaxSize(),
                 navController = navController,
-                paddingValues = paddingValues,
             )
 
         }

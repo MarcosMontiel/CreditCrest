@@ -68,7 +68,7 @@ fun LoginHeader(modifier: Modifier, activity: Activity) {
     DefaultIcon(
         modifier = modifier.clickable { activity.finish() },
         icon = Icons.Rounded.Close,
-        description = stringResource(R.string.auth_login_close_app_icon),
+        description = stringResource(R.string.generic_close_app_icon),
     )
 
 }
