@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Credit Crest</string>
 
+    <string name="auth_login_close_app_icon">close app icon</string>
     <string name="auth_login_forgot_pass_title">¿Olvidaste tu contraseña?</string>
     <string name="auth_login_pass_transformation_icon">password visual transformation icon</string>
     <string name="auth_login_signup_action_title">¿No tienes una cuenta?</string>

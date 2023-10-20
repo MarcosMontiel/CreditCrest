@@ -1,16 +1,19 @@
 package com.marcosmontiel.creditcrest.presentation.screen.login.component
 
+import android.app.Activity
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.ButtonDefaults
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
+import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Close
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -31,58 +34,65 @@ fun LoginContent(
     modifier: Modifier,
     viewModel: LoginViewModel = hiltViewModel(),
     navController: NavHostController,
-    paddingValues: PaddingValues,
 ) {
 
     val loginState = viewModel.loginState
+    val activity = LocalContext.current as Activity
 
-    Box(modifier = modifier.padding(paddingValues)) {
+    Box(modifier = modifier.padding(16.dp)) {
 
-        DefaultSolidBackground(
-            modifier = Modifier
-                .align(Alignment.TopCenter)
-                .fillMaxHeight(fraction = 0.45f),
+        LoginHeader(
+            modifier = Modifier.align(Alignment.TopEnd),
+            activity = activity,
         )
 
-        DefaultCard(modifier = Modifier.align(Alignment.Center)) {
+        LoginBody(
+            modifier = Modifier.align(Alignment.Center),
+            viewModel = viewModel,
+            loginState = loginState,
+        )
 
-            LoginContentCard(
-                modifier = Modifier.fillMaxWidth(),
-                viewModel = viewModel,
-                navController = navController,
-                loginState = loginState,
-            )
-
-        }
+        LoginFooter(
+            modifier = Modifier.align(Alignment.BottomCenter),
+            navController = navController,
+            loginState = loginState,
+        )
 
     }
 
 }
 
 @Composable
-fun LoginContentCard(
+fun LoginHeader(modifier: Modifier, activity: Activity) {
+
+    DefaultIcon(
+        modifier = modifier.clickable { activity.finish() },
+        icon = Icons.Rounded.Close,
+        description = stringResource(R.string.auth_login_close_app_icon),
+    )
+
+}
+
+@Composable
+fun LoginBody(
     modifier: Modifier,
     viewModel: LoginViewModel,
-    navController: NavHostController,
     loginState: LoginState,
 ) {
 
-    Column(
-        modifier = modifier.padding(horizontal = 24.dp, vertical = 40.dp),
-        verticalArrangement = Arrangement.Center,
-    ) {
+    Column(modifier = modifier.fillMaxWidth()) {
 
         DefaultText(
             modifier = Modifier
                 .fillMaxWidth()
                 .wrapContentWidth(Alignment.CenterHorizontally),
             fontWeight = FontWeight.Bold,
-            fontFamily = FontFamily.Monospace,
+            fontFamily = FontFamily.Serif,
+            fontSize = 30.sp,
             title = stringResource(R.string.auth_login_title),
-            style = MaterialTheme.typography.h6,
         )
 
-        Spacer(modifier = Modifier.size(40.dp))
+        Spacer(modifier = Modifier.size(56.dp))
 
         DefaultTextField(
             modifier = Modifier.fillMaxWidth(),
@@ -92,17 +102,21 @@ fun LoginContentCard(
                 DefaultText(title = stringResource(R.string.generic_email_title))
             },
             trailingIcon = {
-                if (loginState.emailEraser) {
-                    IconButton(onClick = { viewModel.emailEraser() }) {
-                        Icon(
-                            imageVector = Icons.Rounded.Close,
-                            contentDescription = stringResource(R.string.generic_email_eraser_icon),
-                        )
+
+                AnimatedVisibility(visible = loginState.emailEraser) {
+                    DefaultIconButton(
+                        icon = Icons.Rounded.Close,
+                        description = stringResource(R.string.generic_email_eraser_icon),
+                    ) {
+                        viewModel.emailEraser()
                     }
                 }
+
             },
             keyboardType = KeyboardType.Email,
-            valueChanged = { viewModel.valueChanged(it, loginState.password) },
+            valueChanged = {
+                viewModel.valueChanged(email = it, password = loginState.password)
+            }
         )
 
         Spacer(modifier = Modifier.size(24.dp))
@@ -115,16 +129,20 @@ fun LoginContentCard(
                 DefaultText(title = stringResource(R.string.generic_pass_title))
             },
             trailingIcon = {
-                IconButton(onClick = { viewModel.passwordTransformation() }) {
-                    Icon(
-                        imageVector = loginState.passwordIcon,
-                        contentDescription = stringResource(R.string.auth_login_pass_transformation_icon),
-                    )
+
+                DefaultIconButton(
+                    icon = loginState.passwordIcon,
+                    description = stringResource(R.string.auth_login_pass_transformation_icon),
+                ) {
+                    viewModel.passwordTransformation()
                 }
+
             },
             transformation = loginState.passwordTransformation,
             keyboardType = KeyboardType.Password,
-            valueChanged = { viewModel.valueChanged(loginState.email, it) }
+            valueChanged = {
+                viewModel.valueChanged(email = loginState.email, password = it)
+            }
         )
 
         Spacer(modifier = Modifier.size(40.dp))
@@ -134,15 +152,16 @@ fun LoginContentCard(
             enabled = loginState.loginButtonEnabled,
             shape = RoundedCornerShape(percent = 50),
             content = {
+
                 DefaultText(
                     fontWeight = FontWeight.Bold,
                     title = stringResource(R.string.auth_login_title_button),
                 )
-            },
-            click = {
-                viewModel.login()
-            },
-        )
+
+            }
+        ) {
+            viewModel.login()
+        }
 
         Spacer(modifier = Modifier.size(8.dp))
 
@@ -150,18 +169,34 @@ fun LoginContentCard(
             modifier = Modifier.align(Alignment.End),
             enabled = loginState.forgotPasswordButtonEnabled,
             colors = ButtonDefaults.textButtonColors(
-                contentColor = Gray500,
+                contentColor = Gray500
             ),
             content = {
+
                 DefaultText(
                     fontSize = 12.sp,
                     title = stringResource(R.string.auth_login_forgot_pass_title),
                 )
-            },
-            click = {},
-        )
 
-        Spacer(modifier = Modifier.size(24.dp))
+            }
+        ) {
+
+        }
+
+    }
+
+}
+
+@Composable
+fun LoginFooter(
+    modifier: Modifier,
+    navController: NavHostController,
+    loginState: LoginState,
+) {
+
+    Column(modifier = modifier.fillMaxWidth()) {
+
+        Divider()
 
         LoginSignUpContent(
             modifier = Modifier.fillMaxWidth(),
@@ -181,7 +216,7 @@ fun LoginSignUpContent(
 ) {
 
     Row(
-        modifier = modifier,
+        modifier = modifier.padding(top = 24.dp, bottom = 8.dp),
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically,
     ) {
@@ -197,16 +232,18 @@ fun LoginSignUpContent(
         DefaultTextButton(
             enabled = loginState.signUpButtonEnabled,
             content = {
+
                 DefaultText(
                     fontWeight = FontWeight.Bold,
                     style = MaterialTheme.typography.body2,
                     title = stringResource(R.string.auth_login_signup_title_button),
                 )
-            },
-            click = {
-                navController.navigate(Register.route)
-            },
-        )
+
+            }
+        ) {
+            navController.navigate(Register.route)
+        }
+
     }
 
 }

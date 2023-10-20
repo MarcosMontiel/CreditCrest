@@ -19,12 +19,11 @@ fun LoginScreen(navController: NavHostController) {
         scaffoldState = scaffoldState,
         topBar = {},
         bottomBar = {},
-        content = { paddingValues ->
+        content = {
 
             LoginContent(
                 modifier = Modifier.fillMaxSize(),
                 navController = navController,
-                paddingValues = paddingValues,
             )
 
         },
