@@ -2,14 +2,15 @@ package com.marcosmontiel.creditcrest.presentation.navigation
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.AttachMoney
+import androidx.compose.material.icons.rounded.Menu
 import androidx.compose.material.icons.rounded.Person
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.marcosmontiel.creditcrest.presentation.navigation.HomeRoutes.Customer
-import com.marcosmontiel.creditcrest.presentation.navigation.HomeRoutes.Finance
+import com.marcosmontiel.creditcrest.presentation.navigation.HomeRoutes.*
+import com.marcosmontiel.creditcrest.presentation.screen.account.AccountScreen
 import com.marcosmontiel.creditcrest.presentation.screen.customer.CustomerScreen
 import com.marcosmontiel.creditcrest.presentation.screen.finance.FinanceScreen
 
@@ -30,7 +31,11 @@ fun HomeNavGraph(navController: NavHostController) {
             CustomerScreen(navController = navController)
         }
 
-        detailsNavGraph(navController = navController)
+        composable(route = Account.route) {
+            AccountScreen(navController = navController)
+        }
+
+        //detailsNavGraph(navController = navController)
 
     }
 
@@ -48,6 +53,12 @@ sealed class HomeRoutes(val icon: ImageVector, val title: String, val route: Str
         icon = Icons.Rounded.Person,
         title = "clientes",
         route = "my_clients",
+    )
+
+    object Account : HomeRoutes(
+        icon = Icons.Rounded.Menu,
+        title = "cuenta",
+        route = "my_account",
     )
 
 }
