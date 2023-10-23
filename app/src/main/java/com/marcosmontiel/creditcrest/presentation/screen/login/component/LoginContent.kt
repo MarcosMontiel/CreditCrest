@@ -92,7 +92,7 @@ fun LoginBody(
             title = stringResource(R.string.auth_login_title),
         )
 
-        Spacer(modifier = Modifier.size(56.dp))
+        Spacer(modifier = Modifier.size(48.dp))
 
         DefaultTextField(
             modifier = Modifier.fillMaxWidth(),

@@ -95,7 +95,7 @@ fun RegisterBody(
             title = stringResource(R.string.auth_login_title),
         )
 
-        Spacer(modifier = Modifier.size(56.dp))
+        Spacer(modifier = Modifier.size(48.dp))
 
         DefaultText(
             style = MaterialTheme.typography.body2,
