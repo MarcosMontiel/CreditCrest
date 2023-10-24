@@ -20,7 +20,7 @@ fun DefaultIconButton(
 ) {
 
     IconButton(onClick = { click() }, modifier = modifier) {
-        Icon(imageVector = icon, contentDescription = description, tint = color)
+        DefaultIcon(icon = icon, description = description, color = color)
     }
 
 }
