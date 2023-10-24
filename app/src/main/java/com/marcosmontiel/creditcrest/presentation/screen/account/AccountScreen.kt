@@ -7,6 +7,8 @@ import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
+import com.marcosmontiel.creditcrest.presentation.component.DefaultText
+import com.marcosmontiel.creditcrest.presentation.component.DefaultTopBar
 import com.marcosmontiel.creditcrest.presentation.screen.account.component.AccountContent
 
 @Composable
@@ -16,7 +18,11 @@ fun AccountScreen(navController: NavHostController) {
 
     Scaffold(
         scaffoldState = scaffoldState,
-        topBar = {},
+        topBar = {
+
+            DefaultTopBar(title = { DefaultText(title = "Mi cuenta") })
+
+        },
         bottomBar = {},
         content = {
 
