@@ -1,4 +1,6 @@
 <resources>
+    <string name="account_title">Mi cuenta</string>
+
     <string name="app_name">Credit Crest</string>
 
     <string name="auth_login_forgot_pass_title">¿Olvidaste tu contraseña?</string>
@@ -29,6 +31,4 @@
     <string name="generic_settings_icon">settings icon</string>
     <string name="generic_unknown_exception">unknown exception</string>
     <string name="generic_username_title">Usuario</string>
-
-    <string name="settings_title">Configuración</string>
 </resources>
