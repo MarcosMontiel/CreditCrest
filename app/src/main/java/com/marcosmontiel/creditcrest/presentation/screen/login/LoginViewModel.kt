@@ -107,17 +107,6 @@ class LoginViewModel @Inject constructor(
         doLogin()
     }
 
-    fun setUIColors(isSystemInDarkTheme: Boolean, context: Context) {
-        val sbColor = if (isSystemInDarkTheme) StatusBarDarkColor else StatusBarLightColor
-        val nbColor = if (isSystemInDarkTheme) NavigationBarDarkColor else NavigationBarLightColor
-        val activity: Activity = context as Activity
-
-        activity.window.apply {
-            statusBarColor = sbColor.toArgb()
-            navigationBarColor = nbColor.toArgb()
-        }
-    }
-
     // Private functions
     private fun doLogin() = viewModelScope.launch {
         disableForm()
