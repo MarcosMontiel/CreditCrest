@@ -14,6 +14,7 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel @Inject constructor() : ViewModel() {
 
+    // Functions
     fun setUIColors(isSystemInDarkTheme: Boolean, context: Context) {
         val sbColor = if (isSystemInDarkTheme) StatusBarDarkColor else StatusBarLightColor
         val nbColor = if (isSystemInDarkTheme) NavigationBarDarkColor else NavigationBarLightColor
