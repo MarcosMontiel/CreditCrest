@@ -12,6 +12,7 @@ import com.marcosmontiel.creditcrest.presentation.ui.theme.Gray900
 
 @Composable
 fun DefaultProgressIndicator(modifier: Modifier = Modifier, background: Color = Gray900) {
+
     Box(
         modifier = modifier
             .fillMaxSize()
@@ -21,4 +22,5 @@ fun DefaultProgressIndicator(modifier: Modifier = Modifier, background: Color = 
     ) {
         CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
     }
+
 }

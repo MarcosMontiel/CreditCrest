@@ -24,6 +24,11 @@
     <string name="auth_signup_title_button">CONTINUAR</string>
     <string name="auth_signup_username_eraser_icon">username eraser icon</string>
 
+    <string name="customer_title">Clientes</string>
+    <string name="customer_add_customer_icon">add customer icon</string>
+
+    <string name="finance_title">Finanzas</string>
+
     <string name="generic_close_app_icon">close app icon</string>
     <string name="generic_email_eraser_icon">email eraser icon</string>
     <string name="generic_email_title">Correo electrónico</string>

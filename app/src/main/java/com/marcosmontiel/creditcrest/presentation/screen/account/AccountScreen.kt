@@ -22,13 +22,7 @@ fun AccountScreen(navController: NavHostController) {
         scaffoldState = scaffoldState,
         topBar = {
 
-            DefaultTopBar(
-                title = {
-
-                    DefaultText(title = stringResource(R.string.account_title))
-
-                }
-            )
+            DefaultTopBar(title = { DefaultText(title = stringResource(R.string.account_title)) })
 
         },
         bottomBar = {},

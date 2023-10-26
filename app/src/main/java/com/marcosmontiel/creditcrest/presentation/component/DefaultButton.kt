@@ -20,7 +20,7 @@ fun DefaultButton(
 ) {
 
     Button(
-        onClick = { click() },
+        onClick = click,
         modifier = modifier,
         enabled = enabled,
         shape = shape,

@@ -19,7 +19,7 @@ fun DefaultTextButton(
 ) {
 
     TextButton(
-        onClick = { click() },
+        onClick = click,
         modifier = modifier,
         enabled = enabled,
         colors = colors,

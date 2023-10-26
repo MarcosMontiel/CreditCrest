@@ -17,7 +17,7 @@ fun DefaultIconButton(
     click: () -> Unit,
 ) {
 
-    IconButton(onClick = { click() }, modifier = modifier) {
+    IconButton(onClick = click, modifier = modifier) {
         DefaultIcon(icon = icon, description = description, color = color)
     }
 

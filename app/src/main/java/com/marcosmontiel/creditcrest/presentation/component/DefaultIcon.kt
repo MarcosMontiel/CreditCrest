@@ -15,10 +15,12 @@ fun DefaultIcon(
     icon: ImageVector,
     description: String,
 ) {
+
     Icon(
         imageVector = icon,
         contentDescription = description,
         modifier = modifier,
         tint = color,
     )
+
 }
