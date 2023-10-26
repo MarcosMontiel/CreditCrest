@@ -1,6 +1,8 @@
 package com.marcosmontiel.creditcrest.presentation.screen.login
 
+import android.app.Activity
 import android.app.Application
+import android.content.Context
 import android.widget.Toast
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Visibility
@@ -8,6 +10,7 @@ import androidx.compose.material.icons.rounded.VisibilityOff
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
@@ -16,6 +19,10 @@ import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseUser
 import com.marcosmontiel.creditcrest.domain.model.Response
 import com.marcosmontiel.creditcrest.domain.usecase.auth.AuthUseCases
+import com.marcosmontiel.creditcrest.presentation.ui.theme.NavigationBarDarkColor
+import com.marcosmontiel.creditcrest.presentation.ui.theme.NavigationBarLightColor
+import com.marcosmontiel.creditcrest.presentation.ui.theme.StatusBarDarkColor
+import com.marcosmontiel.creditcrest.presentation.ui.theme.StatusBarLightColor
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -98,6 +105,17 @@ class LoginViewModel @Inject constructor(
         }
 
         doLogin()
+    }
+
+    fun setUIColors(isSystemInDarkTheme: Boolean, context: Context) {
+        val sbColor = if (isSystemInDarkTheme) StatusBarDarkColor else StatusBarLightColor
+        val nbColor = if (isSystemInDarkTheme) NavigationBarDarkColor else NavigationBarLightColor
+        val activity: Activity = context as Activity
+
+        activity.window.apply {
+            statusBarColor = sbColor.toArgb()
+            navigationBarColor = nbColor.toArgb()
+        }
     }
 
     // Private functions

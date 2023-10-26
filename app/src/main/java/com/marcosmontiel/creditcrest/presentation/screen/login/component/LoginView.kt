@@ -1,6 +1,8 @@
 package com.marcosmontiel.creditcrest.presentation.screen.login.component
 
+import android.content.Context
 import android.widget.Toast
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -22,6 +24,8 @@ fun LoginView(
     navController: NavHostController,
 ) {
     val loginResponse = viewModel.loginResponse
+    val isDarkMode: Boolean = isSystemInDarkTheme()
+    val context: Context = LocalContext.current
 
     Box(modifier = modifier) {
         loginResponse.let { stateFlow ->
@@ -47,6 +51,7 @@ fun LoginView(
                     LaunchedEffect(Unit) {
 
                         viewModel.loginResponse = null
+                        viewModel.setUIColors(isDarkMode, context)
 
                         navController.navigate(route = Graph.HOME) {
                             popUpTo(route = Graph.AUTHENTICATION) { inclusive = true }

@@ -2,7 +2,7 @@ package com.marcosmontiel.creditcrest.presentation.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-// Interface colors
+// UI colors
 val StatusBarDarkColor = Color(0xFF3A454B)
 val StatusBarLightColor = Color(0xFF2196F3)
 

@@ -12,7 +12,10 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.marcosmontiel.creditcrest.presentation.navigation.RootNavGraph
-import com.marcosmontiel.creditcrest.presentation.ui.theme.*
+import com.marcosmontiel.creditcrest.presentation.ui.theme.Blue500
+import com.marcosmontiel.creditcrest.presentation.ui.theme.CreditCrestTheme
+import com.marcosmontiel.creditcrest.presentation.ui.theme.Gray100
+import com.marcosmontiel.creditcrest.presentation.ui.theme.Gray900
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -26,11 +29,13 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             val isDarkMode: Boolean = isSystemInDarkTheme()
-            val sbColor = if (isDarkMode) StatusBarDarkColor else StatusBarLightColor
-            val nbColor = if (isDarkMode) NavigationBarDarkColor else NavigationBarLightColor
+            val sbColor = if (isDarkMode) Gray900 else Blue500
+            val nbColor = if (isDarkMode) Gray900 else Gray100
 
-            window.statusBarColor = sbColor.toArgb()
-            window.navigationBarColor = nbColor.toArgb()
+            window.apply {
+                statusBarColor = sbColor.toArgb()
+                navigationBarColor = nbColor.toArgb()
+            }
 
             CreditCrestTheme {
                 // A surface container using the 'background' color from the theme
