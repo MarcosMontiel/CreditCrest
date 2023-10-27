@@ -11,8 +11,6 @@ import androidx.navigation.NavHostController
 import com.marcosmontiel.creditcrest.R
 import com.marcosmontiel.creditcrest.presentation.component.DefaultFloatingActionButton
 import com.marcosmontiel.creditcrest.presentation.component.DefaultIcon
-import com.marcosmontiel.creditcrest.presentation.component.DefaultText
-import com.marcosmontiel.creditcrest.presentation.component.DefaultTopBar
 
 @Composable
 fun CustomerScreen(navController: NavHostController) {
@@ -21,11 +19,7 @@ fun CustomerScreen(navController: NavHostController) {
 
     Scaffold(
         scaffoldState = scaffoldState,
-        topBar = {
-
-            DefaultTopBar(title = { DefaultText(title = stringResource(R.string.customer_title)) })
-
-        },
+        topBar = {},
         bottomBar = {},
         floatingActionButton = {
 

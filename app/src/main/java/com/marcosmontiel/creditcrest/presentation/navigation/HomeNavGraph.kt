@@ -41,23 +41,31 @@ fun HomeNavGraph(navController: NavHostController) {
 
 }
 
-sealed class HomeRoutes(val icon: ImageVector, val title: String, val route: String) {
+sealed class HomeRoutes(
+    val icon: ImageVector,
+    val title: String,
+    val titleAlt: String,
+    val route: String,
+) {
 
     object Finance : HomeRoutes(
         icon = Icons.Rounded.AttachMoney,
         title = "finanzas",
+        titleAlt = "Finanzas",
         route = "my_finance",
     )
 
     object Customer : HomeRoutes(
         icon = Icons.Rounded.Person,
         title = "clientes",
+        titleAlt = "Clientes",
         route = "my_clients",
     )
 
     object Account : HomeRoutes(
         icon = Icons.Rounded.Menu,
         title = "cuenta",
+        titleAlt = "Mi cuenta",
         route = "my_account",
     )
 

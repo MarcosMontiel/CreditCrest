@@ -32,7 +32,11 @@ fun HomeScreen(
 
     Scaffold(
         scaffoldState = scaffoldState,
-        topBar = {},
+        topBar = {
+
+            HomeTopBar(navController = navController, screens = screens)
+
+        },
         bottomBar = {
 
             HomeBottomBar(navController = navController, screens = screens)
