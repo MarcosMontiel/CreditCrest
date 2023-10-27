@@ -4,16 +4,24 @@ import androidx.compose.ui.graphics.Color
 
 // UI colors
 val StatusBarDarkColor = Color(0xFF3A454B)
-val StatusBarLightColor = Color(0xFF2196F3)
+val StatusBarLightColor = Color(0xFF01579B) // Light Blue 900
 
 val NavigationBarDarkColor = Color(0xFF414A4F)
-val NavigationBarLightColor = Color(0xFFEEEEEE)
+val NavigationBarLightColor = Color(0xFFEEEEEE) // Gray 200
+
+val BackgroundDarkColor = Color(0xFF212121) // Gray 900
+val BackgroundLightColor = Color(0xFFEEEEEE) // Gray 200
+
+val PrimaryColor = Color(0xFF01579B) // Light Blue 900
+
+
+
+
+
 
 // Blue scale
 val Blue300 = Color(0xFF64B5F6)
-val Blue500 = Color(0xFF2196F3)
 val Blue700 = Color(0xFF1976D2)
-val Blue800 = Color(0xFF1565C0)
 
 // Blue gray scale
 val BlueGray900 = Color(0xFF263238)
@@ -21,11 +29,9 @@ val BlueGray900 = Color(0xFF263238)
 // Grayscale
 val Gray100 = Color(0xFFF5F5F5)
 val Gray200 = Color(0xFFEEEEEE)
-val Gray300 = Color(0xFFE0E0E0)
 val Gray500 = Color(0xFF9E9E9E)
 val Gray600 = Color(0xFF757575)
 val Gray700 = Color(0xFF616161)
-val Gray800 = Color(0xFF424242)
 val Gray900 = Color(0xFF212121)
 
 // Green scale

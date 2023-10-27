@@ -11,7 +11,7 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun DefaultFloatingActionButton(
     modifier: Modifier = Modifier,
-    background: Color = MaterialTheme.colors.secondary,
+    background: Color = MaterialTheme.colors.primary,
     content: @Composable () -> Unit,
     click: () -> Unit,
 ) {

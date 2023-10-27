@@ -12,10 +12,7 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.marcosmontiel.creditcrest.presentation.navigation.RootNavGraph
-import com.marcosmontiel.creditcrest.presentation.ui.theme.Blue500
-import com.marcosmontiel.creditcrest.presentation.ui.theme.CreditCrestTheme
-import com.marcosmontiel.creditcrest.presentation.ui.theme.Gray100
-import com.marcosmontiel.creditcrest.presentation.ui.theme.Gray900
+import com.marcosmontiel.creditcrest.presentation.ui.theme.*
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -29,8 +26,8 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             val isDarkMode: Boolean = isSystemInDarkTheme()
-            val sbColor = if (isDarkMode) Gray900 else Blue500
-            val nbColor = if (isDarkMode) Gray900 else Gray100
+            val sbColor = if (isDarkMode) BackgroundDarkColor else StatusBarLightColor
+            val nbColor = if (isDarkMode) BackgroundDarkColor else BackgroundLightColor
 
             window.apply {
                 statusBarColor = sbColor.toArgb()
