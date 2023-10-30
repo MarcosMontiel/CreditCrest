@@ -34,12 +34,18 @@ fun HomeScreen(
         scaffoldState = scaffoldState,
         topBar = {
 
-            HomeTopBar(navController = navController, screens = screens)
+            HomeTopBar(
+                navController = navController,
+                screens = screens,
+            )
 
         },
         bottomBar = {
 
-            HomeBottomBar(navController = navController, screens = screens)
+            HomeBottomBar(
+                navController = navController,
+                screens = screens,
+            )
 
         },
         content = {

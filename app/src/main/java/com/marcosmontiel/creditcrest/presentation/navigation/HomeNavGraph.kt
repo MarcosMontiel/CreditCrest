@@ -35,7 +35,7 @@ fun HomeNavGraph(navController: NavHostController) {
             AccountScreen(navController = navController)
         }
 
-        //detailsNavGraph(navController = navController)
+        detailsNavGraph(navController = navController)
 
     }
 

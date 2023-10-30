@@ -11,6 +11,7 @@ import androidx.navigation.NavHostController
 import com.marcosmontiel.creditcrest.R
 import com.marcosmontiel.creditcrest.presentation.component.DefaultFloatingActionButton
 import com.marcosmontiel.creditcrest.presentation.component.DefaultIcon
+import com.marcosmontiel.creditcrest.presentation.navigation.DetailsRoutes.NewCustomer
 
 @Composable
 fun CustomerScreen(navController: NavHostController) {
@@ -32,7 +33,7 @@ fun CustomerScreen(navController: NavHostController) {
                     )
 
                 },
-                click = {}
+                click = { navController.navigate(NewCustomer.route) }
             )
 
         },
