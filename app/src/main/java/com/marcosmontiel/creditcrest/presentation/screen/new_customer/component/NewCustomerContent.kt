@@ -30,6 +30,7 @@ fun NewCustomerContent(
 
         NewCustomerBody(
             modifier = Modifier.fillMaxWidth(),
+            viewModel = viewModel,
             newCustomerState = newCustomerState,
         )
 
@@ -38,7 +39,11 @@ fun NewCustomerContent(
 }
 
 @Composable
-fun NewCustomerBody(modifier: Modifier, newCustomerState: NewCustomerState) {
+fun NewCustomerBody(
+    modifier: Modifier,
+    viewModel: NewCustomerViewModel,
+    newCustomerState: NewCustomerState,
+) {
 
     Column(modifier = modifier) {
 
@@ -58,12 +63,14 @@ fun NewCustomerBody(modifier: Modifier, newCustomerState: NewCustomerState) {
                         icon = Icons.Rounded.Close,
                         description = stringResource(R.string.new_customer_name_eraser_icon),
                     ) {
-
+                        viewModel.nameEraser()
                     }
                 }
 
             },
-            valueChanged = {}
+            valueChanged = {
+                viewModel.valueChanged(name = it, lastName = newCustomerState.lastName)
+            }
         )
 
         Spacer(modifier = Modifier.size(24.dp))
@@ -82,12 +89,14 @@ fun NewCustomerBody(modifier: Modifier, newCustomerState: NewCustomerState) {
                         icon = Icons.Rounded.Close,
                         description = stringResource(R.string.new_customer_last_name_eraser_icon),
                     ) {
-
+                        viewModel.lastNameEraser()
                     }
                 }
 
             },
-            valueChanged = {}
+            valueChanged = {
+                viewModel.valueChanged(name = newCustomerState.name, lastName = it)
+            }
         )
 
         Spacer(modifier = Modifier.size(24.dp))

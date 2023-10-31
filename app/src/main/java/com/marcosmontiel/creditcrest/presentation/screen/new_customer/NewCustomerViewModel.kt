@@ -14,4 +14,36 @@ class NewCustomerViewModel @Inject constructor() : ViewModel() {
     var newCustomerState by mutableStateOf(NewCustomerState())
         private set
 
+    // Events
+    fun valueChanged(name: String, lastName: String) {
+        val nameValue: String = name.let {
+            if (it.length > 30) it.slice(0 until 30) else it
+        }
+
+        val lastNameValue: String = lastName.let {
+            if (it.length > 30) it.slice(0 until 30) else it
+        }
+
+        newCustomerState = newCustomerState.copy(
+            name = nameValue,
+            nameEraser = nameValue.isNotEmpty() && nameValue.isNotBlank(),
+            lastName = lastNameValue,
+            lastNameEraser = lastNameValue.isNotEmpty() && lastNameValue.isNotBlank(),
+        )
+    }
+
+    fun nameEraser() {
+        newCustomerState = newCustomerState.copy(
+            name = "",
+            nameEraser = false,
+        )
+    }
+
+    fun lastNameEraser() {
+        newCustomerState = newCustomerState.copy(
+            lastName = "",
+            lastNameEraser = false,
+        )
+    }
+
 }
