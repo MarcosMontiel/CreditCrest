@@ -38,5 +38,9 @@
     <string name="generic_unknown_exception">unknown exception</string>
     <string name="generic_username_title">Usuario</string>
 
+    <string name="new_customer_last_name_eraser_icon">last name eraser icon</string>
+    <string name="new_customer_last_name_title">Apellidos</string>
+    <string name="new_customer_name_eraser_icon">name eraser icon</string>
+    <string name="new_customer_name_title">Nombre</string>
     <string name="new_customer_title">Nuevo cliente</string>
 </resources>
