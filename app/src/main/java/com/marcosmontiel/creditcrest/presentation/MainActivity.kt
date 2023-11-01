@@ -53,9 +53,11 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
 
+                    // Graph navigation implementation
                     _navController = rememberNavController()
                     RootNavGraph(navController = _navController)
 
+                    // Splash screen implementation
                     LaunchedEffect(Unit) {
 
                         if (_viewModel.currentUser != null) {
