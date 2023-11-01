@@ -1,4 +1,4 @@
-package com.marcosmontiel.creditcrest.presentation.screen.home
+package com.marcosmontiel.creditcrest.presentation.screen.home.component
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue

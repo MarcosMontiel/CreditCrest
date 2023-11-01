@@ -13,6 +13,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.marcosmontiel.creditcrest.presentation.navigation.HomeNavGraph
 import com.marcosmontiel.creditcrest.presentation.navigation.HomeRoutes.*
+import com.marcosmontiel.creditcrest.presentation.screen.home.component.HomeBottomBar
+import com.marcosmontiel.creditcrest.presentation.screen.home.component.HomeTopBar
 
 @Composable
 fun HomeScreen(
