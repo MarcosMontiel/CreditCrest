@@ -28,7 +28,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
     private lateinit var _navController: NavHostController
-    private val viewModel: LoginViewModel by viewModels()
+    private val _viewModel: LoginViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -57,13 +57,15 @@ class MainActivity : ComponentActivity() {
                     RootNavGraph(navController = _navController)
 
                     LaunchedEffect(Unit) {
-                        if (viewModel.currentUser != null) {
+
+                        if (_viewModel.currentUser != null) {
 
                             _navController.navigate(Graph.HOME) {
                                 popUpTo(route = Graph.AUTHENTICATION) { inclusive = true }
                             }
 
                         }
+
                     }
 
                 }
