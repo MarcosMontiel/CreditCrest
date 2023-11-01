@@ -58,7 +58,11 @@ class MainActivity : ComponentActivity() {
 
                     LaunchedEffect(Unit) {
                         if (viewModel.currentUser != null) {
-                            _navController.navigate(Graph.HOME)
+
+                            _navController.navigate(Graph.HOME) {
+                                popUpTo(route = Graph.AUTHENTICATION) { inclusive = true }
+                            }
+
                         }
                     }
 
