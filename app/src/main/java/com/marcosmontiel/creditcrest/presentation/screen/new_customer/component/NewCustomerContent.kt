@@ -69,7 +69,13 @@ fun NewCustomerBody(
 
             },
             valueChanged = {
-                viewModel.valueChanged(name = it, lastName = newCustomerState.lastName)
+
+                viewModel.valueChanged(
+                    name = it,
+                    lastName = newCustomerState.lastName,
+                    curp = newCustomerState.curp,
+                )
+
             }
         )
 
@@ -95,11 +101,47 @@ fun NewCustomerBody(
 
             },
             valueChanged = {
-                viewModel.valueChanged(name = newCustomerState.name, lastName = it)
+
+                viewModel.valueChanged(
+                    name = newCustomerState.name,
+                    lastName = it,
+                    curp = newCustomerState.curp,
+                )
+
             }
         )
 
         Spacer(modifier = Modifier.size(24.dp))
+
+        DefaultTextField(
+            modifier = Modifier.fillMaxWidth(),
+            enabled = newCustomerState.curpEnabled,
+            text = newCustomerState.curp,
+            label = {
+                DefaultText(title = stringResource(R.string.new_customer_curp_title))
+            },
+            trailingIcon = {
+
+                AnimatedVisibility(visible = newCustomerState.curpEraser) {
+                    DefaultIconButton(
+                        icon = Icons.Rounded.Close,
+                        description = stringResource(R.string.new_customer_curp_eraser_icon),
+                    ) {
+                        viewModel.curpEraser()
+                    }
+                }
+
+            },
+            valueChanged = {
+
+                viewModel.valueChanged(
+                    name = newCustomerState.name,
+                    lastName = newCustomerState.lastName,
+                    curp = it,
+                )
+
+            }
+        )
 
     }
 
