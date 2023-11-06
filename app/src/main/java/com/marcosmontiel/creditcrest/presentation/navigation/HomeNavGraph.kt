@@ -10,9 +10,9 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.marcosmontiel.creditcrest.presentation.navigation.HomeRoutes.*
-import com.marcosmontiel.creditcrest.presentation.screen.account.AccountScreen
 import com.marcosmontiel.creditcrest.presentation.screen.customer.CustomerScreen
 import com.marcosmontiel.creditcrest.presentation.screen.finance.FinanceScreen
+import com.marcosmontiel.creditcrest.presentation.screen.settings.SettingsScreen
 
 @Composable
 fun HomeNavGraph(navController: NavHostController) {
@@ -31,8 +31,8 @@ fun HomeNavGraph(navController: NavHostController) {
             CustomerScreen(navController = navController)
         }
 
-        composable(route = Account.route) {
-            AccountScreen(navController = navController)
+        composable(route = Settings.route) {
+            SettingsScreen(navController = navController)
         }
 
         detailsNavGraph(navController = navController)
@@ -62,11 +62,11 @@ sealed class HomeRoutes(
         route = "my_clients",
     )
 
-    object Account : HomeRoutes(
+    object Settings : HomeRoutes(
         icon = Icons.Rounded.Menu,
-        title = "cuenta",
-        titleAlt = "Mi cuenta",
-        route = "my_account",
+        title = "configuración",
+        titleAlt = "Configuración",
+        route = "settings",
     )
 
 }

@@ -22,7 +22,7 @@ fun HomeScreen(
     viewModel: HomeViewModel = hiltViewModel(),
 ) {
 
-    val screens = listOf(Finance, Customer, Account)
+    val screens = listOf(Finance, Customer, Settings)
     val scaffoldState: ScaffoldState = rememberScaffoldState()
 
     val isDarkMode: Boolean = isSystemInDarkTheme()
