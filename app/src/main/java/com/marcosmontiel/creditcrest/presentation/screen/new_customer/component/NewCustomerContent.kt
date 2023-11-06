@@ -2,15 +2,18 @@ package com.marcosmontiel.creditcrest.presentation.screen.new_customer.component
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Close
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.marcosmontiel.creditcrest.R
+import com.marcosmontiel.creditcrest.presentation.component.DefaultButton
 import com.marcosmontiel.creditcrest.presentation.component.DefaultIconButton
 import com.marcosmontiel.creditcrest.presentation.component.DefaultText
 import com.marcosmontiel.creditcrest.presentation.component.DefaultTextField
@@ -59,12 +62,13 @@ fun NewCustomerBody(
             trailingIcon = {
 
                 AnimatedVisibility(visible = newCustomerState.nameEraser) {
+
                     DefaultIconButton(
                         icon = Icons.Rounded.Close,
                         description = stringResource(R.string.new_customer_name_eraser_icon),
-                    ) {
-                        viewModel.nameEraser()
-                    }
+                        click = { viewModel.nameEraser() }
+                    )
+
                 }
 
             },
@@ -91,12 +95,13 @@ fun NewCustomerBody(
             trailingIcon = {
 
                 AnimatedVisibility(visible = newCustomerState.lastNameEraser) {
+
                     DefaultIconButton(
                         icon = Icons.Rounded.Close,
                         description = stringResource(R.string.new_customer_last_name_eraser_icon),
-                    ) {
-                        viewModel.lastNameEraser()
-                    }
+                        click = { viewModel.lastNameEraser() }
+                    )
+
                 }
 
             },
@@ -123,12 +128,13 @@ fun NewCustomerBody(
             trailingIcon = {
 
                 AnimatedVisibility(visible = newCustomerState.curpEraser) {
+
                     DefaultIconButton(
                         icon = Icons.Rounded.Close,
                         description = stringResource(R.string.new_customer_curp_eraser_icon),
-                    ) {
-                        viewModel.curpEraser()
-                    }
+                        click = { viewModel.curpEraser() }
+                    )
+
                 }
 
             },
@@ -141,6 +147,23 @@ fun NewCustomerBody(
                 )
 
             }
+        )
+
+        Spacer(modifier = Modifier.size(40.dp))
+
+        DefaultButton(
+            modifier = Modifier.fillMaxWidth(),
+            enabled = newCustomerState.saveButtonEnabled,
+            shape = RoundedCornerShape(percent = 50),
+            content = {
+
+                DefaultText(
+                    fontWeight = FontWeight.Bold,
+                    title = stringResource(R.string.generic_save_title_button),
+                )
+
+            },
+            click = {}
         )
 
     }

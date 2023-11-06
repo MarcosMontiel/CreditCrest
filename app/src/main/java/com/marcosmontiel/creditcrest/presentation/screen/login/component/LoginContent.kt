@@ -104,12 +104,13 @@ fun LoginBody(
             trailingIcon = {
 
                 AnimatedVisibility(visible = loginState.emailEraser) {
+
                     DefaultIconButton(
                         icon = Icons.Rounded.Close,
                         description = stringResource(R.string.generic_email_eraser_icon),
-                    ) {
-                        viewModel.emailEraser()
-                    }
+                        click = { viewModel.emailEraser() }
+                    )
+
                 }
 
             },
@@ -133,9 +134,8 @@ fun LoginBody(
                 DefaultIconButton(
                     icon = loginState.passwordIcon,
                     description = stringResource(R.string.auth_login_pass_transformation_icon),
-                ) {
-                    viewModel.passwordTransformation()
-                }
+                    click = { viewModel.passwordTransformation() }
+                )
 
             },
             transformation = loginState.passwordTransformation,
@@ -158,10 +158,9 @@ fun LoginBody(
                     title = stringResource(R.string.auth_login_title_button),
                 )
 
-            }
-        ) {
-            viewModel.login()
-        }
+            },
+            click = { viewModel.login() }
+        )
 
         Spacer(modifier = Modifier.size(8.dp))
 
@@ -178,10 +177,9 @@ fun LoginBody(
                     title = stringResource(R.string.auth_login_forgot_pass_title),
                 )
 
-            }
-        ) {
-
-        }
+            },
+            click = {}
+        )
 
     }
 
@@ -239,10 +237,9 @@ fun LoginSignUpContent(
                     title = stringResource(R.string.auth_login_signup_title_button),
                 )
 
-            }
-        ) {
-            navController.navigate(Register.route)
-        }
+            },
+            click = { navController.navigate(Register.route) }
+        )
 
     }
 

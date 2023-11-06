@@ -115,12 +115,13 @@ fun RegisterBody(
             trailingIcon = {
 
                 AnimatedVisibility(visible = registerState.usernameEraser) {
+
                     DefaultIconButton(
                         icon = Icons.Rounded.Close,
                         description = stringResource(R.string.auth_signup_username_eraser_icon),
-                    ) {
-                        viewModel.usernameEraser()
-                    }
+                        click = { viewModel.usernameEraser() }
+                    )
+
                 }
 
             },
@@ -146,23 +147,26 @@ fun RegisterBody(
             trailingIcon = {
 
                 AnimatedVisibility(visible = registerState.emailEraser) {
+
                     DefaultIconButton(
                         icon = Icons.Rounded.Close,
                         description = stringResource(R.string.generic_email_eraser_icon),
-                    ) {
-                        viewModel.emailEraser()
-                    }
+                        click = { viewModel.emailEraser() }
+                    )
+
                 }
 
             },
             keyboardType = KeyboardType.Email,
             valueChanged = {
+
                 viewModel.valueChanged(
                     email = it,
                     password = registerState.password,
                     passwordConfirmation = registerState.passwordConfirmation,
                     username = registerState.username,
                 )
+
             }
         )
 
@@ -182,20 +186,21 @@ fun RegisterBody(
                     DefaultIconButton(
                         icon = registerState.passwordIcon,
                         description = stringResource(R.string.auth_login_pass_transformation_icon),
-                    ) {
-                        viewModel.passwordTransformation()
-                    }
+                        click = { viewModel.passwordTransformation() }
+                    )
 
                 },
                 transformation = registerState.passwordTransformation,
                 keyboardType = KeyboardType.Password,
                 valueChanged = {
+
                     viewModel.valueChanged(
                         email = registerState.email,
                         password = it,
                         passwordConfirmation = registerState.passwordConfirmation,
                         username = registerState.username,
                     )
+
                 }
             )
 
@@ -270,20 +275,21 @@ fun RegisterBody(
                 DefaultIconButton(
                     icon = registerState.passwordConfirmationIcon,
                     description = stringResource(R.string.auth_signup_pass_confirm_transformation_icon),
-                ) {
-                    viewModel.passwordConfirmationTransformation()
-                }
+                    click = { viewModel.passwordConfirmationTransformation() }
+                )
 
             },
             transformation = registerState.passwordConfirmationTransformation,
             keyboardType = KeyboardType.Password,
             valueChanged = {
+
                 viewModel.valueChanged(
                     email = registerState.email,
                     password = registerState.password,
                     passwordConfirmation = it,
                     username = registerState.username,
                 )
+
             }
         )
 
@@ -300,10 +306,10 @@ fun RegisterBody(
                     title = stringResource(R.string.auth_signup_title_button),
                 )
 
-            }
-        ) {
-            viewModel.register()
-        }
+            },
+            click = { viewModel.register() }
+        )
+
     }
 
 }
@@ -360,10 +366,9 @@ fun SignUpLoginContent(
                     title = stringResource(R.string.auth_signup_login_title_button),
                 )
 
-            }
-        ) {
-            navController.navigate(Login.route)
-        }
+            },
+            click = { navController.navigate(Login.route) }
+        )
 
     }
 
