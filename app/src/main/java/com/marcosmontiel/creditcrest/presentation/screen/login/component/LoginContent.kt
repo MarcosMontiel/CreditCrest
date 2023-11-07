@@ -89,7 +89,7 @@ fun LoginBody(
             fontWeight = FontWeight.Bold,
             fontFamily = FontFamily.Serif,
             fontSize = 30.sp,
-            title = stringResource(R.string.auth_login_title),
+            title = stringResource(R.string.generic_application_name),
         )
 
         Spacer(modifier = Modifier.size(48.dp))
@@ -99,7 +99,7 @@ fun LoginBody(
             enabled = loginState.emailEnabled,
             text = loginState.email,
             label = {
-                DefaultText(title = stringResource(R.string.generic_email_title))
+                DefaultText(title = stringResource(R.string.generic_email_label))
             },
             trailingIcon = {
 
@@ -127,13 +127,13 @@ fun LoginBody(
             enabled = loginState.passwordEnabled,
             text = loginState.password,
             label = {
-                DefaultText(title = stringResource(R.string.generic_pass_title))
+                DefaultText(title = stringResource(R.string.auth_password_label))
             },
             trailingIcon = {
 
                 DefaultIconButton(
                     icon = loginState.passwordIcon,
-                    description = stringResource(R.string.auth_login_pass_transformation_icon),
+                    description = stringResource(R.string.auth_password_visibility_icon),
                     click = { viewModel.passwordTransformation() }
                 )
 
@@ -155,7 +155,7 @@ fun LoginBody(
 
                 DefaultText(
                     fontWeight = FontWeight.Bold,
-                    title = stringResource(R.string.auth_login_title_button),
+                    title = stringResource(R.string.auth_main_login_button),
                 )
 
             },
@@ -174,7 +174,7 @@ fun LoginBody(
 
                 DefaultText(
                     fontSize = 12.sp,
-                    title = stringResource(R.string.auth_login_forgot_pass_title),
+                    title = stringResource(R.string.auth_forgot_my_password_button),
                 )
 
             },
@@ -222,7 +222,7 @@ fun LoginSignUpContent(
         DefaultText(
             style = MaterialTheme.typography.body2,
             color = Gray500,
-            title = stringResource(R.string.auth_login_signup_action_title),
+            title = stringResource(R.string.auth_footer_sign_up_title),
         )
 
         Spacer(modifier = Modifier.size(8.dp))
@@ -234,7 +234,7 @@ fun LoginSignUpContent(
                 DefaultText(
                     fontWeight = FontWeight.Bold,
                     style = MaterialTheme.typography.body2,
-                    title = stringResource(R.string.auth_login_signup_title_button),
+                    title = stringResource(R.string.auth_footer_sign_up_button),
                 )
 
             },

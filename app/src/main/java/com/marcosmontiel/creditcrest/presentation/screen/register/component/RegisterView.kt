@@ -37,14 +37,14 @@ fun RegisterView(
                     viewModel.enableForm()
 
                     val message: String = stateFlow.exception?.message
-                        ?: stringResource(R.string.generic_unknown_exception)
+                        ?: stringResource(R.string.generic_unknown_exception_title)
                     Toast.makeText(LocalContext.current, message, Toast.LENGTH_LONG).show()
 
                 }
 
                 is Response.Success -> {
 
-                    val message = stringResource(R.string.auth_signup_successful_account)
+                    val message = stringResource(R.string.auth_created_account_toast)
                     Toast.makeText(LocalContext.current, message, Toast.LENGTH_LONG).show()
 
                     LaunchedEffect(Unit) {

@@ -26,7 +26,7 @@ fun NewCustomerScreen(navController: NavHostController) {
         topBar = {
 
             DefaultTopBar(
-                title = { DefaultText(title = stringResource(R.string.new_customer_title)) },
+                title = { DefaultText(title = stringResource(R.string.customer_screen_title)) },
                 navigation = {
 
                     DefaultIconButton(

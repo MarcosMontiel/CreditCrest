@@ -92,7 +92,7 @@ fun RegisterBody(
             fontWeight = FontWeight.Bold,
             fontFamily = FontFamily.Serif,
             fontSize = 30.sp,
-            title = stringResource(R.string.auth_login_title),
+            title = stringResource(R.string.generic_application_name),
         )
 
         Spacer(modifier = Modifier.size(48.dp))
@@ -100,7 +100,7 @@ fun RegisterBody(
         DefaultText(
             style = MaterialTheme.typography.body2,
             color = Gray500,
-            title = stringResource(R.string.auth_signup_subtitle),
+            title = stringResource(R.string.auth_sign_up_description),
         )
 
         Spacer(modifier = Modifier.size(16.dp))
@@ -110,7 +110,7 @@ fun RegisterBody(
             enabled = registerState.usernameEnabled,
             text = registerState.username,
             label = {
-                DefaultText(title = stringResource(R.string.generic_username_title))
+                DefaultText(title = stringResource(R.string.generic_username_label))
             },
             trailingIcon = {
 
@@ -118,7 +118,7 @@ fun RegisterBody(
 
                     DefaultIconButton(
                         icon = Icons.Rounded.Close,
-                        description = stringResource(R.string.auth_signup_username_eraser_icon),
+                        description = stringResource(R.string.auth_username_eraser_icon),
                         click = { viewModel.usernameEraser() }
                     )
 
@@ -142,7 +142,7 @@ fun RegisterBody(
             enabled = registerState.emailEnabled,
             text = registerState.email,
             label = {
-                DefaultText(title = stringResource(R.string.generic_email_title))
+                DefaultText(title = stringResource(R.string.generic_email_label))
             },
             trailingIcon = {
 
@@ -179,13 +179,13 @@ fun RegisterBody(
                 enabled = registerState.passwordEnabled,
                 text = registerState.password,
                 label = {
-                    DefaultText(title = stringResource(R.string.generic_pass_title))
+                    DefaultText(title = stringResource(R.string.auth_password_label))
                 },
                 trailingIcon = {
 
                     DefaultIconButton(
                         icon = registerState.passwordIcon,
-                        description = stringResource(R.string.auth_login_pass_transformation_icon),
+                        description = stringResource(R.string.auth_password_visibility_icon),
                         click = { viewModel.passwordTransformation() }
                     )
 
@@ -216,7 +216,7 @@ fun RegisterBody(
 
                     DefaultText(
                         fontSize = 12.sp,
-                        title = stringResource(R.string.auth_signup_strong_password_level),
+                        title = stringResource(R.string.auth_password_level_title),
                     )
 
                     Spacer(modifier = Modifier.size(8.dp))
@@ -228,7 +228,7 @@ fun RegisterBody(
                                 fontWeight = FontWeight.Bold,
                                 fontSize = 12.sp,
                                 color = Green500,
-                                title = stringResource(R.string.auth_signup_strong_password),
+                                title = stringResource(R.string.auth_strong_password_level),
                             )
 
                         }
@@ -238,7 +238,7 @@ fun RegisterBody(
                                 fontWeight = FontWeight.Bold,
                                 fontSize = 12.sp,
                                 color = Yellow800,
-                                title = stringResource(R.string.auth_signup_medium_password),
+                                title = stringResource(R.string.auth_medium_password_level),
                             )
 
                         }
@@ -248,7 +248,7 @@ fun RegisterBody(
                                 fontWeight = FontWeight.Bold,
                                 fontSize = 12.sp,
                                 color = Red400,
-                                title = stringResource(R.string.auth_signup_weak_password),
+                                title = stringResource(R.string.auth_weak_password_level),
                             )
 
                         }
@@ -268,13 +268,13 @@ fun RegisterBody(
             enabled = registerState.passwordConfirmationEnabled,
             text = registerState.passwordConfirmation,
             label = {
-                DefaultText(title = stringResource(R.string.auth_signup_pass_confirm_title))
+                DefaultText(title = stringResource(R.string.auth_password_confirmation_label))
             },
             trailingIcon = {
 
                 DefaultIconButton(
                     icon = registerState.passwordConfirmationIcon,
-                    description = stringResource(R.string.auth_signup_pass_confirm_transformation_icon),
+                    description = stringResource(R.string.auth_password_confirmation_visibility_icon),
                     click = { viewModel.passwordConfirmationTransformation() }
                 )
 
@@ -303,7 +303,7 @@ fun RegisterBody(
 
                 DefaultText(
                     fontWeight = FontWeight.Bold,
-                    title = stringResource(R.string.auth_signup_title_button),
+                    title = stringResource(R.string.auth_sign_up_button),
                 )
 
             },
@@ -351,7 +351,7 @@ fun SignUpLoginContent(
         DefaultText(
             style = MaterialTheme.typography.body2,
             color = Gray500,
-            title = stringResource(R.string.auth_signup_action_title),
+            title = stringResource(R.string.auth_footer_login_title),
         )
 
         Spacer(modifier = Modifier.size(8.dp))
@@ -363,7 +363,7 @@ fun SignUpLoginContent(
                 DefaultText(
                     fontWeight = FontWeight.Bold,
                     style = MaterialTheme.typography.body2,
-                    title = stringResource(R.string.auth_signup_login_title_button),
+                    title = stringResource(R.string.auth_footer_login_button),
                 )
 
             },

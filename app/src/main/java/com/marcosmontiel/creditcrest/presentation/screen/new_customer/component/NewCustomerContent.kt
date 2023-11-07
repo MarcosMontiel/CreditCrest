@@ -57,7 +57,7 @@ fun NewCustomerBody(
             enabled = newCustomerState.nameEnabled,
             text = newCustomerState.name,
             label = {
-                DefaultText(title = stringResource(R.string.new_customer_name_title))
+                DefaultText(title = stringResource(R.string.customer_name_label))
             },
             trailingIcon = {
 
@@ -65,7 +65,7 @@ fun NewCustomerBody(
 
                     DefaultIconButton(
                         icon = Icons.Rounded.Close,
-                        description = stringResource(R.string.new_customer_name_eraser_icon),
+                        description = stringResource(R.string.customer_name_eraser_icon),
                         click = { viewModel.nameEraser() }
                     )
 
@@ -90,7 +90,7 @@ fun NewCustomerBody(
             enabled = newCustomerState.lastNameEnabled,
             text = newCustomerState.lastName,
             label = {
-                DefaultText(title = stringResource(R.string.new_customer_last_name_title))
+                DefaultText(title = stringResource(R.string.customer_last_name_label))
             },
             trailingIcon = {
 
@@ -98,7 +98,7 @@ fun NewCustomerBody(
 
                     DefaultIconButton(
                         icon = Icons.Rounded.Close,
-                        description = stringResource(R.string.new_customer_last_name_eraser_icon),
+                        description = stringResource(R.string.customer_last_name_eraser_icon),
                         click = { viewModel.lastNameEraser() }
                     )
 
@@ -123,7 +123,7 @@ fun NewCustomerBody(
             enabled = newCustomerState.curpEnabled,
             text = newCustomerState.curp,
             label = {
-                DefaultText(title = stringResource(R.string.new_customer_curp_title))
+                DefaultText(title = stringResource(R.string.customer_curp_label))
             },
             trailingIcon = {
 
@@ -131,7 +131,7 @@ fun NewCustomerBody(
 
                     DefaultIconButton(
                         icon = Icons.Rounded.Close,
-                        description = stringResource(R.string.new_customer_curp_eraser_icon),
+                        description = stringResource(R.string.customer_curp_eraser_icon),
                         click = { viewModel.curpEraser() }
                     )
 
@@ -159,7 +159,7 @@ fun NewCustomerBody(
 
                 DefaultText(
                     fontWeight = FontWeight.Bold,
-                    title = stringResource(R.string.generic_save_title_button),
+                    title = stringResource(R.string.generic_save_button),
                 )
 
             },
