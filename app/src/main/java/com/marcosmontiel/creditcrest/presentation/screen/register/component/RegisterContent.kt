@@ -307,7 +307,7 @@ fun RegisterBody(
                 )
 
             },
-            click = { viewModel.register() }
+            click = { viewModel.signUp() }
         )
 
     }

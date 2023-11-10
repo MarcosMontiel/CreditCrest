@@ -42,10 +42,7 @@ fun NewCustomerScreen(navController: NavHostController) {
         bottomBar = {},
         content = {
 
-            NewCustomerContent(
-                modifier = Modifier.fillMaxSize(),
-                navController = navController,
-            )
+            NewCustomerContent(modifier = Modifier.fillMaxSize())
 
         },
     )

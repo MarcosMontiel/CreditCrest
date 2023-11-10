@@ -11,7 +11,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavHostController
 import com.marcosmontiel.creditcrest.R
 import com.marcosmontiel.creditcrest.presentation.component.DefaultButton
 import com.marcosmontiel.creditcrest.presentation.component.DefaultIconButton
@@ -23,8 +22,7 @@ import com.marcosmontiel.creditcrest.presentation.screen.new_customer.NewCustome
 @Composable
 fun NewCustomerContent(
     modifier: Modifier,
-    viewModel: NewCustomerViewModel = hiltViewModel(),
-    navController: NavHostController
+    viewModel: NewCustomerViewModel = hiltViewModel()
 ) {
 
     val newCustomerState = viewModel.newCustomerState
@@ -163,7 +161,7 @@ fun NewCustomerBody(
                 )
 
             },
-            click = {}
+            click = { viewModel.createCustomer() }
         )
 
     }

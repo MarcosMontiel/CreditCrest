@@ -131,7 +131,7 @@ class RegisterViewModel @Inject constructor(
         )
     }
 
-    fun register() {
+    fun signUp() {
         if (!registerState.informationFillCorrect) {
             val message = "Ingresa la información requerida para continuar"
             Toast.makeText(application.applicationContext, message, Toast.LENGTH_LONG).show()
@@ -153,7 +153,8 @@ class RegisterViewModel @Inject constructor(
             password = registerState.password,
             username = registerState.username,
         )
-        doRegister()
+
+        signUpAction()
     }
 
     fun createProfile() = viewModelScope.launch {
@@ -193,7 +194,7 @@ class RegisterViewModel @Inject constructor(
         }
     }
 
-    private fun doRegister() = viewModelScope.launch {
+    private fun signUpAction() = viewModelScope.launch {
         if (!::_userInfo.isInitialized) return@launch
 
         disableForm()

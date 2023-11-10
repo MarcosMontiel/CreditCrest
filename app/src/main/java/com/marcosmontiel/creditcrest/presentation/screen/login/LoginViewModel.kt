@@ -93,11 +93,11 @@ class LoginViewModel @Inject constructor(
             return
         }
 
-        doLogin()
+        loginAction()
     }
 
     // Private functions
-    private fun doLogin() = viewModelScope.launch {
+    private fun loginAction() = viewModelScope.launch {
         disableForm()
 
         loginResponse = Response.Loading

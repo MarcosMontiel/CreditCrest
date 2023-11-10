@@ -5,13 +5,16 @@ import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.marcosmontiel.creditcrest.core.Constants.CUSTOMERS
 import com.marcosmontiel.creditcrest.core.Constants.PROFILES
 import com.marcosmontiel.creditcrest.data.repository.AuthRepositoryImpl
+import com.marcosmontiel.creditcrest.data.repository.CustomerRepositoryImpl
 import com.marcosmontiel.creditcrest.data.repository.ProfileRepositoryImpl
 import com.marcosmontiel.creditcrest.domain.repository.AuthRepository
+import com.marcosmontiel.creditcrest.domain.repository.CustomerRepository
 import com.marcosmontiel.creditcrest.domain.repository.ProfileRepository
 import com.marcosmontiel.creditcrest.domain.usecase.auth.*
-import com.marcosmontiel.creditcrest.domain.usecase.profile.Create
+import com.marcosmontiel.creditcrest.domain.usecase.customer.CustomerUseCases
 import com.marcosmontiel.creditcrest.domain.usecase.profile.ProfileUseCases
 import dagger.Module
 import dagger.Provides
@@ -36,6 +39,12 @@ object AppModule {
 
     @Provides
     @Singleton
+    @Named(CUSTOMERS)
+    fun provideCustomersRef(database: FirebaseFirestore): CollectionReference =
+        database.collection(CUSTOMERS)
+
+    @Provides
+    @Singleton
     @Named(PROFILES)
     fun provideProfilesRef(database: FirebaseFirestore): CollectionReference =
         database.collection(PROFILES)
@@ -44,6 +53,10 @@ object AppModule {
     @Provides
     @Singleton
     fun provideAuthRepository(impl: AuthRepositoryImpl): AuthRepository = impl
+
+    @Provides
+    @Singleton
+    fun provideCustomerRepository(impl: CustomerRepositoryImpl): CustomerRepository = impl
 
     @Provides
     @Singleton
@@ -62,9 +75,16 @@ object AppModule {
 
     @Provides
     @Singleton
+    fun provideCustomerUseCases(repository: CustomerRepository): CustomerUseCases =
+        CustomerUseCases(
+            create = com.marcosmontiel.creditcrest.domain.usecase.customer.Create(repository)
+        )
+
+    @Provides
+    @Singleton
     fun provideProfileUseCases(repository: ProfileRepository): ProfileUseCases =
         ProfileUseCases(
-            create = Create(repository)
+            create = com.marcosmontiel.creditcrest.domain.usecase.profile.Create(repository)
         )
 
 }
