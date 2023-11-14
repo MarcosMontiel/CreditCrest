@@ -2,21 +2,10 @@ package com.marcosmontiel.creditcrest.presentation.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-// UI colors
-val StatusBarDarkColor = Color(0xFF3A454B)
-val StatusBarLightColor = Color(0xFF01579B) // Light Blue 900
-
-val NavigationBarDarkColor = Color(0xFF414A4F)
-val NavigationBarLightColor = Color(0xFFEEEEEE) // Gray 200
-
 val BackgroundDarkColor = Color(0xFF212121) // Gray 900
 val BackgroundLightColor = Color(0xFFEEEEEE) // Gray 200
 
 val PrimaryColor = Color(0xFF01579B) // Light Blue 900
-
-
-
-
 
 
 // Blue scale

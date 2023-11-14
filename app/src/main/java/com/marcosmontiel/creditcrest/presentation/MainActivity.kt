@@ -10,9 +10,11 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.core.splashscreen.SplashScreen
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.marcosmontiel.creditcrest.presentation.navigation.Graph
@@ -21,7 +23,6 @@ import com.marcosmontiel.creditcrest.presentation.screen.login.LoginViewModel
 import com.marcosmontiel.creditcrest.presentation.ui.theme.BackgroundDarkColor
 import com.marcosmontiel.creditcrest.presentation.ui.theme.BackgroundLightColor
 import com.marcosmontiel.creditcrest.presentation.ui.theme.CreditCrestTheme
-import com.marcosmontiel.creditcrest.presentation.ui.theme.StatusBarLightColor
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -38,12 +39,14 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             val isDarkMode: Boolean = isSystemInDarkTheme()
-            val sbColor = if (isDarkMode) BackgroundDarkColor else StatusBarLightColor
-            val nbColor = if (isDarkMode) BackgroundDarkColor else BackgroundLightColor
+            val color: Color = if (isDarkMode) BackgroundDarkColor else BackgroundLightColor
+
+            WindowInsetsControllerCompat(window, window.decorView).isAppearanceLightStatusBars =
+                !isDarkMode
 
             window.apply {
-                statusBarColor = sbColor.toArgb()
-                navigationBarColor = nbColor.toArgb()
+                statusBarColor = color.toArgb()
+                navigationBarColor = color.toArgb()
             }
 
             CreditCrestTheme {

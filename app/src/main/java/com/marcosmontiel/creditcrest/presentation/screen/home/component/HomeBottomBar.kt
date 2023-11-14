@@ -8,6 +8,7 @@ import androidx.compose.material.ContentAlpha
 import androidx.compose.material.LocalContentColor
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
@@ -16,8 +17,8 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import com.marcosmontiel.creditcrest.presentation.component.DefaultIcon
 import com.marcosmontiel.creditcrest.presentation.component.DefaultText
 import com.marcosmontiel.creditcrest.presentation.navigation.HomeRoutes
-import com.marcosmontiel.creditcrest.presentation.ui.theme.BlueGray900
-import com.marcosmontiel.creditcrest.presentation.ui.theme.Gray200
+import com.marcosmontiel.creditcrest.presentation.ui.theme.BackgroundDarkColor
+import com.marcosmontiel.creditcrest.presentation.ui.theme.BackgroundLightColor
 
 @Composable
 fun HomeBottomBar(navController: NavHostController, screens: List<HomeRoutes>) {
@@ -26,10 +27,13 @@ fun HomeBottomBar(navController: NavHostController, screens: List<HomeRoutes>) {
     val currentDestination = navBackStackEntry?.destination
     val bottomBarDestination = screens.any { it.route == currentDestination?.route }
 
+    val isDarkMode: Boolean = isSystemInDarkTheme()
+    val backgroundColor: Color = if (isDarkMode) BackgroundDarkColor else BackgroundLightColor
+
     if (bottomBarDestination) {
 
         BottomNavigation(
-            backgroundColor = if (isSystemInDarkTheme()) BlueGray900 else Gray200
+            backgroundColor = backgroundColor
         ) {
 
             screens.forEach { screen ->
