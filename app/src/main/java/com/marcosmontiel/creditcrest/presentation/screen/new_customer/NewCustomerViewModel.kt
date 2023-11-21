@@ -44,11 +44,11 @@ class NewCustomerViewModel @Inject constructor(
         }
 
         newCustomerState = newCustomerState.copy(
-            name = nameValue.trim(),
+            name = nameValue,
             nameEraser = nameValue.isNotEmpty() && nameValue.isNotBlank(),
-            lastName = lastNameValue.trim(),
+            lastName = lastNameValue,
             lastNameEraser = lastNameValue.isNotEmpty() && lastNameValue.isNotBlank(),
-            curp = curpValue.trim(),
+            curp = curpValue,
             curpCorrect = curpValue.length == 18,
             curpEraser = curpValue.isNotEmpty() && curpValue.isNotBlank(),
         )
