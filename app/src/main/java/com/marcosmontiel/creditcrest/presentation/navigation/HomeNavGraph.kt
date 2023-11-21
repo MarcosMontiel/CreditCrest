@@ -44,28 +44,24 @@ fun HomeNavGraph(navController: NavHostController) {
 sealed class HomeRoutes(
     val icon: ImageVector,
     val title: String,
-    val titleAlt: String,
     val route: String,
 ) {
 
     object Finance : HomeRoutes(
         icon = Icons.Rounded.AttachMoney,
-        title = "finanzas",
-        titleAlt = "Finanzas",
+        title = "Finanzas",
         route = "my_finance",
     )
 
     object Customer : HomeRoutes(
         icon = Icons.Rounded.Person,
-        title = "clientes",
-        titleAlt = "Clientes",
+        title = "Clientes",
         route = "my_clients",
     )
 
     object Settings : HomeRoutes(
         icon = Icons.Rounded.Menu,
-        title = "configuración",
-        titleAlt = "Configuración",
+        title = "Configuración",
         route = "settings",
     )
 

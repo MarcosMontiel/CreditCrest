@@ -19,7 +19,7 @@ fun HomeTopBar(navController: NavHostController, screens: List<HomeRoutes>) {
 
         val screen = screens.find { it.route == currentDestination?.route } ?: return
 
-        DefaultTopBar(title = { DefaultText(title = screen.titleAlt) })
+        DefaultTopBar(title = { DefaultText(title = screen.title) })
 
     }
 
