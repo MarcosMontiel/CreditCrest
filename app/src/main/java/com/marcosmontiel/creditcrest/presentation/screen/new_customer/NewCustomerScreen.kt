@@ -15,6 +15,7 @@ import com.marcosmontiel.creditcrest.presentation.component.DefaultIconButton
 import com.marcosmontiel.creditcrest.presentation.component.DefaultText
 import com.marcosmontiel.creditcrest.presentation.component.DefaultTopBar
 import com.marcosmontiel.creditcrest.presentation.screen.new_customer.component.NewCustomerContent
+import com.marcosmontiel.creditcrest.presentation.screen.new_customer.component.NewCustomerView
 
 @Composable
 fun NewCustomerScreen(navController: NavHostController) {
@@ -45,6 +46,11 @@ fun NewCustomerScreen(navController: NavHostController) {
             NewCustomerContent(modifier = Modifier.fillMaxSize())
 
         },
+    )
+
+    NewCustomerView(
+        modifier = Modifier.fillMaxSize(),
+        navController = navController,
     )
 
 }

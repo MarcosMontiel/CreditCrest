@@ -44,11 +44,11 @@ class NewCustomerViewModel @Inject constructor(
         }
 
         newCustomerState = newCustomerState.copy(
-            name = nameValue,
+            name = nameValue.trim(),
             nameEraser = nameValue.isNotEmpty() && nameValue.isNotBlank(),
-            lastName = lastNameValue,
+            lastName = lastNameValue.trim(),
             lastNameEraser = lastNameValue.isNotEmpty() && lastNameValue.isNotBlank(),
-            curp = curpValue,
+            curp = curpValue.trim(),
             curpCorrect = curpValue.length == 18,
             curpEraser = curpValue.isNotEmpty() && curpValue.isNotBlank(),
         )
@@ -76,6 +76,15 @@ class NewCustomerViewModel @Inject constructor(
         )
     }
 
+    fun enableForm() {
+        newCustomerState = newCustomerState.copy(
+            nameEnabled = true,
+            lastNameEnabled = true,
+            curpEnabled = true,
+            saveButtonEnabled = true,
+        )
+    }
+
     fun createCustomer() {
         _customerInfo = Customer(
             name = newCustomerState.name,
@@ -90,11 +99,22 @@ class NewCustomerViewModel @Inject constructor(
     private fun createCustomerAction() = viewModelScope.launch {
         if (!::_customerInfo.isInitialized) return@launch
 
+        disableForm()
+
         _customerInfo.userId = authUseCases.currentUser()?.uid ?: return@launch
 
         newCustomerResponse = Response.Loading
         val response = customerUseCases.create(_customerInfo)
         newCustomerResponse = response
+    }
+
+    private fun disableForm() {
+        newCustomerState = newCustomerState.copy(
+            nameEnabled = false,
+            lastNameEnabled = false,
+            curpEnabled = false,
+            saveButtonEnabled = false,
+        )
     }
 
 }
