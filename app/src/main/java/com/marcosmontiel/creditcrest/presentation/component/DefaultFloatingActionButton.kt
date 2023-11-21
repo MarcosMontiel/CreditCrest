@@ -18,7 +18,7 @@ fun DefaultFloatingActionButton(
 
     FloatingActionButton(
         onClick = click,
-        modifier = modifier.padding(bottom = 56.dp),
+        modifier = modifier.padding(bottom = 64.dp),
         backgroundColor = background,
         content = content,
     )
