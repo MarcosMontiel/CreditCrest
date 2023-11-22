@@ -88,6 +88,8 @@ class LoginViewModel @Inject constructor(
             passwordEnabled = true,
             signUpButtonEnabled = true,
         )
+
+        loginResponse = null
     }
 
     fun login() {

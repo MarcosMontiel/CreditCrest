@@ -87,6 +87,8 @@ class NewCustomerViewModel @Inject constructor(
             curpEnabled = true,
             saveButtonEnabled = true,
         )
+
+        newCustomerResponse = null
     }
 
     fun createCustomer() {

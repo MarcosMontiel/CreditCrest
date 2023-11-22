@@ -129,6 +129,8 @@ class RegisterViewModel @Inject constructor(
             signUpButtonEnabled = true,
             usernameEnabled = true,
         )
+
+        registerResponse = null
     }
 
     fun signUp() {
