@@ -15,5 +15,6 @@ data class NewCustomerState(
     val curpEnabled: Boolean = true,
     val curpEraser: Boolean = false,
     // Validations
+    val informationFillCorrect: Boolean = false,
     val saveButtonEnabled: Boolean = true,
 )

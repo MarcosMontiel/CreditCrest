@@ -15,6 +15,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseUser
 import com.marcosmontiel.creditcrest.domain.model.Response
+import com.marcosmontiel.creditcrest.domain.model.User
 import com.marcosmontiel.creditcrest.domain.usecase.auth.AuthUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -25,6 +26,9 @@ class LoginViewModel @Inject constructor(
     private val application: Application,
     private val authUseCases: AuthUseCases,
 ) : ViewModel() {
+
+    // Late init variables
+    private lateinit var _userInfo: User
 
     // Password instances
     private var _showPassword: Boolean = false
@@ -56,8 +60,8 @@ class LoginViewModel @Inject constructor(
         loginState = loginState.copy(
             email = emailValue,
             emailEraser = emailValue.isNotEmpty() && emailValue.isNotBlank(),
-            informationFillCorrect = emailValue.isNotBlank() && passwordValue.isNotBlank(),
             password = passwordValue,
+            informationFillCorrect = emailValue.isNotBlank() && passwordValue.isNotBlank(),
         )
     }
 
@@ -93,15 +97,22 @@ class LoginViewModel @Inject constructor(
             return
         }
 
+        _userInfo = User(
+            email = loginState.email.trim(),
+            password = loginState.password.trim(),
+        )
+
         loginAction()
     }
 
     // Private functions
     private fun loginAction() = viewModelScope.launch {
+        if (!::_userInfo.isInitialized) return@launch
+
         disableForm()
 
         loginResponse = Response.Loading
-        val response = authUseCases.login(email = loginState.email, password = loginState.password)
+        val response = authUseCases.login(user = _userInfo)
         loginResponse = response
     }
 

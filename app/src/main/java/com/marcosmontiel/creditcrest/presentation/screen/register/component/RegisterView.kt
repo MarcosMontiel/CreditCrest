@@ -49,7 +49,7 @@ fun RegisterView(
 
                     LaunchedEffect(Unit) {
 
-                        viewModel.createProfile()
+                        viewModel.createProfileAction()
                         viewModel.registerResponse = null
 
                         navController.navigate(route = Graph.HOME) {

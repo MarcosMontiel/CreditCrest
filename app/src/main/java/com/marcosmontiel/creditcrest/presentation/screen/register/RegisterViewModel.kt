@@ -31,6 +31,9 @@ class RegisterViewModel @Inject constructor(
     private val profileUseCases: ProfileUseCases,
 ) : ViewModel() {
 
+    // Late init variables
+    private lateinit var _userInfo: User
+
     // Password instances
     private var _showPassword: Boolean = false
     private var _showPasswordConfirmation: Boolean = false
@@ -38,9 +41,6 @@ class RegisterViewModel @Inject constructor(
     private val _passHiddenMask: VisualTransformation = PasswordVisualTransformation()
     private val _passVisibleIcon: ImageVector = Icons.Rounded.Visibility
     private val _passVisibleMask: VisualTransformation = VisualTransformation.None
-
-    // Late init variables
-    private lateinit var _userInfo: User
 
     // State
     var registerState by mutableStateOf(RegisterState())
@@ -149,15 +149,15 @@ class RegisterViewModel @Inject constructor(
         }
 
         _userInfo = User(
-            email = registerState.email,
-            password = registerState.password,
-            username = registerState.username,
+            email = registerState.email.trim(),
+            password = registerState.password.trim(),
+            username = registerState.username.trim(),
         )
 
         signUpAction()
     }
 
-    fun createProfile() = viewModelScope.launch {
+    fun createProfileAction() = viewModelScope.launch {
         if (!::_userInfo.isInitialized) return@launch
 
         _userInfo.id = authUseCases.currentUser()?.uid ?: return@launch

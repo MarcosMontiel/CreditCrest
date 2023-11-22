@@ -1,5 +1,7 @@
 package com.marcosmontiel.creditcrest.presentation.screen.new_customer
 
+import android.app.Application
+import android.widget.Toast
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -15,6 +17,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class NewCustomerViewModel @Inject constructor(
+    private val application: Application,
     private val authUseCases: AuthUseCases,
     private val customerUseCases: CustomerUseCases
 ) : ViewModel() {
@@ -51,6 +54,7 @@ class NewCustomerViewModel @Inject constructor(
             curp = curpValue,
             curpCorrect = curpValue.length == 18,
             curpEraser = curpValue.isNotEmpty() && curpValue.isNotBlank(),
+            informationFillCorrect = nameValue.isNotBlank() && lastNameValue.isNotBlank() && curpValue.isNotBlank(),
         )
     }
 
@@ -86,10 +90,16 @@ class NewCustomerViewModel @Inject constructor(
     }
 
     fun createCustomer() {
+        if (!newCustomerState.informationFillCorrect) {
+            val message = "Ingresa la información requerida para continuar"
+            Toast.makeText(application.applicationContext, message, Toast.LENGTH_LONG).show()
+            return
+        }
+
         _customerInfo = Customer(
-            name = newCustomerState.name,
-            lastname = newCustomerState.lastName,
-            curp = newCustomerState.curp,
+            name = newCustomerState.name.trim(),
+            lastname = newCustomerState.lastName.trim(),
+            curp = newCustomerState.curp.trim(),
         )
 
         createCustomerAction()
@@ -104,7 +114,7 @@ class NewCustomerViewModel @Inject constructor(
         _customerInfo.userId = authUseCases.currentUser()?.uid ?: return@launch
 
         newCustomerResponse = Response.Loading
-        val response = customerUseCases.create(_customerInfo)
+        val response = customerUseCases.create(customer = _customerInfo)
         newCustomerResponse = response
     }
 
