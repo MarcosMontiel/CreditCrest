@@ -93,10 +93,22 @@ class LoginViewModel @Inject constructor(
     }
 
     fun login() {
-        if (!loginState.informationFillCorrect) {
-            val message = "Ingresa la información requerida para continuar"
-            Toast.makeText(application.applicationContext, message, Toast.LENGTH_LONG).show()
-            return
+        val regex = buildString {
+            append("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")
+        }
+
+        val message: String? = when {
+            !loginState.informationFillCorrect -> "Ingresa la información requerida para continuar"
+
+            !loginState.email.matches(regex.toRegex()) -> "El correo electrónico no tiene un formato válido"
+
+            else -> null
+        }
+
+        message?.let {
+            Toast.makeText(application.applicationContext, it, Toast.LENGTH_LONG)
+                .apply { show() }
+                .also { return }
         }
 
         _userInfo = User(

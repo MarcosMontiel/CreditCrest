@@ -38,7 +38,8 @@ fun RegisterView(
 
                     val message: String = stateFlow.message
                         ?: stringResource(R.string.generic_unknown_exception_title)
-                    Toast.makeText(LocalContext.current, message, Toast.LENGTH_LONG).show()
+                    Toast.makeText(LocalContext.current, message, Toast.LENGTH_LONG)
+                        .apply { show() }
 
                 }
 

@@ -134,20 +134,26 @@ class RegisterViewModel @Inject constructor(
     }
 
     fun signUp() {
-        if (!registerState.informationFillCorrect) {
-            val message = "Ingresa la información requerida para continuar"
-            Toast.makeText(application.applicationContext, message, Toast.LENGTH_LONG).show()
-            return
+        val regex = buildString {
+            append("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")
         }
-        if (registerState.password.length < 8) {
-            val message = "La contraseña debe tener al menos 8 caracteres"
-            Toast.makeText(application.applicationContext, message, Toast.LENGTH_LONG).show()
-            return
+
+        val message: String? = when {
+            !registerState.informationFillCorrect -> "Ingresa la información requerida para continuar"
+
+            !registerState.email.matches(regex.toRegex()) -> "El correo electrónico no tiene un formato válido"
+
+            registerState.password.length < 8 -> "La contraseña debe tener al menos 8 caracteres"
+
+            !registerState.passwordMatch -> "Las contraseñas que ingresaste no coinciden"
+
+            else -> null
         }
-        if (!registerState.passwordMatch) {
-            val message = "Las contraseñas que ingresaste no coinciden"
-            Toast.makeText(application.applicationContext, message, Toast.LENGTH_LONG).show()
-            return
+
+        message?.let {
+            Toast.makeText(application.applicationContext, it, Toast.LENGTH_LONG)
+                .apply { show() }
+                .also { return }
         }
 
         _userInfo = User(
@@ -185,8 +191,8 @@ class RegisterViewModel @Inject constructor(
         }))
 
         val meetsLengthRequirement = password.length >= minLength
-        val meetsRequirements =
-            containsUppercase && containsLowercase && containsDigits && containsSpecialChars
+        val meetsRequirements = containsUppercase && containsLowercase &&
+                containsDigits && containsSpecialChars
 
         return when {
             password.isBlank() -> EMPTY

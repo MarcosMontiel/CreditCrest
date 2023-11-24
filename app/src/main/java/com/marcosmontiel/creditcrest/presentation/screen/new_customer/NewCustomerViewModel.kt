@@ -92,10 +92,18 @@ class NewCustomerViewModel @Inject constructor(
     }
 
     fun createCustomer() {
-        if (!newCustomerState.informationFillCorrect) {
-            val message = "Ingresa la información requerida para continuar"
-            Toast.makeText(application.applicationContext, message, Toast.LENGTH_LONG).show()
-            return
+        val message: String? = when {
+            !newCustomerState.informationFillCorrect -> "Ingresa la información requerida para continuar"
+
+            newCustomerState.curp.length < 8 -> "El CURP debe tener 18 caracteres"
+
+            else -> null
+        }
+
+        message?.let {
+            Toast.makeText(application.applicationContext, it, Toast.LENGTH_LONG)
+                .apply { show() }
+                .also { return }
         }
 
         _customerInfo = Customer(
