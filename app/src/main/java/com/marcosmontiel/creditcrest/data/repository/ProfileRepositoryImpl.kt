@@ -25,7 +25,7 @@ class ProfileRepositoryImpl @Inject constructor(
         } catch (e: Exception) {
 
             e.printStackTrace()
-            Response.Failure(exception = e)
+            Response.Failure(message = e.message)
 
         }
     }

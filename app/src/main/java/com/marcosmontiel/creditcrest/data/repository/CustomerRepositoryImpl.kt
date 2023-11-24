@@ -17,12 +17,13 @@ class CustomerRepositoryImpl @Inject constructor(
         return try {
 
             customerRef.add(customer).await()
+
             Response.Success(data = true)
 
         } catch (e: Exception) {
 
             e.printStackTrace()
-            Response.Failure(exception = e)
+            Response.Failure(message = e.message)
 
         }
     }

@@ -2,6 +2,7 @@ package com.marcosmontiel.creditcrest.data.repository
 
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.marcosmontiel.creditcrest.data.exception.FirebaseException
 import com.marcosmontiel.creditcrest.domain.model.Response
 import com.marcosmontiel.creditcrest.domain.model.User
 import com.marcosmontiel.creditcrest.domain.repository.AuthRepository
@@ -17,14 +18,19 @@ class AuthRepositoryImpl @Inject constructor(
 
     override suspend fun login(user: User): Response<FirebaseUser> {
         return try {
+
             val response = firebaseAuth.signInWithEmailAndPassword(
                 user.email,
                 user.password
             ).await()
+
             Response.Success(data = response.user!!)
+
         } catch (e: Exception) {
+
             e.printStackTrace()
-            Response.Failure(exception = e)
+            Response.Failure(message = FirebaseException.message(e))
+
         }
     }
 
@@ -32,14 +38,19 @@ class AuthRepositoryImpl @Inject constructor(
 
     override suspend fun register(user: User): Response<FirebaseUser> {
         return try {
+
             val response = firebaseAuth.createUserWithEmailAndPassword(
                 user.email,
                 user.password
             ).await()
+
             Response.Success(data = response.user!!)
+
         } catch (e: Exception) {
+
             e.printStackTrace()
-            Response.Failure(exception = e)
+            Response.Failure(message = FirebaseException.message(e))
+
         }
     }
 

@@ -36,7 +36,7 @@ fun LoginView(
 
                     viewModel.enableForm()
 
-                    val message: String = stateFlow.exception?.message
+                    val message: String = stateFlow.message
                         ?: stringResource(R.string.generic_unknown_exception_title)
                     Toast.makeText(LocalContext.current, message, Toast.LENGTH_LONG).show()
 
