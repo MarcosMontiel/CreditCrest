@@ -2,6 +2,7 @@ package com.marcosmontiel.creditcrest.data.repository
 
 import com.google.firebase.firestore.CollectionReference
 import com.marcosmontiel.creditcrest.core.Constants.PROFILES
+import com.marcosmontiel.creditcrest.data.exception.FirebaseException
 import com.marcosmontiel.creditcrest.domain.model.Response
 import com.marcosmontiel.creditcrest.domain.model.User
 import com.marcosmontiel.creditcrest.domain.repository.ProfileRepository
@@ -25,7 +26,7 @@ class ProfileRepositoryImpl @Inject constructor(
         } catch (e: Exception) {
 
             e.printStackTrace()
-            Response.Failure(message = e.message)
+            Response.Failure(message = FirebaseException.message(e))
 
         }
     }
