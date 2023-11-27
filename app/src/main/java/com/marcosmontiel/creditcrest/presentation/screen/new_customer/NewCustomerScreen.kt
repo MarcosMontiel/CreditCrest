@@ -4,7 +4,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.Scaffold
 import androidx.compose.material.ScaffoldState
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.ArrowBackIosNew
+import androidx.compose.material.icons.rounded.Close
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -31,7 +31,7 @@ fun NewCustomerScreen(navController: NavHostController) {
                 navigation = {
 
                     DefaultIconButton(
-                        icon = Icons.Rounded.ArrowBackIosNew,
+                        icon = Icons.Rounded.Close,
                         description = stringResource(R.string.generic_pop_back_stack_icon),
                         click = { navController.popBackStack() }
                     )

@@ -27,7 +27,7 @@
     <string name="customer_last_name_label">Apellidos</string>
     <string name="customer_name_eraser_icon">name eraser icon</string>
     <string name="customer_name_label">Nombre</string>
-    <string name="customer_screen_title">Nuevo cliente</string>
+    <string name="customer_screen_title">Crear cliente</string>
 
     <string name="generic_application_name">CREDIT CREST</string>
     <string name="generic_close_app_icon">close app icon</string>
