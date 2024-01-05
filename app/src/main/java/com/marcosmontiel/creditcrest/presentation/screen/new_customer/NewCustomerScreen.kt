@@ -45,12 +45,12 @@ fun NewCustomerScreen(navController: NavHostController) {
 
             NewCustomerContent(modifier = Modifier.fillMaxSize())
 
-        },
-    )
+            NewCustomerView(
+                modifier = Modifier.fillMaxSize(),
+                navController = navController,
+            )
 
-    NewCustomerView(
-        modifier = Modifier.fillMaxSize(),
-        navController = navController,
+        },
     )
 
 }
