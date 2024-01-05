@@ -18,7 +18,6 @@ fun DefaultButton(
     content: @Composable RowScope.() -> Unit,
     click: () -> Unit,
 ) {
-
     Button(
         onClick = click,
         modifier = modifier,
@@ -27,5 +26,4 @@ fun DefaultButton(
         contentPadding = padding,
         content = content,
     )
-
 }

@@ -17,7 +17,6 @@ fun DefaultTopBar(
     actions: @Composable RowScope.() -> Unit = {},
     background: Color = if (isSystemInDarkTheme()) BackgroundDarkColor else BackgroundLightColor
 ) {
-
     TopAppBar(
         title = title,
         modifier = modifier,
@@ -25,5 +24,4 @@ fun DefaultTopBar(
         actions = actions,
         backgroundColor = background,
     )
-
 }

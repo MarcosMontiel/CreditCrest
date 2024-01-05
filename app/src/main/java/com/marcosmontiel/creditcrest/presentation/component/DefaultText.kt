@@ -22,7 +22,6 @@ fun DefaultText(
     color: Color = Color.Unspecified,
     title: String,
 ) {
-
     Text(
         text = title,
         modifier = modifier,
@@ -33,5 +32,4 @@ fun DefaultText(
         fontFamily = fontFamily,
         style = style,
     )
-
 }

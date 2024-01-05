@@ -15,15 +15,11 @@ fun DefaultProgressIndicator(
     modifier: Modifier = Modifier,
     background: Color = MaterialTheme.colors.background
 ) {
-
     Box(
         modifier = modifier
             .fillMaxSize()
             .background(color = background.copy(alpha = 0.6f))
     ) {
-
         CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
-
     }
-
 }

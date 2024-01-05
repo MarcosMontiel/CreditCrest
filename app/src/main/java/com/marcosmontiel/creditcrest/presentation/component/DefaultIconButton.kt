@@ -16,9 +16,7 @@ fun DefaultIconButton(
     description: String,
     click: () -> Unit,
 ) {
-
     IconButton(onClick = click, modifier = modifier) {
         DefaultIcon(icon = icon, description = description, color = color)
     }
-
 }

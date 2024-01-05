@@ -27,7 +27,6 @@ fun DefaultTextField(
     keyboardType: KeyboardType = KeyboardType.Text,
     valueChanged: (String) -> Unit,
 ) {
-
     TextField(
         value = text,
         onValueChange = { valueChanged(it) },
@@ -52,5 +51,4 @@ fun DefaultTextField(
             focusedLabelColor = if (isSystemInDarkTheme()) Blue300 else Blue700,
         )
     )
-
 }
