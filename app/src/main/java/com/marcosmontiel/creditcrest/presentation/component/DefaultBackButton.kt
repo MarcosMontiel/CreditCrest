@@ -26,7 +26,7 @@ fun DefaultBackButton(navController: NavHostController) {
                     color = if (isSystemInDarkTheme()) Gray200 else Gray900,
                     shape = CircleShape
                 )
-                .size(28.dp),
+                .size(24.dp),
             color = if (isSystemInDarkTheme()) Gray900 else Gray200,
             icon = Icons.Rounded.ChevronLeft,
             description = stringResource(R.string.generic_pop_back_stack_icon),
