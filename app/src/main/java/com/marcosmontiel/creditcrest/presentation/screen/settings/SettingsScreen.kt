@@ -18,10 +18,7 @@ fun SettingsScreen(navController: NavHostController) {
         topBar = {},
         bottomBar = {},
         content = {
-            SettingsContent(
-                modifier = Modifier.fillMaxSize(),
-                navController = navController
-            )
+            SettingsContent(modifier = Modifier.fillMaxSize(), navController = navController)
         }
     )
 }

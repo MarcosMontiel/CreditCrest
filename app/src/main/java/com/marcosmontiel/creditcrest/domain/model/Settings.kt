@@ -11,7 +11,7 @@ import com.marcosmontiel.creditcrest.presentation.enum.ActionSettings.HELP
 data class Settings(
     val action: ActionSettings,
     val icon: ImageVector,
-    val descIcon: String,
+    val iconDescription: String,
     val title: String,
     val description: String,
     var click: (() -> Unit)? = null
@@ -22,14 +22,14 @@ data class Settings(
                 Settings(
                     action = ACCOUNT,
                     icon = Icons.Rounded.Person,
-                    descIcon = "account settings icon",
+                    iconDescription = "account settings icon",
                     title = "Cuenta",
-                    description = ""
+                    description = "Notificaciones de seguridad, eliminar cuenta, cerrar sesión"
                 ),
                 Settings(
                     action = HELP,
                     icon = Icons.Rounded.Help,
-                    descIcon = "help settings icon",
+                    iconDescription = "help settings icon",
                     title = "Ayuda",
                     description = "Centro de ayuda, contáctanos, políticas de privacidad"
                 )
