@@ -24,60 +24,46 @@ fun NewCustomerContent(
     modifier: Modifier,
     viewModel: NewCustomerViewModel = hiltViewModel()
 ) {
-
     val newCustomerState = viewModel.newCustomerState
 
     Box(modifier = modifier.padding(16.dp)) {
-
         NewCustomerBody(
             modifier = Modifier.fillMaxWidth(),
             viewModel = viewModel,
             newCustomerState = newCustomerState,
         )
-
     }
-
 }
 
 @Composable
 fun NewCustomerBody(
     modifier: Modifier,
     viewModel: NewCustomerViewModel,
-    newCustomerState: NewCustomerState,
+    newCustomerState: NewCustomerState
 ) {
-
     Column(modifier = modifier) {
-
         Spacer(modifier = Modifier.size(16.dp))
 
         DefaultTextField(
             modifier = Modifier.fillMaxWidth(),
             enabled = newCustomerState.nameEnabled,
             text = newCustomerState.name,
-            label = {
-                DefaultText(title = stringResource(R.string.customer_name_label))
-            },
+            label = { DefaultText(title = stringResource(R.string.customer_name_label)) },
             trailingIcon = {
-
                 AnimatedVisibility(visible = newCustomerState.nameEraser) {
-
                     DefaultIconButton(
                         icon = Icons.Rounded.Close,
                         description = stringResource(R.string.customer_name_eraser_icon),
                         click = { viewModel.nameEraser() }
                     )
-
                 }
-
             },
             valueChanged = {
-
                 viewModel.valueChanged(
                     name = it,
                     lastName = newCustomerState.lastName,
                     curp = newCustomerState.curp,
                 )
-
             }
         )
 
@@ -87,30 +73,22 @@ fun NewCustomerBody(
             modifier = Modifier.fillMaxWidth(),
             enabled = newCustomerState.lastNameEnabled,
             text = newCustomerState.lastName,
-            label = {
-                DefaultText(title = stringResource(R.string.customer_last_name_label))
-            },
+            label = { DefaultText(title = stringResource(R.string.customer_last_name_label)) },
             trailingIcon = {
-
                 AnimatedVisibility(visible = newCustomerState.lastNameEraser) {
-
                     DefaultIconButton(
                         icon = Icons.Rounded.Close,
                         description = stringResource(R.string.customer_last_name_eraser_icon),
                         click = { viewModel.lastNameEraser() }
                     )
-
                 }
-
             },
             valueChanged = {
-
                 viewModel.valueChanged(
                     name = newCustomerState.name,
                     lastName = it,
                     curp = newCustomerState.curp,
                 )
-
             }
         )
 
@@ -120,30 +98,22 @@ fun NewCustomerBody(
             modifier = Modifier.fillMaxWidth(),
             enabled = newCustomerState.curpEnabled,
             text = newCustomerState.curp,
-            label = {
-                DefaultText(title = stringResource(R.string.customer_curp_label))
-            },
+            label = { DefaultText(title = stringResource(R.string.customer_curp_label)) },
             trailingIcon = {
-
                 AnimatedVisibility(visible = newCustomerState.curpEraser) {
-
                     DefaultIconButton(
                         icon = Icons.Rounded.Close,
                         description = stringResource(R.string.customer_curp_eraser_icon),
                         click = { viewModel.curpEraser() }
                     )
-
                 }
-
             },
             valueChanged = {
-
                 viewModel.valueChanged(
                     name = newCustomerState.name,
                     lastName = newCustomerState.lastName,
                     curp = it,
                 )
-
             }
         )
 
@@ -154,16 +124,12 @@ fun NewCustomerBody(
             enabled = newCustomerState.saveButtonEnabled,
             shape = RoundedCornerShape(percent = 50),
             content = {
-
                 DefaultText(
                     fontWeight = FontWeight.Bold,
                     title = stringResource(R.string.generic_save_button),
                 )
-
             },
             click = { viewModel.createCustomer() }
         )
-
     }
-
 }

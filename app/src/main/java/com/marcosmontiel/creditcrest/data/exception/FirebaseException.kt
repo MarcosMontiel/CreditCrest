@@ -3,9 +3,7 @@ package com.marcosmontiel.creditcrest.data.exception
 import com.google.firebase.auth.FirebaseAuthException
 
 class FirebaseException {
-
     companion object {
-
         fun message(e: Exception): String {
             return when (e) {
                 is FirebaseAuthException -> {
@@ -25,7 +23,5 @@ class FirebaseException {
                 else -> e.message ?: "Se ha producido un error inesperado"
             }
         }
-
     }
-
 }

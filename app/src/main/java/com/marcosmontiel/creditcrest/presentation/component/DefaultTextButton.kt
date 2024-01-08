@@ -15,7 +15,7 @@ fun DefaultTextButton(
     colors: ButtonColors = ButtonDefaults.textButtonColors(),
     padding: PaddingValues = ButtonDefaults.TextButtonContentPadding,
     content: @Composable RowScope.() -> Unit,
-    click: () -> Unit,
+    click: () -> Unit
 ) {
     TextButton(
         onClick = click,
@@ -23,6 +23,6 @@ fun DefaultTextButton(
         enabled = enabled,
         colors = colors,
         contentPadding = padding,
-        content = content,
+        content = content
     )
 }

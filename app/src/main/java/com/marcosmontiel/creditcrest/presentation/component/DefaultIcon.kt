@@ -13,7 +13,7 @@ fun DefaultIcon(
     modifier: Modifier = Modifier,
     color: Color = LocalContentColor.current.copy(alpha = LocalContentAlpha.current),
     icon: ImageVector,
-    description: String,
+    description: String
 ) {
     Icon(imageVector = icon, contentDescription = description, modifier = modifier, tint = color)
 }

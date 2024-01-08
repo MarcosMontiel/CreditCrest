@@ -22,6 +22,6 @@ fun DefaultTopBar(
         modifier = modifier,
         navigationIcon = navigation,
         actions = actions,
-        backgroundColor = background,
+        backgroundColor = background
     )
 }

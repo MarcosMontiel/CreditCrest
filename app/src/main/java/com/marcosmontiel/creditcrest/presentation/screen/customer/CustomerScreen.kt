@@ -15,7 +15,6 @@ import com.marcosmontiel.creditcrest.presentation.navigation.DetailsRoutes.NewCu
 
 @Composable
 fun CustomerScreen(navController: NavHostController) {
-
     val scaffoldState: ScaffoldState = rememberScaffoldState()
 
     Scaffold(
@@ -23,21 +22,16 @@ fun CustomerScreen(navController: NavHostController) {
         topBar = {},
         bottomBar = {},
         floatingActionButton = {
-
             DefaultFloatingActionButton(
                 content = {
-
                     DefaultIcon(
                         icon = Icons.Rounded.Add,
                         description = stringResource(R.string.customer_add_customer_icon),
                     )
-
                 },
                 click = { navController.navigate(NewCustomer.route) }
             )
-
         },
-        content = {},
+        content = {}
     )
-
 }

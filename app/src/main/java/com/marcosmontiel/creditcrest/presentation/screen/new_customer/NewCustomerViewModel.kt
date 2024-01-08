@@ -21,7 +21,6 @@ class NewCustomerViewModel @Inject constructor(
     private val authUseCases: AuthUseCases,
     private val customerUseCases: CustomerUseCases
 ) : ViewModel() {
-
     // Late init variables
     private lateinit var _customerInfo: Customer
 
@@ -136,5 +135,4 @@ class NewCustomerViewModel @Inject constructor(
             saveButtonEnabled = false,
         )
     }
-
 }

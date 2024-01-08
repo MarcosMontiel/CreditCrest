@@ -14,7 +14,7 @@ fun DefaultIconButton(
     color: Color = LocalContentColor.current.copy(alpha = LocalContentAlpha.current),
     icon: ImageVector,
     description: String,
-    click: () -> Unit,
+    click: () -> Unit
 ) {
     IconButton(onClick = click, modifier = modifier) {
         DefaultIcon(icon = icon, description = description, color = color)

@@ -12,7 +12,6 @@ import com.marcosmontiel.creditcrest.presentation.screen.login.component.LoginVi
 
 @Composable
 fun LoginScreen(navController: NavHostController) {
-
     val scaffoldState: ScaffoldState = rememberScaffoldState()
 
     Scaffold(
@@ -20,18 +19,12 @@ fun LoginScreen(navController: NavHostController) {
         topBar = {},
         bottomBar = {},
         content = {
-
             LoginContent(
                 modifier = Modifier.fillMaxSize(),
-                navController = navController,
+                navController = navController
             )
-
-        },
+        }
     )
 
-    LoginView(
-        modifier = Modifier.fillMaxSize(),
-        navController = navController,
-    )
-
+    LoginView(modifier = Modifier.fillMaxSize(), navController = navController)
 }

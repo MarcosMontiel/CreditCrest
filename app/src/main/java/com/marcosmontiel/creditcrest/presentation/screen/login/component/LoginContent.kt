@@ -33,55 +33,44 @@ import com.marcosmontiel.creditcrest.presentation.ui.theme.Gray500
 fun LoginContent(
     modifier: Modifier,
     viewModel: LoginViewModel = hiltViewModel(),
-    navController: NavHostController,
+    navController: NavHostController
 ) {
-
     val loginState = viewModel.loginState
     val activity = LocalContext.current as Activity
 
     Box(modifier = modifier.padding(16.dp)) {
-
-        LoginHeader(
-            modifier = Modifier.align(Alignment.TopEnd),
-            activity = activity,
-        )
+        LoginHeader(modifier = Modifier.align(Alignment.TopEnd), activity = activity)
 
         LoginBody(
             modifier = Modifier.align(Alignment.Center),
             viewModel = viewModel,
-            loginState = loginState,
+            loginState = loginState
         )
 
         LoginFooter(
             modifier = Modifier.align(Alignment.BottomCenter),
             navController = navController,
-            loginState = loginState,
+            loginState = loginState
         )
-
     }
-
 }
 
 @Composable
 fun LoginHeader(modifier: Modifier, activity: Activity) {
-
     DefaultIcon(
         modifier = modifier.clickable { activity.finish() },
         icon = Icons.Rounded.Close,
         description = stringResource(R.string.generic_close_app_icon),
     )
-
 }
 
 @Composable
 fun LoginBody(
     modifier: Modifier,
     viewModel: LoginViewModel,
-    loginState: LoginState,
+    loginState: LoginState
 ) {
-
     Column(modifier = modifier.fillMaxWidth()) {
-
         DefaultText(
             modifier = Modifier
                 .fillMaxWidth()
@@ -98,26 +87,18 @@ fun LoginBody(
             modifier = Modifier.fillMaxWidth(),
             enabled = loginState.emailEnabled,
             text = loginState.email,
-            label = {
-                DefaultText(title = stringResource(R.string.generic_email_label))
-            },
+            label = { DefaultText(title = stringResource(R.string.generic_email_label)) },
             trailingIcon = {
-
                 AnimatedVisibility(visible = loginState.emailEraser) {
-
                     DefaultIconButton(
                         icon = Icons.Rounded.Close,
                         description = stringResource(R.string.generic_email_eraser_icon),
                         click = { viewModel.emailEraser() }
                     )
-
                 }
-
             },
             keyboardType = KeyboardType.Email,
-            valueChanged = {
-                viewModel.valueChanged(email = it, password = loginState.password)
-            }
+            valueChanged = { viewModel.valueChanged(email = it, password = loginState.password) }
         )
 
         Spacer(modifier = Modifier.size(24.dp))
@@ -126,23 +107,17 @@ fun LoginBody(
             modifier = Modifier.fillMaxWidth(),
             enabled = loginState.passwordEnabled,
             text = loginState.password,
-            label = {
-                DefaultText(title = stringResource(R.string.auth_password_label))
-            },
+            label = { DefaultText(title = stringResource(R.string.auth_password_label)) },
             trailingIcon = {
-
                 DefaultIconButton(
                     icon = loginState.passwordIcon,
                     description = stringResource(R.string.auth_password_visibility_icon),
                     click = { viewModel.passwordTransformation() }
                 )
-
             },
             transformation = loginState.passwordTransformation,
             keyboardType = KeyboardType.Password,
-            valueChanged = {
-                viewModel.valueChanged(email = loginState.email, password = it)
-            }
+            valueChanged = { viewModel.valueChanged(email = loginState.email, password = it) }
         )
 
         Spacer(modifier = Modifier.size(40.dp))
@@ -152,12 +127,10 @@ fun LoginBody(
             enabled = loginState.loginButtonEnabled,
             shape = RoundedCornerShape(percent = 50),
             content = {
-
                 DefaultText(
                     fontWeight = FontWeight.Bold,
-                    title = stringResource(R.string.auth_main_login_button),
+                    title = stringResource(R.string.auth_main_login_button)
                 )
-
             },
             click = { viewModel.login() }
         )
@@ -167,33 +140,25 @@ fun LoginBody(
         DefaultTextButton(
             modifier = Modifier.align(Alignment.End),
             enabled = loginState.forgotPasswordButtonEnabled,
-            colors = ButtonDefaults.textButtonColors(
-                contentColor = Gray500
-            ),
+            colors = ButtonDefaults.textButtonColors(contentColor = Gray500),
             content = {
-
                 DefaultText(
                     fontSize = 12.sp,
                     title = stringResource(R.string.auth_forgot_my_password_button),
                 )
-
             },
             click = {}
         )
-
     }
-
 }
 
 @Composable
 fun LoginFooter(
     modifier: Modifier,
     navController: NavHostController,
-    loginState: LoginState,
+    loginState: LoginState
 ) {
-
     Column(modifier = modifier.fillMaxWidth()) {
-
         Divider()
 
         LoginSignUpContent(
@@ -201,28 +166,24 @@ fun LoginFooter(
             navController = navController,
             loginState = loginState,
         )
-
     }
-
 }
 
 @Composable
 fun LoginSignUpContent(
     modifier: Modifier,
     navController: NavHostController,
-    loginState: LoginState,
+    loginState: LoginState
 ) {
-
     Row(
         modifier = modifier.padding(top = 24.dp, bottom = 8.dp),
         horizontalArrangement = Arrangement.Center,
-        verticalAlignment = Alignment.CenterVertically,
+        verticalAlignment = Alignment.CenterVertically
     ) {
-
         DefaultText(
             style = MaterialTheme.typography.body2,
             color = Gray500,
-            title = stringResource(R.string.auth_footer_sign_up_title),
+            title = stringResource(R.string.auth_footer_sign_up_title)
         )
 
         Spacer(modifier = Modifier.size(8.dp))
@@ -230,17 +191,13 @@ fun LoginSignUpContent(
         DefaultTextButton(
             enabled = loginState.signUpButtonEnabled,
             content = {
-
                 DefaultText(
                     fontWeight = FontWeight.Bold,
                     style = MaterialTheme.typography.body2,
-                    title = stringResource(R.string.auth_footer_sign_up_button),
+                    title = stringResource(R.string.auth_footer_sign_up_button)
                 )
-
             },
             click = { navController.navigate(Register.route) }
         )
-
     }
-
 }

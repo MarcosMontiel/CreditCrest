@@ -13,12 +13,12 @@ fun DefaultFloatingActionButton(
     modifier: Modifier = Modifier,
     background: Color = MaterialTheme.colors.primary,
     content: @Composable () -> Unit,
-    click: () -> Unit,
+    click: () -> Unit
 ) {
     FloatingActionButton(
         onClick = click,
         modifier = modifier.padding(bottom = 64.dp),
         backgroundColor = background,
-        content = content,
+        content = content
     )
 }

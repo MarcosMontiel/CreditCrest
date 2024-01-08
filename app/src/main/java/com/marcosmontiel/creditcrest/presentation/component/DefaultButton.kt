@@ -16,7 +16,7 @@ fun DefaultButton(
     shape: Shape = RoundedCornerShape(8.dp),
     padding: PaddingValues = PaddingValues(vertical = 16.dp),
     content: @Composable RowScope.() -> Unit,
-    click: () -> Unit,
+    click: () -> Unit
 ) {
     Button(
         onClick = click,
@@ -24,6 +24,6 @@ fun DefaultButton(
         enabled = enabled,
         shape = shape,
         contentPadding = padding,
-        content = content,
+        content = content
     )
 }

@@ -12,7 +12,6 @@ import com.marcosmontiel.creditcrest.presentation.screen.register.component.Regi
 
 @Composable
 fun RegisterScreen(navController: NavHostController) {
-
     val scaffoldState: ScaffoldState = rememberScaffoldState()
 
     Scaffold(
@@ -20,18 +19,12 @@ fun RegisterScreen(navController: NavHostController) {
         topBar = {},
         bottomBar = {},
         content = {
-
             RegisterContent(
                 modifier = Modifier.fillMaxSize(),
-                navController = navController,
+                navController = navController
             )
-
         }
     )
 
-    RegisterView(
-        modifier = Modifier.fillMaxSize(),
-        navController = navController,
-    )
-
+    RegisterView(modifier = Modifier.fillMaxSize(), navController = navController)
 }

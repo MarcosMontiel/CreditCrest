@@ -20,7 +20,7 @@ fun DefaultText(
     fontSize: TextUnit = TextUnit.Unspecified,
     style: TextStyle = LocalTextStyle.current,
     color: Color = Color.Unspecified,
-    title: String,
+    title: String
 ) {
     Text(
         text = title,
@@ -30,6 +30,6 @@ fun DefaultText(
         fontStyle = fontStyle,
         fontWeight = fontWeight,
         fontFamily = fontFamily,
-        style = style,
+        style = style
     )
 }

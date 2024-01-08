@@ -19,7 +19,7 @@ import com.marcosmontiel.creditcrest.presentation.screen.register.RegisterViewMo
 fun RegisterView(
     modifier: Modifier,
     viewModel: RegisterViewModel = hiltViewModel(),
-    navController: NavHostController,
+    navController: NavHostController
 ) {
     val registerResponse = viewModel.registerResponse
 

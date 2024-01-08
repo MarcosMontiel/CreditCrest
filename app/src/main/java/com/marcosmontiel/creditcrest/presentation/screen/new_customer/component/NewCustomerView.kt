@@ -18,7 +18,7 @@ import com.marcosmontiel.creditcrest.presentation.screen.new_customer.NewCustome
 fun NewCustomerView(
     modifier: Modifier,
     viewModel: NewCustomerViewModel = hiltViewModel(),
-    navController: NavHostController,
+    navController: NavHostController
 ) {
     val newCustomerResponse = viewModel.newCustomerResponse
 

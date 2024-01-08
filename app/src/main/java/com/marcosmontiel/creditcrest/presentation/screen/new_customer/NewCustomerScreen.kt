@@ -17,30 +17,21 @@ import com.marcosmontiel.creditcrest.presentation.screen.new_customer.component.
 
 @Composable
 fun NewCustomerScreen(navController: NavHostController) {
-
     val scaffoldState: ScaffoldState = rememberScaffoldState()
 
     Scaffold(
         scaffoldState = scaffoldState,
         topBar = {
-
             DefaultTopBar(
                 title = { DefaultText(title = stringResource(R.string.customer_screen_title)) },
                 navigation = { DefaultBackButton(navController = navController) }
             )
-
         },
         bottomBar = {},
         content = {
-
             NewCustomerContent(modifier = Modifier.fillMaxSize())
 
-            NewCustomerView(
-                modifier = Modifier.fillMaxSize(),
-                navController = navController,
-            )
-
-        },
+            NewCustomerView(modifier = Modifier.fillMaxSize(), navController = navController)
+        }
     )
-
 }

@@ -36,55 +36,44 @@ import com.marcosmontiel.creditcrest.presentation.ui.theme.Yellow800
 fun RegisterContent(
     modifier: Modifier,
     viewModel: RegisterViewModel = hiltViewModel(),
-    navController: NavHostController,
+    navController: NavHostController
 ) {
-
     val registerState = viewModel.registerState
     val activity = LocalContext.current as Activity
 
     Box(modifier = modifier.padding(16.dp)) {
-
-        RegisterHeader(
-            modifier = Modifier.align(Alignment.TopEnd),
-            activity = activity,
-        )
+        RegisterHeader(modifier = Modifier.align(Alignment.TopEnd), activity = activity)
 
         RegisterBody(
             modifier = Modifier.align(Alignment.Center),
             viewModel = viewModel,
-            registerState = registerState,
+            registerState = registerState
         )
 
         RegisterFooter(
             modifier = Modifier.align(Alignment.BottomCenter),
             navController = navController,
-            registerState = registerState,
+            registerState = registerState
         )
-
     }
-
 }
 
 @Composable
 fun RegisterHeader(modifier: Modifier, activity: Activity) {
-
     DefaultIcon(
         modifier = modifier.clickable { activity.finish() },
         icon = Icons.Rounded.Close,
-        description = stringResource(R.string.generic_close_app_icon),
+        description = stringResource(R.string.generic_close_app_icon)
     )
-
 }
 
 @Composable
 fun RegisterBody(
     modifier: Modifier,
     viewModel: RegisterViewModel,
-    registerState: RegisterState,
+    registerState: RegisterState
 ) {
-
     Column(modifier = modifier.fillMaxWidth()) {
-
         DefaultText(
             modifier = Modifier
                 .fillMaxWidth()
@@ -92,7 +81,7 @@ fun RegisterBody(
             fontWeight = FontWeight.Bold,
             fontFamily = FontFamily.Serif,
             fontSize = 30.sp,
-            title = stringResource(R.string.generic_application_name),
+            title = stringResource(R.string.generic_application_name)
         )
 
         Spacer(modifier = Modifier.size(48.dp))
@@ -100,7 +89,7 @@ fun RegisterBody(
         DefaultText(
             style = MaterialTheme.typography.body2,
             color = Gray500,
-            title = stringResource(R.string.auth_sign_up_description),
+            title = stringResource(R.string.auth_sign_up_description)
         )
 
         Spacer(modifier = Modifier.size(16.dp))
@@ -109,28 +98,22 @@ fun RegisterBody(
             modifier = Modifier.fillMaxWidth(),
             enabled = registerState.usernameEnabled,
             text = registerState.username,
-            label = {
-                DefaultText(title = stringResource(R.string.generic_username_label))
-            },
+            label = { DefaultText(title = stringResource(R.string.generic_username_label)) },
             trailingIcon = {
-
                 AnimatedVisibility(visible = registerState.usernameEraser) {
-
                     DefaultIconButton(
                         icon = Icons.Rounded.Close,
                         description = stringResource(R.string.auth_username_eraser_icon),
                         click = { viewModel.usernameEraser() }
                     )
-
                 }
-
             },
             valueChanged = {
                 viewModel.valueChanged(
                     email = registerState.email,
                     password = registerState.password,
                     passwordConfirmation = registerState.passwordConfirmation,
-                    username = it,
+                    username = it
                 )
             }
         )
@@ -141,32 +124,24 @@ fun RegisterBody(
             modifier = Modifier.fillMaxWidth(),
             enabled = registerState.emailEnabled,
             text = registerState.email,
-            label = {
-                DefaultText(title = stringResource(R.string.generic_email_label))
-            },
+            label = { DefaultText(title = stringResource(R.string.generic_email_label)) },
             trailingIcon = {
-
                 AnimatedVisibility(visible = registerState.emailEraser) {
-
                     DefaultIconButton(
                         icon = Icons.Rounded.Close,
                         description = stringResource(R.string.generic_email_eraser_icon),
                         click = { viewModel.emailEraser() }
                     )
-
                 }
-
             },
             keyboardType = KeyboardType.Email,
             valueChanged = {
-
                 viewModel.valueChanged(
                     email = it,
                     password = registerState.password,
                     passwordConfirmation = registerState.passwordConfirmation,
                     username = registerState.username,
                 )
-
             }
         )
 
@@ -178,45 +153,37 @@ fun RegisterBody(
                 modifier = Modifier.fillMaxWidth(),
                 enabled = registerState.passwordEnabled,
                 text = registerState.password,
-                label = {
-                    DefaultText(title = stringResource(R.string.auth_password_label))
-                },
+                label = { DefaultText(title = stringResource(R.string.auth_password_label)) },
                 trailingIcon = {
-
                     DefaultIconButton(
                         icon = registerState.passwordIcon,
                         description = stringResource(R.string.auth_password_visibility_icon),
                         click = { viewModel.passwordTransformation() }
                     )
-
                 },
                 transformation = registerState.passwordTransformation,
                 keyboardType = KeyboardType.Password,
                 valueChanged = {
-
                     viewModel.valueChanged(
                         email = registerState.email,
                         password = it,
                         passwordConfirmation = registerState.passwordConfirmation,
                         username = registerState.username,
                     )
-
                 }
             )
 
             AnimatedVisibility(visible = registerState.password.isNotBlank()) {
-
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(top = 8.dp)
                 ) {
-
                     Spacer(modifier = Modifier.size(16.dp))
 
                     DefaultText(
                         fontSize = 12.sp,
-                        title = stringResource(R.string.auth_password_level_title),
+                        title = stringResource(R.string.auth_password_level_title)
                     )
 
                     Spacer(modifier = Modifier.size(8.dp))
@@ -254,11 +221,8 @@ fun RegisterBody(
                         }
                         else -> {}
                     }
-
                 }
-
             }
-
         }
 
         Spacer(modifier = Modifier.size(24.dp))
@@ -267,29 +231,23 @@ fun RegisterBody(
             modifier = Modifier.fillMaxWidth(),
             enabled = registerState.passwordConfirmationEnabled,
             text = registerState.passwordConfirmation,
-            label = {
-                DefaultText(title = stringResource(R.string.auth_password_confirmation_label))
-            },
+            label = { DefaultText(title = stringResource(R.string.auth_password_confirmation_label)) },
             trailingIcon = {
-
                 DefaultIconButton(
                     icon = registerState.passwordConfirmationIcon,
                     description = stringResource(R.string.auth_password_confirmation_visibility_icon),
                     click = { viewModel.passwordConfirmationTransformation() }
                 )
-
             },
             transformation = registerState.passwordConfirmationTransformation,
             keyboardType = KeyboardType.Password,
             valueChanged = {
-
                 viewModel.valueChanged(
                     email = registerState.email,
                     password = registerState.password,
                     passwordConfirmation = it,
                     username = registerState.username,
                 )
-
             }
         )
 
@@ -300,39 +258,31 @@ fun RegisterBody(
             enabled = registerState.signUpButtonEnabled,
             shape = RoundedCornerShape(percent = 50),
             content = {
-
                 DefaultText(
                     fontWeight = FontWeight.Bold,
-                    title = stringResource(R.string.auth_sign_up_button),
+                    title = stringResource(R.string.auth_sign_up_button)
                 )
-
             },
             click = { viewModel.signUp() }
         )
-
     }
-
 }
 
 @Composable
 fun RegisterFooter(
     modifier: Modifier,
     navController: NavHostController,
-    registerState: RegisterState,
+    registerState: RegisterState
 ) {
-
     Column(modifier = modifier.fillMaxWidth()) {
-
         Divider()
 
         SignUpLoginContent(
             modifier = Modifier.fillMaxWidth(),
             navController = navController,
-            registerState = registerState,
+            registerState = registerState
         )
-
     }
-
 }
 
 @Composable
@@ -341,17 +291,15 @@ fun SignUpLoginContent(
     navController: NavHostController,
     registerState: RegisterState,
 ) {
-
     Row(
         modifier = modifier.padding(top = 24.dp, bottom = 8.dp),
         horizontalArrangement = Arrangement.Center,
-        verticalAlignment = Alignment.CenterVertically,
+        verticalAlignment = Alignment.CenterVertically
     ) {
-
         DefaultText(
             style = MaterialTheme.typography.body2,
             color = Gray500,
-            title = stringResource(R.string.auth_footer_login_title),
+            title = stringResource(R.string.auth_footer_login_title)
         )
 
         Spacer(modifier = Modifier.size(8.dp))
@@ -359,17 +307,13 @@ fun SignUpLoginContent(
         DefaultTextButton(
             enabled = registerState.loginButtonEnabled,
             content = {
-
                 DefaultText(
                     fontWeight = FontWeight.Bold,
                     style = MaterialTheme.typography.body2,
                     title = stringResource(R.string.auth_footer_login_button),
                 )
-
             },
             click = { navController.navigate(Login.route) }
         )
-
     }
-
 }

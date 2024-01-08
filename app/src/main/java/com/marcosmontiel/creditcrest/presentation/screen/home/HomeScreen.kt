@@ -19,9 +19,8 @@ import com.marcosmontiel.creditcrest.presentation.screen.home.component.HomeTopB
 @Composable
 fun HomeScreen(
     navController: NavHostController = rememberNavController(),
-    viewModel: HomeViewModel = hiltViewModel(),
+    viewModel: HomeViewModel = hiltViewModel()
 ) {
-
     val screens = listOf(Finance, Customer, Settings)
     val scaffoldState: ScaffoldState = rememberScaffoldState()
 
@@ -34,27 +33,8 @@ fun HomeScreen(
 
     Scaffold(
         scaffoldState = scaffoldState,
-        topBar = {
-
-            HomeTopBar(
-                navController = navController,
-                screens = screens,
-            )
-
-        },
-        bottomBar = {
-
-            HomeBottomBar(
-                navController = navController,
-                screens = screens,
-            )
-
-        },
-        content = {
-
-            HomeNavGraph(navController = navController)
-
-        },
+        topBar = { HomeTopBar(navController = navController, screens = screens) },
+        bottomBar = { HomeBottomBar(navController = navController, screens = screens) },
+        content = { HomeNavGraph(navController = navController) }
     )
-
 }

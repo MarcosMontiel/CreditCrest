@@ -25,7 +25,7 @@ fun DefaultTextField(
     trailingIcon: @Composable (() -> Unit)? = null,
     transformation: VisualTransformation = VisualTransformation.None,
     keyboardType: KeyboardType = KeyboardType.Text,
-    valueChanged: (String) -> Unit,
+    valueChanged: (String) -> Unit
 ) {
     TextField(
         value = text,

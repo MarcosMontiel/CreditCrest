@@ -26,7 +26,6 @@ class LoginViewModel @Inject constructor(
     private val application: Application,
     private val authUseCases: AuthUseCases,
 ) : ViewModel() {
-
     // Late init variables
     private lateinit var _userInfo: User
 
@@ -138,5 +137,4 @@ class LoginViewModel @Inject constructor(
             signUpButtonEnabled = false,
         )
     }
-
 }

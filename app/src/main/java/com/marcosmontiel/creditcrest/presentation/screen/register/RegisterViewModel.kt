@@ -30,7 +30,6 @@ class RegisterViewModel @Inject constructor(
     private val authUseCases: AuthUseCases,
     private val profileUseCases: ProfileUseCases,
 ) : ViewModel() {
-
     // Late init variables
     private lateinit var _userInfo: User
 
@@ -222,5 +221,4 @@ class RegisterViewModel @Inject constructor(
             usernameEnabled = false,
         )
     }
-
 }

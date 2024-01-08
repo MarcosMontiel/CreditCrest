@@ -12,7 +12,6 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor() : ViewModel() {
-
     // Functions
     fun setUIColors(isDarkMode: Boolean, context: Context) {
         val color: Color = if (isDarkMode) BackgroundDarkColor else BackgroundLightColor
@@ -23,5 +22,4 @@ class HomeViewModel @Inject constructor() : ViewModel() {
             navigationBarColor = color.toArgb()
         }
     }
-
 }

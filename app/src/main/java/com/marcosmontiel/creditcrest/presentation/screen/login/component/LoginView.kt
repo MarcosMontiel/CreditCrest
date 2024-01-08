@@ -19,7 +19,7 @@ import com.marcosmontiel.creditcrest.presentation.screen.login.LoginViewModel
 fun LoginView(
     modifier: Modifier,
     viewModel: LoginViewModel = hiltViewModel(),
-    navController: NavHostController,
+    navController: NavHostController
 ) {
     val loginResponse = viewModel.loginResponse
 

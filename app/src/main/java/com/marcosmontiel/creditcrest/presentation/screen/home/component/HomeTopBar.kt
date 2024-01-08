@@ -10,7 +10,6 @@ import com.marcosmontiel.creditcrest.presentation.navigation.HomeRoutes
 
 @Composable
 fun HomeTopBar(navController: NavHostController, screens: List<HomeRoutes>) {
-
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
     val topBarDestination = screens.any { it.route == currentDestination?.route }
@@ -22,5 +21,4 @@ fun HomeTopBar(navController: NavHostController, screens: List<HomeRoutes>) {
         DefaultTopBar(title = { DefaultText(title = screen.title) })
 
     }
-
 }

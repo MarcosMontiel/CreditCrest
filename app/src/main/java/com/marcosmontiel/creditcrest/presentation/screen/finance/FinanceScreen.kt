@@ -8,14 +8,12 @@ import androidx.navigation.NavHostController
 
 @Composable
 fun FinanceScreen(navController: NavHostController) {
-
     val scaffoldState: ScaffoldState = rememberScaffoldState()
 
     Scaffold(
         scaffoldState = scaffoldState,
         topBar = {},
         bottomBar = {},
-        content = {},
+        content = {}
     )
-
 }
