@@ -10,9 +10,7 @@ import com.marcosmontiel.creditcrest.presentation.screen.login.LoginScreen
 import com.marcosmontiel.creditcrest.presentation.screen.register.RegisterScreen
 
 fun NavGraphBuilder.authNavGraph(navController: NavHostController) {
-
     navigation(startDestination = Login.route, route = Graph.AUTHENTICATION) {
-
         composable(route = Login.route) {
             LoginScreen(navController = navController)
         }
@@ -20,15 +18,11 @@ fun NavGraphBuilder.authNavGraph(navController: NavHostController) {
         composable(route = Register.route) {
             RegisterScreen(navController = navController)
         }
-
     }
-
 }
 
 sealed class AuthRoutes(val route: String) {
-
     object Login : AuthRoutes(route = "login")
 
     object Register : AuthRoutes(route = "register")
-
 }

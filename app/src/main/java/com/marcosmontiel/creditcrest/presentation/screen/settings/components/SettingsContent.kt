@@ -27,7 +27,8 @@ fun SettingsContent(
     viewModel: SettingsViewModel = hiltViewModel(),
     navController: NavHostController
 ) {
-    val settings: List<Settings> = Settings.getItems()
+    val settings: List<Settings> = Settings.getMainSettings()
+    settings.forEach { it.click = { viewModel.chooseActions(it.action, navController) } }
 
     Box(modifier = modifier.padding(top = 16.dp, bottom = 32.dp)) {
         SettingsOptions(modifier = Modifier.fillMaxWidth(), settings = settings)
@@ -68,7 +69,7 @@ fun SettingsItem(modifier: Modifier, item: Settings) {
 
                 DefaultText(
                     fontSize = 12.sp,
-                    color = if (isSystemInDarkTheme()) Gray500 else Gray600,
+                    color = if (isSystemInDarkTheme()) Gray600 else Gray500,
                     title = item.description
                 )
             }

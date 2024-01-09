@@ -17,7 +17,7 @@ data class Settings(
     var click: (() -> Unit)? = null
 ) {
     companion object {
-        fun getItems(): List<Settings> {
+        fun getMainSettings(): List<Settings> {
             return listOf(
                 Settings(
                     action = ACCOUNT,
