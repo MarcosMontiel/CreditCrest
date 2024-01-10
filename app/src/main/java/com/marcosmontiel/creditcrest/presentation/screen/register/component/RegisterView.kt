@@ -27,38 +27,30 @@ fun RegisterView(
         registerResponse.let { stateFlow ->
             when (stateFlow) {
                 Response.Loading -> {
-
                     DefaultProgressIndicator()
-
                 }
 
                 is Response.Failure -> {
-
                     viewModel.enableForm()
 
                     val message: String = stateFlow.message
                         ?: stringResource(R.string.generic_unknown_exception_title)
                     Toast.makeText(LocalContext.current, message, Toast.LENGTH_LONG)
                         .apply { show() }
-
                 }
 
                 is Response.Success -> {
-
                     val message = stringResource(R.string.auth_created_account_toast)
                     Toast.makeText(LocalContext.current, message, Toast.LENGTH_LONG).show()
 
                     LaunchedEffect(Unit) {
-
                         viewModel.createProfileAction()
                         viewModel.registerResponse = null
 
                         navController.navigate(route = Graph.HOME) {
                             popUpTo(route = Graph.AUTHENTICATION) { inclusive = true }
                         }
-
                     }
-
                 }
 
                 else -> {}

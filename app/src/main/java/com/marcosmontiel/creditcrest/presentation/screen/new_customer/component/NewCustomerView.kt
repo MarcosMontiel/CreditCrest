@@ -26,32 +26,24 @@ fun NewCustomerView(
         newCustomerResponse.let { stateFlow ->
             when (stateFlow) {
                 Response.Loading -> {
-
                     DefaultProgressIndicator()
-
                 }
 
                 is Response.Failure -> {
-
                     viewModel.enableForm()
 
                     val message: String = stateFlow.message
                         ?: stringResource(R.string.generic_unknown_exception_title)
                     Toast.makeText(LocalContext.current, message, Toast.LENGTH_LONG)
                         .apply { show() }
-
                 }
 
                 is Response.Success -> {
-
                     LaunchedEffect(Unit) {
-
                         viewModel.newCustomerResponse = null
 
                         navController.popBackStack()
-
                     }
-
                 }
 
                 else -> {}
