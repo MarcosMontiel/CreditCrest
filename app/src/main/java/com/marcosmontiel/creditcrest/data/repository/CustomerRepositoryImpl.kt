@@ -13,20 +13,14 @@ import javax.inject.Named
 class CustomerRepositoryImpl @Inject constructor(
     @Named(CUSTOMERS) private val customerRef: CollectionReference
 ) : CustomerRepository {
-
     override suspend fun create(customer: Customer): Response<Boolean> {
         return try {
-
             customerRef.add(customer).await()
 
             Response.Success(data = true)
-
         } catch (e: Exception) {
-
             e.printStackTrace()
             Response.Failure(message = FirebaseException.message(e))
-
         }
     }
-
 }
